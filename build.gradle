@@ -19,14 +19,14 @@ repositories {
 }
 
 dependencies {
-	//implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-	implementation 'javax.servlet:jstl'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	//runtimeOnly 'com.mysql:mysql-connector-j'
-	annotationProcessor 'org.projectlombok:lombok'
+	//implementation 'org.springframework.boot:spring-boot-starter-jdbc'		// jdbc
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'				// jsp
+	implementation 'javax.servlet:jstl'											// jsp
+	compileOnly 'org.projectlombok:lombok'										// lombok
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'				// reload, restart
+	//runtimeOnly 'com.mysql:mysql-connector-j'									// mysql
+	annotationProcessor 'org.projectlombok:lombok'								// lombok
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
