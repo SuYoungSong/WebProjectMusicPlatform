@@ -1,4 +1,47 @@
 package webApplication.musicPlatform.web;
 
-public class FrontController {
+import webApplication.musicPlatform.web.controller.ControllerInter;
+import webApplication.musicPlatform.web.controller.MusicVideoFileUploadController;
+import webApplication.musicPlatform.web.controller.RegisterController;
+import webApplication.musicPlatform.web.controller.UserSaveController;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+@WebServlet(name="frontController", urlPatterns = "/front/*")
+public class FrontController extends HttpServlet {
+
+    private Map<String, ControllerInter> controllerMappingMap = new HashMap<>();
+
+    public FrontController() {
+        // Controller 주소를 각 Controller 인스턴스에 맵핑
+        controllerMappingMap.put("/front/musicVideoFileUpload", new MusicVideoFileUploadController());
+        controllerMappingMap.put("/front/users/register", new RegisterController());
+        controllerMappingMap.put("/front/users/save", new UserSaveController());
+    }
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 사용자가 들어온 URI를 기반으로 요청한 Controller를 찾는다.
+        String requestURI = request.getRequestURI();
+        System.out.println("requestURI = " + requestURI);
+        ControllerInter controller = controllerMappingMap.get(requestURI);
+
+        // 만약 사용자가 요청한 Controller을 찾을 수 없다면 NOT FOUND 응답
+        if (controller == null){
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
+        // PageView를 통해서 jsp 파일에 접근하여 forward
+        PageView pv = controller.process(request, response);
+        pv.render(request, response);
+
+    }
 }

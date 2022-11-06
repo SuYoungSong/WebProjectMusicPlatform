@@ -20,12 +20,12 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//implementation 'org.springframework.boot:spring-boot-starter-jdbc'		// jdbc
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'			// jdbc
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'				// jsp
 	implementation 'javax.servlet:jstl'											// jsp
 	compileOnly 'org.projectlombok:lombok'										// lombok
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'				// reload, restart
-	//runtimeOnly 'com.mysql:mysql-connector-j'									// mysql
+	runtimeOnly 'com.mysql:mysql-connector-j'									// mysql
 	annotationProcessor 'org.projectlombok:lombok'								// lombok
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

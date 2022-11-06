@@ -9,5 +9,8 @@
 index page
 test
 
+<br>
+<a href="front/musicVideoFileUpload">업로드</a>
+
 </body>
 </html>
