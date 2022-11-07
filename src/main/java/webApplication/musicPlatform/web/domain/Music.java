@@ -1,9 +1,8 @@
 package webApplication.musicPlatform.web.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter @Setter
+@Data
 public class Music {
     private String musicUrl;            // 음악파일 저장된 URL 위치
     private String musicName;           // 음악 제목
@@ -15,6 +14,9 @@ public class Music {
     private String lyricwriter;         // 음악 작사가
     private String musicArranger;       // 음악 편곡가
     private String releaseDate;         // 음악 발매일
+
+    public Music() {
+    }
 
     public Music(String musicUrl, String musicName, String uploadUser, String musicDescription, String genre, String lyrics, String songwriter, String lyricwriter, String musicArranger, String releaseDate) {
         this.musicUrl = musicUrl;

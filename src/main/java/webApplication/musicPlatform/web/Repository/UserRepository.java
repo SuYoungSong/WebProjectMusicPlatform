@@ -1,0 +1,148 @@
+package webApplication.musicPlatform.web.Repository;
+
+import lombok.extern.slf4j.Slf4j;
+import webApplication.musicPlatform.web.domain.User;
+
+import java.sql.*;
+import java.util.NoSuchElementException;
+
+@Slf4j
+public class UserRepository {
+
+    public User save(User user) throws SQLException{
+        String sql = "insert into user(id, password, phone, name, nickname, profileImageUrl) values(?,?,?,?,?,?)";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try{
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,user.getId());
+            pstmt.setString(2,user.getPassword());
+            pstmt.setString(3,user.getPhone());
+            pstmt.setString(4,user.getName());
+            pstmt.setString(5,user.getNickname());
+            pstmt.setString(6,user.getProfileImageUrl());
+            pstmt.executeUpdate();
+            return user;
+        } catch (SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally {
+            {
+                close(con, pstmt, null);
+            }
+        }
+    }
+
+    public User findById(String id) throws SQLException{
+        String sql = "select * from user where id=?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try{
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, id);
+
+            rs = pstmt.executeQuery();
+
+            if(rs.next()){
+                User user = new User();
+                user.setId(rs.getString("id"));
+                user.setPassword(rs.getString("password"));
+                user.setPhone(rs.getString("phone"));
+                user.setName(rs.getString("name"));
+                user.setNickname(rs.getString("nickname"));
+                user.setProfileImageUrl(rs.getString("profileImageUrl"));
+
+                return user;
+            } else {
+                throw new NoSuchElementException("member not found userId="+id);
+            }
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, rs);
+        }
+    }
+
+    public void update(String id, String password, String phone, String name, String nickname, String profileImageUrl) throws SQLException {
+        String sql = "update user set password=?, name=?, phone=?, nickname=?, profileImageUrl=? where id=?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try{
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,password);
+            pstmt.setString(2, name);
+            pstmt.setString(3, phone);
+            pstmt.setString(4, nickname);
+            pstmt.setString(5, profileImageUrl);
+            pstmt.setString(6, id);
+            int resultSize = pstmt.executeUpdate();
+            log.info("resultSize={}", resultSize);
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, null);
+        }
+    }
+
+    private void close(Connection con, Statement stmt, ResultSet rs){
+        if ( rs != null ){
+            try {
+                rs.close();
+            } catch (SQLException e){
+                log.info("error", e);
+            }
+        }
+
+        if ( stmt != null ){
+            try {
+                stmt.close();
+            } catch (SQLException e){
+                log.info("error", e);
+            }
+        }
+
+        if ( con != null ){
+            try {
+                con.close();
+            } catch (SQLException e){
+                log.info("error", e);
+            }
+        }
+    }
+
+    public void delete(String id) throws SQLException {
+        String sql = "delete from user where id=?";
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, null);
+        }
+    }
+
+    private Connection getConnection() {
+        return DBConnectionUtil.getConnection();
+    }
+
+
+
+}

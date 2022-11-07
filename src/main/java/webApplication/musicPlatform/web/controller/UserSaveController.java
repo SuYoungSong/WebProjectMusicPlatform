@@ -1,6 +1,6 @@
 package webApplication.musicPlatform.web.controller;
 
-import webApplication.musicPlatform.Repository.UserRepository;
+import webApplication.musicPlatform.web.Repository.UserRepository;
 import webApplication.musicPlatform.web.PageView;
 import webApplication.musicPlatform.web.domain.User;
 
@@ -8,10 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class UserSaveController implements  ControllerInter{
 
-    private UserRepository userRepository = UserRepository.getInstance();
+    private UserRepository userRepository = new UserRepository();
 
     @Override
     public PageView process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +33,11 @@ public class UserSaveController implements  ControllerInter{
         User user = new User(id, password, phone, name, nickname, profileImageUrl);
 
         // 멤버 저장
-        userRepository.save(user);
+        try {
+            userRepository.save(user);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         // 멤버 정보 모델에 저장
         request.setAttribute("user",user);

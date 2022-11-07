@@ -1,10 +1,8 @@
 package webApplication.musicPlatform.web.domain;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter @Setter
+@Data
 public class User {
     private String id;
     private String password;
@@ -12,6 +10,9 @@ public class User {
     private String name;
     private String nickname;
     private String profileImageUrl;
+
+    public User() {
+    }
 
     public User(String id, String password, String phone, String name, String nickname, String profileImageUrl) {
         this.id = id;
