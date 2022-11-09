@@ -1,19 +1,18 @@
-package webApplication.musicPlatform.web.controller;
+package webApplication.musicPlatform.web.controller.login;
 
-import org.springframework.web.bind.MissingRequestValueException;
 import webApplication.musicPlatform.web.PageView;
-import webApplication.musicPlatform.web.Repository.UserRepository;
+import webApplication.musicPlatform.web.Repository.user.UserRepository;
+import webApplication.musicPlatform.web.controller.ControllerInter;
 import webApplication.musicPlatform.web.domain.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
 
-public class LoginProcessController implements ControllerInter{
+public class LoginProcessController implements ControllerInter {
 
     UserRepository ur = new UserRepository();
 

@@ -1,6 +1,7 @@
-package webApplication.musicPlatform.web.Repository;
+package webApplication.musicPlatform.web.Repository.user;
 
 import lombok.extern.slf4j.Slf4j;
+import webApplication.musicPlatform.web.Repository.DBConnectionUtil;
 import webApplication.musicPlatform.web.domain.User;
 
 import java.sql.*;
@@ -10,7 +11,7 @@ import java.util.NoSuchElementException;
 public class UserRepository {
 
     public User save(User user) throws SQLException {
-        String sql = "insert into user(id, password, phone, name, nickname, profileImageUrl) values(?,?,?,?,?,?)";
+        String sql = "insert into user(id, password, phone, name, nickname) values(?,?,?,?,?)";
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -23,7 +24,6 @@ public class UserRepository {
             pstmt.setString(3, user.getPhone());
             pstmt.setString(4, user.getName());
             pstmt.setString(5, user.getNickname());
-            pstmt.setString(6, user.getProfileImageUrl());
             pstmt.executeUpdate();
             return user;
         } catch (SQLException e) {
@@ -57,7 +57,6 @@ public class UserRepository {
                 user.setPhone(rs.getString("phone"));
                 user.setName(rs.getString("name"));
                 user.setNickname(rs.getString("nickname"));
-                user.setProfileImageUrl(rs.getString("profileImageUrl"));
 
                 return user;
             } else {
@@ -72,8 +71,8 @@ public class UserRepository {
     }
 
 
-    public void update(String id, String password, String phone, String name, String nickname, String profileImageUrl) throws SQLException {
-        String sql = "update user set password=?, name=?, phone=?, nickname=?, profileImageUrl=? where id=?";
+    public void update(String id, String password, String phone, String name, String nickname) throws SQLException {
+        String sql = "update user set password=?, name=?, phone=?, nickname=? where id=?";
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -85,8 +84,7 @@ public class UserRepository {
             pstmt.setString(2, name);
             pstmt.setString(3, phone);
             pstmt.setString(4, nickname);
-            pstmt.setString(5, profileImageUrl);
-            pstmt.setString(6, id);
+            pstmt.setString(5, id);
             int resultSize = pstmt.executeUpdate();
             log.info("resultSize={}", resultSize);
         } catch (SQLException e) {

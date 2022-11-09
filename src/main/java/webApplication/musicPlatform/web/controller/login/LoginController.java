@@ -1,6 +1,7 @@
-package webApplication.musicPlatform.web.controller;
+package webApplication.musicPlatform.web.controller.login;
 
 import webApplication.musicPlatform.web.PageView;
+import webApplication.musicPlatform.web.controller.ControllerInter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class LoginController implements ControllerInter{
+public class LoginController implements ControllerInter {
     @Override
     public PageView process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

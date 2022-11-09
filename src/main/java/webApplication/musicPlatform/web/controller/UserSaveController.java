@@ -1,6 +1,6 @@
 package webApplication.musicPlatform.web.controller;
 
-import webApplication.musicPlatform.web.Repository.UserRepository;
+import webApplication.musicPlatform.web.Repository.user.UserRepository;
 import webApplication.musicPlatform.web.PageView;
 import webApplication.musicPlatform.web.domain.User;
 
@@ -27,10 +27,10 @@ public class UserSaveController implements  ControllerInter{
 
         String name = request.getParameter("name");
         String nickname = request.getParameter("nickname");
-        String profileImageUrl = request.getParameter("profileImageUrl");
+        String profileImage = request.getParameter("profileImage");
 
         // 저장할 유저 정보 생성
-        User user = new User(id, password, phone, name, nickname, profileImageUrl);
+        User user = new User(id, password, phone, name, nickname);
 
         // 멤버 저장
         try {

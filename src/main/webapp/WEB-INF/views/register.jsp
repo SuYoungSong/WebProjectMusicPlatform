@@ -10,7 +10,7 @@
     연락처: <input type="text" name="phoneFirst"/>-<input type="text" name="phoneSecond"/>-<input type="text" name="phoneThird"/><br>
     이름: <input type="text" name="name"/><br>
     닉네임: <input type="text" name="nickname"/><br>
-    프로필사진: <input type="file" name="profileImageUrl"/><br>
+    프로필사진: <input type="file" name="profileImage"/><br>
     <input type="submit" value="회원가입"/><br>
 
   </form>

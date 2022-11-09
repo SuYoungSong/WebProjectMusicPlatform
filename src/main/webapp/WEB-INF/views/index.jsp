@@ -12,6 +12,7 @@
     로그인 정보<br>
     아이디:${loginUser.id}<br>
     이름:${loginUser.name}<br>
+    닉네임:${loginUser.nickname}<br>
     전화번호:${loginUser.phone}<br>
 </c:if>
 <c:if test="${empty sessionScope.loginUser}">
