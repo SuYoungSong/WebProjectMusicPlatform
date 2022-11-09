@@ -9,24 +9,24 @@ import java.util.NoSuchElementException;
 @Slf4j
 public class UserRepository {
 
-    public User save(User user) throws SQLException{
+    public User save(User user) throws SQLException {
         String sql = "insert into user(id, password, phone, name, nickname, profileImageUrl) values(?,?,?,?,?,?)";
 
         Connection con = null;
         PreparedStatement pstmt = null;
 
-        try{
+        try {
             con = getConnection();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1,user.getId());
-            pstmt.setString(2,user.getPassword());
-            pstmt.setString(3,user.getPhone());
-            pstmt.setString(4,user.getName());
-            pstmt.setString(5,user.getNickname());
-            pstmt.setString(6,user.getProfileImageUrl());
+            pstmt.setString(1, user.getId());
+            pstmt.setString(2, user.getPassword());
+            pstmt.setString(3, user.getPhone());
+            pstmt.setString(4, user.getName());
+            pstmt.setString(5, user.getNickname());
+            pstmt.setString(6, user.getProfileImageUrl());
             pstmt.executeUpdate();
             return user;
-        } catch (SQLException e){
+        } catch (SQLException e) {
             log.error("db error", e);
             throw e;
         } finally {
@@ -36,21 +36,21 @@ public class UserRepository {
         }
     }
 
-    public User findById(String id) throws SQLException{
+    public User findById(String id) throws SQLException {
         String sql = "select * from user where id=?";
 
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
-        try{
+        try {
             con = getConnection();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, id);
 
             rs = pstmt.executeQuery();
 
-            if(rs.next()){
+            if (rs.next()) {
                 User user = new User();
                 user.setId(rs.getString("id"));
                 user.setPassword(rs.getString("password"));
@@ -61,15 +61,16 @@ public class UserRepository {
 
                 return user;
             } else {
-                throw new NoSuchElementException("member not found userId="+id);
+                throw new NoSuchElementException("user not found userId="+id);
             }
-        } catch(SQLException e){
+        } catch (SQLException e) {
             log.error("db error", e);
             throw e;
         } finally {
             close(con, pstmt, rs);
         }
     }
+
 
     public void update(String id, String password, String phone, String name, String nickname, String profileImageUrl) throws SQLException {
         String sql = "update user set password=?, name=?, phone=?, nickname=?, profileImageUrl=? where id=?";

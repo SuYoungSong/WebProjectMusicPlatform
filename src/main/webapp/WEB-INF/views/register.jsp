@@ -4,7 +4,7 @@
     <title>Title</title>
 </head>
 <body>
-  <form action="save" method="post">
+  <form action="/front/users/save" method="post">
     아이디: <input type="text" name="id"/><br>
     비밀번호: <input type="password" name="password"/><br>
     연락처: <input type="text" name="phoneFirst"/>-<input type="text" name="phoneSecond"/>-<input type="text" name="phoneThird"/><br>

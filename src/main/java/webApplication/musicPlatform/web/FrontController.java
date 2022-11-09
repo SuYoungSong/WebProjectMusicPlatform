@@ -1,9 +1,6 @@
 package webApplication.musicPlatform.web;
 
-import webApplication.musicPlatform.web.controller.ControllerInter;
-import webApplication.musicPlatform.web.controller.MusicVideoFileUploadController;
-import webApplication.musicPlatform.web.controller.RegisterController;
-import webApplication.musicPlatform.web.controller.UserSaveController;
+import webApplication.musicPlatform.web.controller.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,12 +13,17 @@ import java.util.Map;
 
 @WebServlet(name="frontController", urlPatterns = "/front/*")
 public class FrontController extends HttpServlet {
-
     private Map<String, ControllerInter> controllerMappingMap = new HashMap<>();
 
     public FrontController() {
         // Controller 주소를 각 Controller 인스턴스에 맵핑
+        // 처리 Controller
         controllerMappingMap.put("/front/musicVideoFileUpload", new MusicVideoFileUploadController());
+        controllerMappingMap.put("/front/login", new LoginController());
+        controllerMappingMap.put("/front/logout", new LogoutController());
+        controllerMappingMap.put("/front/loginProcess", new LoginProcessController());
+
+        // 단순 이동 Controller
         controllerMappingMap.put("/front/users/register", new RegisterController());
         controllerMappingMap.put("/front/users/save", new UserSaveController());
     }

@@ -10,11 +10,19 @@ public class PageView {
     private String movePage;
 
     public PageView(String movePage) {
-        this.movePage = "/WEB-INF/views/" + movePage + ".jsp";
+        if (movePage.equals("/")) {
+            this.movePage = "/";
+        } else
+            this.movePage = "/WEB-INF/views/" + movePage + ".jsp";
     }
 
     public void render(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(movePage);
-        requestDispatcher.forward(request,response);
+
+        if(movePage.equals("/")){
+            response.sendRedirect("/");
+        }else {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(movePage);
+            requestDispatcher.forward(request, response);
+        }
     }
 }

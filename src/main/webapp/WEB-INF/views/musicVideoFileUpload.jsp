@@ -4,6 +4,7 @@
     <title>Title</title>
 </head>
 <body>
-
+<a href="/front/login">로그인</a>
+</a>
 </body>
 </html>
