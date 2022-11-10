@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>index page</h1><br>
-
+<h1>홍 브런치</h1>
 <c:if test="${not empty sessionScope.loginUser}">
     로그인 정보<br>
     아이디:${loginUser.id}<br>
