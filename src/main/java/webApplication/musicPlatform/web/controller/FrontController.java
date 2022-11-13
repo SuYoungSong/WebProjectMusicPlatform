@@ -1,7 +1,6 @@
 package webApplication.musicPlatform.web.controller;
 
 import webApplication.musicPlatform.web.PageView;
-import webApplication.musicPlatform.web.controller.*;
 import webApplication.musicPlatform.web.controller.login.LoginController;
 import webApplication.musicPlatform.web.controller.login.LoginProcessController;
 import webApplication.musicPlatform.web.controller.login.LogoutController;
@@ -24,7 +23,6 @@ public class FrontController extends HttpServlet {
     public FrontController() {
         // Controller 주소를 각 Controller 인스턴스에 맵핑
         // 처리 Controller
-        controllerMappingMap.put("/front/musicVideoFileUpload", new MusicVideoFileUploadController());
         controllerMappingMap.put("/front/login", new LoginController());
         controllerMappingMap.put("/front/logout", new LogoutController());
         controllerMappingMap.put("/front/loginProcess", new LoginProcessController());
