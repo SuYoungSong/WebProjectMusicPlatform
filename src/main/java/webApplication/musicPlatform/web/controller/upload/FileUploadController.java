@@ -34,7 +34,7 @@ public class FileUploadController implements ControllerInter {
         }
 
         // 파일이 저장될 경로
-        String saveLocation = request.getSession().getServletContext().getRealPath("WEB-INF/resources");
+        String saveLocation = request.getSession().getServletContext().getRealPath("resources");
         // 파일의 최대 크기  ( kb * mb * gb )
         int maxSize = 1024 * 1024 * 10;
         // 파라미터 저장할 Map
@@ -90,7 +90,7 @@ public class FileUploadController implements ControllerInter {
         String fileType = parameter.get("fileType");
         System.out.println("fileType = " + fileType);
         switch (fileType){
-            case "videos":
+            case "resources/videos":
                 // 영상 정보를 DB에 등록
                 Video video = new Video(
                         userId,
@@ -112,7 +112,7 @@ public class FileUploadController implements ControllerInter {
                 VideoFileRepository videoFileRepository = new VideoFileRepository();
                 videoFileRepository.upload(videoFile);
                 break;
-            case "musics":
+            case "resources/musics":
                 // 음악 정보를 DB에 등록
                 Music music = new Music(
                         parameter.get("musicName"),

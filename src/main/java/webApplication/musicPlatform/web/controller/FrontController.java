@@ -4,8 +4,13 @@ import webApplication.musicPlatform.web.PageView;
 import webApplication.musicPlatform.web.controller.login.LoginController;
 import webApplication.musicPlatform.web.controller.login.LoginProcessController;
 import webApplication.musicPlatform.web.controller.login.LogoutController;
+import webApplication.musicPlatform.web.controller.register.RegisterController;
+import webApplication.musicPlatform.web.controller.register.UserSaveController;
 import webApplication.musicPlatform.web.controller.upload.FileUploadController;
 import webApplication.musicPlatform.web.controller.upload.MusicVideoFileUploadController;
+import webApplication.musicPlatform.web.controller.userFind.userFindChangePasswordController;
+import webApplication.musicPlatform.web.controller.userFind.userFindController;
+import webApplication.musicPlatform.web.controller.userFind.userFindProcessController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,10 +32,13 @@ public class FrontController extends HttpServlet {
         controllerMappingMap.put("/front/logout", new LogoutController());
         controllerMappingMap.put("/front/loginProcess", new LoginProcessController());
         controllerMappingMap.put("/front/fileUploadProcess", new FileUploadController());
+        controllerMappingMap.put("/front/users/userFindProcess", new userFindProcessController());
+        controllerMappingMap.put("/front/users/userFindPChangePassword", new userFindChangePasswordController());
 
 
         // 단순 이동 Controller
         controllerMappingMap.put("/front/users/register", new RegisterController());
+        controllerMappingMap.put("/front/users/userFind", new userFindController());
         controllerMappingMap.put("/front/users/save", new UserSaveController());
         controllerMappingMap.put("/front/musicVideoFileUpload", new MusicVideoFileUploadController());
     }

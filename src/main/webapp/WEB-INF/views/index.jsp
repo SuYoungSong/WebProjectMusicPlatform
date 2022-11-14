@@ -10,6 +10,7 @@
 
 <c:if test="${not empty sessionScope.loginUser}">
     로그인 정보<br>
+    <img src="../../resources/images/${userProfileImage.serverFilePath}"/><br>
     아이디:${loginUser.id}<br>
     이름:${loginUser.name}<br>
     닉네임:${loginUser.nickname}<br>
@@ -24,6 +25,7 @@
 <a href="/front/login">로그인</a><br>
 <a href="/front/logout">로그아웃</a><br>
 <a href="/front/users/register">회원가입</a><br>
+<a href="/front/users/userFind">아이디/비밀번호 찾기</a><br>
 
 </body>
 </html>

@@ -16,7 +16,7 @@
 
 
 <input type="radio" name="tabs" id="musictab" checked>음악</input>
-<input type="radio" name="tabs" id="videotab" checked>영상</input>
+<input type="radio" name="tabs" id="videotab">영상</input>
 
     <div id="music">
         <form action="/front/fileUploadProcess" method="POST" enctype="multipart/form-data">

@@ -1,9 +1,11 @@
 package webApplication.musicPlatform.web.controller.login;
 
 import webApplication.musicPlatform.web.PageView;
+import webApplication.musicPlatform.web.Repository.user.UserProfileImageRepository;
 import webApplication.musicPlatform.web.Repository.user.UserRepository;
 import webApplication.musicPlatform.web.controller.ControllerInter;
 import webApplication.musicPlatform.web.domain.User;
+import webApplication.musicPlatform.web.domain.UserProfileImage;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,8 @@ import java.util.NoSuchElementException;
 
 public class LoginProcessController implements ControllerInter {
 
-    UserRepository ur = new UserRepository();
+    UserRepository userRepository = new UserRepository();
+    UserProfileImageRepository userProfileImageRepository = new UserProfileImageRepository();
 
     @Override
     public PageView process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,15 +36,16 @@ public class LoginProcessController implements ControllerInter {
         request.setAttribute("returnPass", pass);
 
         User findUser = null;
-
+        UserProfileImage userProfileImage = null;
         try {
             // 아이디를 기반으로 유저를 찾아온다.
-            findUser = ur.findById(id);
-
+            findUser = userRepository.findById(id);
+            userProfileImage = userProfileImageRepository.findById(findUser.getId());
             // 로그인에 성공한 경우
             if (findUser.getPassword().equals(pass)) {
                 // 세션에 로그인 정보 등록
                 request.getSession().setAttribute("loginUser",findUser);
+                request.getSession().setAttribute("userProfileImage",userProfileImage);
                 // 로그인 이전페이지로 이동시킨다.
                 return new PageView(loginReferer);
             } else {

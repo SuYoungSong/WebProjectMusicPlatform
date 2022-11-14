@@ -70,6 +70,40 @@ public class UserRepository {
         }
     }
 
+    public User findByPhoneName(String phone, String name) throws SQLException {
+        String sql = "select * from user where phone=? and name=? ";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, phone);
+            pstmt.setString(2, name);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                User user = new User();
+                user.setId(rs.getString("id"));
+                user.setPassword(rs.getString("password"));
+                user.setPhone(rs.getString("phone"));
+                user.setName(rs.getString("name"));
+                user.setNickname(rs.getString("nickname"));
+
+                return user;
+            } else {
+                throw new NoSuchElementException("userId not found userPhone="+ phone + "userName" + name);
+            }
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, rs);
+        }
+    }
 
     public void update(String id, String password, String phone, String name, String nickname) throws SQLException {
         String sql = "update user set password=?, name=?, phone=?, nickname=? where id=?";
