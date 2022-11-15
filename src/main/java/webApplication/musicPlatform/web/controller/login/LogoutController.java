@@ -15,6 +15,7 @@ public class LogoutController implements ControllerInter {
         // 세션에서 로그인 정보를 찾은 후 해당 정보를 제거
         HttpSession session = request.getSession();
         session.removeAttribute("loginUser");
+        session.removeAttribute("userProfileImage");
 
         String referer = getReferer(request);
         return new PageView(referer);

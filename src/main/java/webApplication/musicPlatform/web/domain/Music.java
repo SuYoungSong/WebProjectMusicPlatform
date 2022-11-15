@@ -4,6 +4,19 @@ import lombok.Data;
 
 @Data
 public class Music {
+    public Music(String musicName, String uploadUser, String musicDescription, String genre, String lyrics, String songwriter, String lyricwriter, String musicArranger, String singer, String releaseDate) {
+        this.musicName = musicName;
+        this.uploadUser = uploadUser;
+        this.musicDescription = musicDescription;
+        this.genre = genre;
+        this.lyrics = lyrics;
+        this.songwriter = songwriter;
+        this.lyricwriter = lyricwriter;
+        this.musicArranger = musicArranger;
+        this.singer = singer;
+        this.releaseDate = releaseDate;
+    }
+
     private String musicName;           // 음악 제목
     private String uploadUser;          // 음악 업로드 회원 아이디
     private String musicDescription;    // 음악 설명
@@ -18,15 +31,5 @@ public class Music {
     public Music() {
     }
 
-    public Music(String musicName, String uploadUser, String musicDescription, String genre, String lyrics, String songwriter, String lyricwriter, String musicArranger, String releaseDate) {
-        this.musicName = musicName;
-        this.uploadUser = uploadUser;
-        this.musicDescription = musicDescription;
-        this.genre = genre;
-        this.lyrics = lyrics;
-        this.songwriter = songwriter;
-        this.lyricwriter = lyricwriter;
-        this.musicArranger = musicArranger;
-        this.releaseDate = releaseDate;
-    }
+
 }

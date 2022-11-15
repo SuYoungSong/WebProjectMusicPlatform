@@ -4,15 +4,16 @@
     <title>Title</title>
 </head>
 <body>
-  <form action="/front/users/save" method="post">
-    아이디: <input type="text" name="id"/><br>
-    비밀번호: <input type="password" name="password"/><br>
-    연락처: <input type="text" name="phoneFirst"/>-<input type="text" name="phoneSecond"/>-<input type="text" name="phoneThird"/><br>
-    이름: <input type="text" name="name"/><br>
-    닉네임: <input type="text" name="nickname"/><br>
-    프로필사진: <input type="file" name="profileImage"/><br>
+  <form action="/front/users/save" method="post" enctype="multipart/form-data">
+    아이디: <input type="text" name="id" value="${returnId}" maxlength="20"/><br>
+    비밀번호: <input type="password" name="password" value="${returnPassword}" maxlength="20"/><br>
+    연락처: <input type="text" name="phoneFirst" value="${returnPhoneFirst}" maxlength="3"/>-<input type="text" name="phoneSecond" value="${returnPhoneSecond}" maxlength="4"/>-<input type="text" name="phoneThird"value="${returnPhoneThird}" maxlength="4"/><br>
+    이름: <input type="text" name="name" value="${returnName}"maxlength="10"/><br>
+    닉네임: <input type="text" name="nickname" value="${returnName}" maxlength="10"/><br>
+    프로필사진: <input type="file" name="profileImage" accept="image/*"/><br>
     <input type="submit" value="회원가입"/><br>
-
+    <br>
+    ${failRegisterMessage}
   </form>
 </body>
 </html>

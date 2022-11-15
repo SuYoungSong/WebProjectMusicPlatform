@@ -16,10 +16,11 @@
 
 
 <input type="radio" name="tabs" id="musictab" checked>음악</input>
-<input type="radio" name="tabs" id="videotab" checked>영상</input>
+<input type="radio" name="tabs" id="videotab">영상</input>
 
     <div id="music">
-        <form action="/front/fileUploadProcess" method="POST">
+        <form action="/front/fileUploadProcess" method="POST" enctype="multipart/form-data">
+            <input type="text" name="fileType" value="musics" style="display:none" readonly/>
             음악 제목: <input type="text" name="musicName"/><br>
             음악 설명: <textarea name="musicDescription"></textarea><br>
             음악 장르: <select name="genere">
@@ -41,15 +42,15 @@
             음악 작사가: <input type="text" name="lyricwriter"/><br>
             음악 편곡가: <input type="text" name="musicArranger"/><br>
             음악 발매일: <input type="date" name="releaseDate"/><br>
-            파일:<input type="file" name="file"/>
-            <input type="hidden" name="music"/>
+            파일:<input type="file" name="file" accept="audio/*"/>
             <input type="submit" value="업로드"/>
         </form>
     </div>
 
 
     <div id="video">
-        <form action="/front/fileUploadProcess" method="POST">
+        <form action="/front/fileUploadProcess" method="POST" enctype="multipart/form-data">
+            <input type="text" name="fileType" value="videos" style="display:none" readonly/>
             영상 제목: <input type="text" name="videoName"/><br>
             영상 설명: <textarea name="videoDescription"></textarea><br>
             영상 장르: <select name="genere">
@@ -65,8 +66,7 @@
                         <option value="OST">OST</option>
                         <option value="인디">인디</option>
                     </select><br>
-            파일:<input type="file" name="file"/>
-            <input type="hidden" name="video"/>
+            파일:<input type="file" name="file" accept="video/*"/>
             <input type="submit" value="업로드"/>
         </form>
     </div>
