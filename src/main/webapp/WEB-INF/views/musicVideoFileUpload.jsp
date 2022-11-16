@@ -23,7 +23,7 @@
             <input type="text" name="fileType" value="musics" style="display:none" readonly/>
             음악 제목: <input type="text" name="musicName"/><br>
             음악 설명: <textarea name="musicDescription"></textarea><br>
-            음악 장르: <select name="genere">
+            음악 장르: <select name="genre">
                         <option value="발라드">발라드</option>
                         <option value="댄스">댄스</option>
                         <option value="힙합">힙합</option>

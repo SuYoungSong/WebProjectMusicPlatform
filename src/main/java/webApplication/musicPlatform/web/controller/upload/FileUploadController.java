@@ -62,9 +62,9 @@ public class FileUploadController implements ControllerInter {
                     File upPath = new File(currentDir + "\\" + parameter.get("fileType"));
                     fi.write(new File(upPath, serverFileName));
 
-                    // 결과 페이지로 보낼 파일명
-                    request.setAttribute("uploadFileInfo", parameter);
-                } else if(fi.getFieldName().equals("imageFile")){
+                    parameter.put("serverFileName", serverFileName);
+                    parameter.put("userUploadFileName", userUploadFileName);
+                } else if(fi.getFieldName().equals("imageFile")) {
                     try {
                         // 유저가 업로드한 파일명
                         String userUploadFileName = fi.getName();
@@ -79,17 +79,17 @@ public class FileUploadController implements ControllerInter {
                         fi.write(new File(upPath, serverFileName));
 
                         parameter.put("serverImageFileName", serverFileName);
-                        parameter.put("userUploadFileName", userUploadFileName);
-                    }catch(Exception e){
+                    } catch (Exception e) {
                         // 이미지 파일이 업로드 되지 않을경우 기본 이미지로 설정
                         parameter.put("serverImageFileName", "default");
                     }
                 }
-                // DB에 저장
-                User user = (User) request.getSession().getAttribute("loginUser");
-                dataBaseSave(user,parameter);
             }
-
+            // DB에 저장
+            User user = (User) request.getSession().getAttribute("loginUser");
+            dataBaseSave(user,parameter);
+            // 결과 페이지로 보낼 파일명
+            request.setAttribute("uploadFileInfo", parameter);
         } catch (Exception e) {
             // 결과 페이지에 전달할 오류 내용
             request.setAttribute("uploadError", "파일 등록 과정에서 오류가 발생하였습니다. <br>\n" +
@@ -104,9 +104,8 @@ public class FileUploadController implements ControllerInter {
         String userId = user.getId();
         String fileType = parameter.get("fileType");
         String serverImageFileName = null;
-        System.out.println("fileType = " + fileType);
         switch (fileType){
-            case "resources/videos":
+            case "videos":
                 // 영상 정보를 DB에 등록
                 Video video = new Video(
                         userId,
@@ -138,7 +137,7 @@ public class FileUploadController implements ControllerInter {
                 VideoImageFileRepository videoImageFileRepository = new VideoImageFileRepository();
                 videoImageFileRepository.upload(videoImage);
                 break;
-            case "resources/musics":
+            case "musics":
                 // 음악 정보를 DB에 등록
                 Music music = new Music(
                         parameter.get("musicName"),
