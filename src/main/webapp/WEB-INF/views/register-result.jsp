@@ -2,8 +2,17 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        body{
+            margin-left:210px;
+        }
+    </style>
 </head>
 <body>
+<!-- 네비게이션 -->
+<div id="nav">
+    <%@include file="sideNavigation.jsp"%>
+</div>
 
 ${user.name}님 가입을 환영합니다<br>
 <img src="../../resources/images/${userProfileImage.serverFilePath}"/><br>

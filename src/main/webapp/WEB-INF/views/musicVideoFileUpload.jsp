@@ -10,9 +10,17 @@
         #videotab:checked ~ #video{
             display: flex;
         }
+        body{
+            margin-left:210px;
+        }
     </style>
 </head>
 <body>
+<!-- 네비게이션 -->
+<div id="nav">
+    <%@include file="sideNavigation.jsp"%>
+</div>
+
 
 
 <input type="radio" name="tabs" id="musictab" checked>음악</input>

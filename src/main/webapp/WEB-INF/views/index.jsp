@@ -4,28 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
+    <style>
+        .viewZone {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        body{
+            margin-left:210px;
+        }
+    </style>
 </head>
 <body>
-<h1>index page</h1><br>
+<!-- 네비게이션 -->
+<div id="nav">
+    <%@include file="sideNavigation.jsp"%>
+</div>
+<div class="viewZone">
+    <h1>index page index pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+    <h1>index page</h1><br>
+</div>
 
-<c:if test="${not empty sessionScope.loginUser}">
-    로그인 정보<br>
-    <img src="../../resources/images/${userProfileImage.serverFilePath}"/><br>
-    아이디:${loginUser.id}<br>
-    이름:${loginUser.name}<br>
-    닉네임:${loginUser.nickname}<br>
-    전화번호:${loginUser.phone}<br>
-</c:if>
-<c:if test="${empty sessionScope.loginUser}">
-    로그인 안했음.
-</c:if>
 
-<h3>메뉴</h3><br>
-<a href="/front/musicVideoFileUpload">업로드</a><br>
-<a href="/front/login">로그인</a><br>
-<a href="/front/logout">로그아웃</a><br>
-<a href="/front/users/register">회원가입</a><br>
-<a href="/front/users/userFind">아이디/비밀번호 찾기</a><br>
+<%--
+레이아웃 만들어서 불러오기.
+index에 화면 띄울떄 사용
+<jsp:include page="페이지" flush="false"/>
+--%>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 package webApplication.musicPlatform.web.controller;
 
 import webApplication.musicPlatform.web.PageView;
+import webApplication.musicPlatform.web.controller.board.BoardController;
 import webApplication.musicPlatform.web.controller.login.LoginController;
 import webApplication.musicPlatform.web.controller.login.LoginProcessController;
 import webApplication.musicPlatform.web.controller.login.LogoutController;
@@ -41,6 +42,7 @@ public class FrontController extends HttpServlet {
         controllerMappingMap.put("/front/users/userFind", new userFindController());
         controllerMappingMap.put("/front/users/save", new UserSaveController());
         controllerMappingMap.put("/front/musicVideoFileUpload", new MusicVideoFileUploadController());
+        controllerMappingMap.put("/front/board", new BoardController());
     }
 
     @Override
