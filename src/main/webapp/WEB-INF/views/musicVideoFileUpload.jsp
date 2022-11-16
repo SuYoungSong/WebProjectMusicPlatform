@@ -42,7 +42,8 @@
             음악 작사가: <input type="text" name="lyricwriter"/><br>
             음악 편곡가: <input type="text" name="musicArranger"/><br>
             음악 발매일: <input type="date" name="releaseDate"/><br>
-            파일:<input type="file" name="file" accept="audio/*"/>
+            음악 파일:<input type="file" name="file" accept="audio/*"/><br>
+            음악 사진:<input type="file" name="imageFile" accept="image/*"/><br>
             <input type="submit" value="업로드"/>
         </form>
     </div>
@@ -66,7 +67,8 @@
                         <option value="OST">OST</option>
                         <option value="인디">인디</option>
                     </select><br>
-            파일:<input type="file" name="file" accept="video/*"/>
+            영상 파일:<input type="file" name="file" accept="video/*"/><br>
+            영상 사진:<input type="file" name="imageFile" accept="image/*"/><br>
             <input type="submit" value="업로드"/>
         </form>
     </div>

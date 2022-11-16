@@ -6,8 +6,10 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import webApplication.musicPlatform.web.PageView;
 import webApplication.musicPlatform.web.Repository.music.MusicFileRepository;
+import webApplication.musicPlatform.web.Repository.music.MusicImageFileRepository;
 import webApplication.musicPlatform.web.Repository.music.MusicRepository;
 import webApplication.musicPlatform.web.Repository.video.VideoFileRepository;
+import webApplication.musicPlatform.web.Repository.video.VideoImageFileRepository;
 import webApplication.musicPlatform.web.Repository.video.VideoRepository;
 import webApplication.musicPlatform.web.controller.ControllerInter;
 import webApplication.musicPlatform.web.domain.*;
@@ -26,17 +28,12 @@ import java.util.UUID;
 public class FileUploadController implements ControllerInter {
     @Override
     public PageView process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 비로그인시 사용 불가 처리
-        if ( request.getSession().getAttribute("loginUser") == null){
-            // 결과 페이지에 전달할 오류 내용
-            request.setAttribute("uploadError","로그인 후 사용하실 수 있습니다.");
-            return new PageView("fileUpload-result");
-        }
+
 
         // 파일이 저장될 경로
         String saveLocation = request.getSession().getServletContext().getRealPath("resources");
         // 파일의 최대 크기  ( kb * mb * gb )
-        int maxSize = 1024 * 1024 * 10;
+        int maxSize = 1024 * 1024 * 10000;
         // 파라미터 저장할 Map
         Map<String, String> parameter = new HashMap<>();
 
@@ -52,7 +49,7 @@ public class FileUploadController implements ControllerInter {
                 if (fi.isFormField()) {
                     // 파라미터 받아서 Map에 저장하기.
                     parameter.put(fi.getFieldName(), fi.getString("utf-8"));
-                } else {
+                } else if(fi.getFieldName().equals("file")){
                     // 유저가 업로드한 파일명
                     String userUploadFileName = fi.getName();
                     String ext = userUploadFileName.substring(userUploadFileName.lastIndexOf("."));
@@ -65,16 +62,34 @@ public class FileUploadController implements ControllerInter {
                     File upPath = new File(currentDir + "\\" + parameter.get("fileType"));
                     fi.write(new File(upPath, serverFileName));
 
-                    // DB에 저장
-                    User user = (User) request.getSession().getAttribute("loginUser");
-                    parameter.put("serverFileName", serverFileName);
-                    parameter.put("userUploadFileName", userUploadFileName);
-                    dataBaseSave(user,parameter);
-
                     // 결과 페이지로 보낼 파일명
                     request.setAttribute("uploadFileInfo", parameter);
+                } else if(fi.getFieldName().equals("imageFile")){
+                    try {
+                        // 유저가 업로드한 파일명
+                        String userUploadFileName = fi.getName();
+                        String ext = userUploadFileName.substring(userUploadFileName.lastIndexOf("."));
+
+                        // 변경할 파일 이름
+                        String uuid = UUID.randomUUID().toString();
+                        String serverFileName = uuid + ext;
+
+                        // 서버에 파일 저장
+                        File upPath = new File(currentDir + "\\" + "images");
+                        fi.write(new File(upPath, serverFileName));
+
+                        parameter.put("serverImageFileName", serverFileName);
+                        parameter.put("userUploadFileName", userUploadFileName);
+                    }catch(Exception e){
+                        // 이미지 파일이 업로드 되지 않을경우 기본 이미지로 설정
+                        parameter.put("serverImageFileName", "default");
+                    }
                 }
+                // DB에 저장
+                User user = (User) request.getSession().getAttribute("loginUser");
+                dataBaseSave(user,parameter);
             }
+
         } catch (Exception e) {
             // 결과 페이지에 전달할 오류 내용
             request.setAttribute("uploadError", "파일 등록 과정에서 오류가 발생하였습니다. <br>\n" +
@@ -88,6 +103,7 @@ public class FileUploadController implements ControllerInter {
     private void dataBaseSave(User user, Map<String,String> parameter) throws SQLException {
         String userId = user.getId();
         String fileType = parameter.get("fileType");
+        String serverImageFileName = null;
         System.out.println("fileType = " + fileType);
         switch (fileType){
             case "resources/videos":
@@ -109,8 +125,18 @@ public class FileUploadController implements ControllerInter {
                         parameter.get("userUploadFileName")
                 );
 
+
                 VideoFileRepository videoFileRepository = new VideoFileRepository();
                 videoFileRepository.upload(videoFile);
+
+                // 영상 이미지 정보를 DB에 등록
+                serverImageFileName = (parameter.get("serverImageFileName")).equals("default")?"defaultVideoImage.png":"parameter.get(\"serverImageFileName\")";
+                VideoImage videoImage = new VideoImage(
+                        videoNumber,
+                        serverImageFileName
+                );
+                VideoImageFileRepository videoImageFileRepository = new VideoImageFileRepository();
+                videoImageFileRepository.upload(videoImage);
                 break;
             case "resources/musics":
                 // 음악 정보를 DB에 등록
@@ -139,8 +165,15 @@ public class FileUploadController implements ControllerInter {
 
                 MusicFileRepository musicFileRepository = new MusicFileRepository();
                 musicFileRepository.upload(musicFile);
-                break;
-            case "images":
+
+                // 음악 이미지 정보를 DB에 등록
+                serverImageFileName = (parameter.get("serverImageFileName")).equals("default")?"defaultMusicImage.png":"parameter.get(\"serverImageFileName\")";
+                MusicImage musicImage = new MusicImage(
+                        musicNumber,
+                        serverImageFileName
+                );
+                MusicImageFileRepository musicImageFileRepository = new MusicImageFileRepository();
+                musicImageFileRepository.upload(musicImage);
                 break;
         }
     }

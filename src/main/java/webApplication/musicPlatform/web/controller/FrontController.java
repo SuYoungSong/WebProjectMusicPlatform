@@ -8,9 +8,9 @@ import webApplication.musicPlatform.web.controller.register.RegisterController;
 import webApplication.musicPlatform.web.controller.register.UserSaveController;
 import webApplication.musicPlatform.web.controller.upload.FileUploadController;
 import webApplication.musicPlatform.web.controller.upload.MusicVideoFileUploadController;
-import webApplication.musicPlatform.web.controller.userFind.userFindChangePasswordController;
-import webApplication.musicPlatform.web.controller.userFind.userFindController;
-import webApplication.musicPlatform.web.controller.userFind.userFindProcessController;
+import webApplication.musicPlatform.web.Repository.userFind.userFindChangePasswordController;
+import webApplication.musicPlatform.web.Repository.userFind.userFindController;
+import webApplication.musicPlatform.web.Repository.userFind.userFindProcessController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

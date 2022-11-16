@@ -1,4 +1,4 @@
-package webApplication.musicPlatform.web.controller.userFind;
+package webApplication.musicPlatform.web.Repository.userFind;
 
 import webApplication.musicPlatform.web.PageView;
 import webApplication.musicPlatform.web.controller.ControllerInter;

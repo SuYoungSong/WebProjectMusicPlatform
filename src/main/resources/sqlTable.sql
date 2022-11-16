@@ -61,3 +61,17 @@ create table musicFile(
     
     foreign key(musicNumber) references music(musicNumber) on delete cascade
 );
+
+create table musicImage(
+	imageNumber int not null primary key auto_increment,
+    musicNumber int not null,
+    serverFilePath varchar(500) not null,
+    foreign key(musicNumber) references music(musicNumber) on delete cascade
+);
+
+create table videoImage(
+	imageNumber int not null primary key auto_increment,
+    videoNumber int not null,
+    serverFilePath varchar(500) not null,
+    foreign key(videoNumber) references video(videoNumber) on delete cascade
+);

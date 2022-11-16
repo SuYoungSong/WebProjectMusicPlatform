@@ -1,4 +1,4 @@
-package webApplication.musicPlatform.web.controller.userFind;
+package webApplication.musicPlatform.web.Repository.userFind;
 
 import webApplication.musicPlatform.web.PageView;
 import webApplication.musicPlatform.web.Repository.user.UserRepository;
@@ -51,7 +51,7 @@ public class userFindProcessController implements ControllerInter {
                 // 파라미터 정보를 통해 찾은 유저가 Input Id와 같은지 체크
                 if (findUser.getId().equals(id)) {
                     request.setAttribute("successMessage","찾은 아이디 정보입니다.");
-                    request.setAttribute("findId",findUser.getId());
+                    request.getSession().setAttribute("findId",findUser.getId());
                     return new PageView("userFind-changePassword");
                 }else{
                     throw new Exception("일치하는 아이디 없음");
