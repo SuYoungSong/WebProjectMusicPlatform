@@ -129,7 +129,7 @@ public class FileUploadController implements ControllerInter {
                 videoFileRepository.upload(videoFile);
 
                 // 영상 이미지 정보를 DB에 등록
-                serverImageFileName = (parameter.get("serverImageFileName")).equals("default")?"defaultVideoImage.png":"parameter.get(\"serverImageFileName\")";
+                serverImageFileName = (parameter.get("serverImageFileName")).equals("default")?"defaultVideoImage.png":parameter.get(serverImageFileName);
                 VideoImage videoImage = new VideoImage(
                         videoNumber,
                         serverImageFileName
