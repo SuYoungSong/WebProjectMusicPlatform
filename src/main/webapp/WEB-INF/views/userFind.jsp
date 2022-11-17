@@ -10,9 +10,17 @@
     #pwTab:checked ~ #userPw{
       display: flex;
     }
+    body{
+      margin-left:210px;
+    }
   </style>
 </head>
 <body>
+<!-- 네비게이션 -->
+<div id="nav">
+  <%@include file="sideNavigation.jsp"%>
+</div>
+
 
 <input type="radio" name="tabs" id="idTab" checked>아이디 찾기</input>
 <input type="radio" name="tabs" id="pwTab" ${checkedReturn}>비밀번호 찾기</input>

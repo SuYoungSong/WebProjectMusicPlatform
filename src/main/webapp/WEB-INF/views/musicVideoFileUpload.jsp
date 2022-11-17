@@ -10,9 +10,17 @@
         #videotab:checked ~ #video{
             display: flex;
         }
+        body{
+            margin-left:210px;
+        }
     </style>
 </head>
 <body>
+<!-- 네비게이션 -->
+<div id="nav">
+    <%@include file="sideNavigation.jsp"%>
+</div>
+
 
 
 <input type="radio" name="tabs" id="musictab" checked>음악</input>
@@ -23,7 +31,7 @@
             <input type="text" name="fileType" value="musics" style="display:none" readonly/>
             음악 제목: <input type="text" name="musicName"/><br>
             음악 설명: <textarea name="musicDescription"></textarea><br>
-            음악 장르: <select name="genere">
+            음악 장르: <select name="genre">
                         <option value="발라드">발라드</option>
                         <option value="댄스">댄스</option>
                         <option value="힙합">힙합</option>
@@ -42,7 +50,8 @@
             음악 작사가: <input type="text" name="lyricwriter"/><br>
             음악 편곡가: <input type="text" name="musicArranger"/><br>
             음악 발매일: <input type="date" name="releaseDate"/><br>
-            파일:<input type="file" name="file" accept="audio/*"/>
+            음악 파일:<input type="file" name="file" accept="audio/*"/><br>
+            음악 사진:<input type="file" name="imageFile" accept="image/*"/><br>
             <input type="submit" value="업로드"/>
         </form>
     </div>
@@ -66,7 +75,8 @@
                         <option value="OST">OST</option>
                         <option value="인디">인디</option>
                     </select><br>
-            파일:<input type="file" name="file" accept="video/*"/>
+            영상 파일:<input type="file" name="file" accept="video/*"/><br>
+            영상 사진:<input type="file" name="imageFile" accept="image/*"/><br>
             <input type="submit" value="업로드"/>
         </form>
     </div>

@@ -1,4 +1,4 @@
-package webApplication.musicPlatform.web.controller.userFind;
+package webApplication.musicPlatform.web.Repository.userFind;
 
 import webApplication.musicPlatform.web.PageView;
 import webApplication.musicPlatform.web.Repository.user.UserRepository;
@@ -15,7 +15,7 @@ public class userFindChangePasswordController implements ControllerInter {
     @Override
     public PageView process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String id = request.getParameter("id");
+        String id = (String)request.getSession().getAttribute("findId");
         String password = request.getParameter("password");
         String passwordCheck = request.getParameter("passwordCheck");
         UserRepository userRepository = new UserRepository();
