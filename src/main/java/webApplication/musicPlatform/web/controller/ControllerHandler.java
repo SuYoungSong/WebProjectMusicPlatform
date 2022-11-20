@@ -1,10 +1,10 @@
 package webApplication.musicPlatform.web.controller;
 
-import webApplication.musicPlatform.web.controller.login.board.BoardController;
+import webApplication.musicPlatform.web.controller.board.BoardController;
 import webApplication.musicPlatform.web.controller.login.LoginController;
 import webApplication.musicPlatform.web.controller.login.LoginProcessController;
 import webApplication.musicPlatform.web.controller.login.LogoutController;
-import webApplication.musicPlatform.web.controller.login.board.BoardProcessController;
+import webApplication.musicPlatform.web.controller.board.BoardProcessController;
 import webApplication.musicPlatform.web.controller.register.RegisterController;
 import webApplication.musicPlatform.web.controller.register.UserSaveController;
 import webApplication.musicPlatform.web.controller.upload.FileUploadController;

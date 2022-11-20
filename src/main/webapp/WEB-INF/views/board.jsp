@@ -1,3 +1,4 @@
+<%@ page import="webApplication.musicPlatform.web.Repository.board.BoardImageRepository" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -6,14 +7,14 @@
     <style>
       .writeBox{
         width:600px;
-        height:300px;
+        height:600px;
         margin:20px;
         padding: 10px;
         border: 1px solid #ccc;
       }
       .postBox{
           width:600px;
-          height:300px;
+   /*       height:300px; */
           margin:20px;
           padding: 10px;
           border: 1px solid #ccc;
@@ -22,6 +23,7 @@
         width: 100%;
         height: 70%;
         resize: none;
+        margin-bottom: 10px;
       }
       .writeZone{
           height: 40px;
@@ -45,11 +47,15 @@
 </div>
 <c:if test="${not empty sessionScope.loginUser}">
 <legend>
-  <form action="/front/board/write" method="Post">
+  <form action="/front/board/write" method="Post" enctype="multipart/form-data">
     <div class="writeBox">
       <input type="text" class="writeZone" name="title" placeholder="제목을 입력하세요."/>
-      <textarea name="content" placeholder="내용을 입력하세요."></textarea>
+      <textarea name="content" placeholder="내용을 입력하세요."></textarea><br>
+        이미지1:<input type="file" name="file" accept="image/*"/><br>
+        이미지2:<input type="file" name="file" accept="image/*"/><br>
+        이미지3:<input type="file" name="file" accept="image/*"/><br>
       <input type="submit" class="writeButton" value="작성하기"/>
+
     </div>
   </form>
 </legend>
@@ -66,6 +72,15 @@
         <div class="postBox">
             <div class="post_write">글쓴이: ${post.value.writer}</div><br>
             <div class="post_title">제목: ${post.value.title}</div><br><br>
+
+            <c:forEach var="postImageList" items="${postImage[post.key]}">
+                    <div class="post_image">
+                       <image height="300" width="300" src="../../resources/images/${postImageList.serverFilePath}"/><br>
+                    </div><br><br>
+            </c:forEach>
+
+
+
             <div class="post_content">내용: ${post.value.content}</div><br>
         </div>
     </c:forEach>

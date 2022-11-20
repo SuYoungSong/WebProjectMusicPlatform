@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 @Slf4j
@@ -37,13 +38,15 @@ public class BoardImageRepository extends ParentRepository {
         }
     }
 
-    public BoardImage findByNumber(int boardNumber) throws SQLException {
+    public ArrayList<BoardImage> findByNumber(int boardNumber) throws SQLException {
         String sql = "select * from boardimage where boardNumber=?";
 
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
+        // 이미지 저장용
+        ArrayList<BoardImage> imageArrayList = new ArrayList<>();
         try {
             con = getConnection();
             pstmt = con.prepareStatement(sql);
@@ -51,20 +54,17 @@ public class BoardImageRepository extends ParentRepository {
 
             rs = pstmt.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 BoardImage boardImage = new BoardImage();
                 boardImage.setBoardNumber(rs.getInt("boardNumber"));
                 boardImage.setServerFilePath(rs.getString("serverFilePath"));
-
-                return boardImage;
-            } else {
-                throw new NoSuchElementException("boardImage not found userId="+ boardNumber);
+                imageArrayList.add(boardImage);
             }
         } catch (SQLException e) {
             log.error("db error", e);
-            throw e;
         } finally {
             close(con, pstmt, rs);
         }
+        return imageArrayList;
     }
 }
