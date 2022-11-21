@@ -50,23 +50,27 @@ public class BoardProcessController implements ControllerInter {
                     // 파라미터 받아서 Map에 저장하기.
                     parameter.put(fi.getFieldName(), fi.getString("utf-8"));
                 } else {
-                    // 유저가 업로드한 파일명
-                    String userUploadFileName = fi.getName();
-                    String ext = userUploadFileName.substring(userUploadFileName.lastIndexOf("."));
+                    try {
+                        // 유저가 업로드한 파일명
+                        String userUploadFileName = fi.getName();
+                        String ext = userUploadFileName.substring(userUploadFileName.lastIndexOf("."));
 
-                    // 변경할 파일 이름
-                    String uuid = UUID.randomUUID().toString();
-                    String serverFileName = uuid + ext;
+                        // 변경할 파일 이름
+                        String uuid = UUID.randomUUID().toString();
+                        String serverFileName = uuid + ext;
 
-                    // 서버에 파일 저장
-                    File upPath = new File(currentDir + "\\images");
-                    fi.write(new File(upPath, serverFileName));
+                        // 서버에 파일 저장
+                        File upPath = new File(currentDir + "\\images");
+                        fi.write(new File(upPath, serverFileName));
 
-                    imageArrayList.add(serverFileName);
+                        imageArrayList.add(serverFileName);
+                    }catch (Exception e){
+                        continue;
+                    }
                 }
             }
         } catch (Exception e) {
-            // 이미지 올리지 않은 경우 아무 것도 안함.
+            // servletFileUpload 오류시 pass
         }
 
         // DB에내용 저장
@@ -79,30 +83,6 @@ public class BoardProcessController implements ControllerInter {
             log.error("board Image Save fail boardNumber = " + boardNumber);
         }
 
-        // 게시글 불러오기
-        LinkedHashMap<Integer, Board> posts;
-        BoardImageRepository boardImageRepository = new BoardImageRepository();
-        LinkedHashMap<Integer, ArrayList<BoardImage>> postImage = new LinkedHashMap<>();
-
-        try {
-            posts = boardRepository.callPosts();
-
-            posts.keySet().forEach(
-                    keyNumber -> {
-                        try {
-                            ArrayList<BoardImage> imageList = boardImageRepository.findByNumber(keyNumber);
-                            postImage.put(keyNumber, imageList);
-                        } catch (SQLException e) {
-                            // 이미지 불러오기 실패
-                        }
-                    }
-            );
-
-        } catch (SQLException e) {
-            posts = new LinkedHashMap<>();
-        }
-        request.setAttribute("posts", posts);
-        request.setAttribute("postImage", postImage);
         return new PageView("board");
     }
 
