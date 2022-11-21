@@ -2,6 +2,7 @@ package webApplication.musicPlatform.web.Repository.music;
 
 import lombok.extern.slf4j.Slf4j;
 import webApplication.musicPlatform.web.Repository.DBConnectionUtil;
+import webApplication.musicPlatform.web.Repository.ParentRepository;
 import webApplication.musicPlatform.web.domain.MusicImage;
 import webApplication.musicPlatform.web.domain.VideoImage;
 
@@ -9,7 +10,7 @@ import java.sql.*;
 import java.util.NoSuchElementException;
 
 @Slf4j
-public class MusicImageFileRepository {
+public class MusicImageFileRepository extends ParentRepository {
     public int upload(MusicImage musicImage) throws SQLException {
         String sql = "insert into musicimage(musicNumber, serverFilePath) values(?,?)";
 
@@ -67,37 +68,6 @@ public class MusicImageFileRepository {
             throw e;
         } finally {
             close(con, pstmt, rs);
-        }
-    }
-
-
-    private Connection getConnection() {
-        return DBConnectionUtil.getConnection();
-    }
-
-    private void close(Connection con, Statement stmt, ResultSet rs){
-        if ( rs != null ){
-            try {
-                rs.close();
-            } catch (SQLException e){
-                log.info("error", e);
-            }
-        }
-
-        if ( stmt != null ){
-            try {
-                stmt.close();
-            } catch (SQLException e){
-                log.info("error", e);
-            }
-        }
-
-        if ( con != null ){
-            try {
-                con.close();
-            } catch (SQLException e){
-                log.info("error", e);
-            }
         }
     }
 }

@@ -2,13 +2,14 @@ package webApplication.musicPlatform.web.Repository.user;
 
 import lombok.extern.slf4j.Slf4j;
 import webApplication.musicPlatform.web.Repository.DBConnectionUtil;
+import webApplication.musicPlatform.web.Repository.ParentRepository;
 import webApplication.musicPlatform.web.domain.User;
 
 import java.sql.*;
 import java.util.NoSuchElementException;
 
 @Slf4j
-public class UserRepository {
+public class UserRepository extends ParentRepository {
 
     public User save(User user) throws SQLException {
         String sql = "insert into user(id, password, phone, name, nickname) values(?,?,?,?,?)";
@@ -129,32 +130,6 @@ public class UserRepository {
         }
     }
 
-    private void close(Connection con, Statement stmt, ResultSet rs){
-        if ( rs != null ){
-            try {
-                rs.close();
-            } catch (SQLException e){
-                log.info("error", e);
-            }
-        }
-
-        if ( stmt != null ){
-            try {
-                stmt.close();
-            } catch (SQLException e){
-                log.info("error", e);
-            }
-        }
-
-        if ( con != null ){
-            try {
-                con.close();
-            } catch (SQLException e){
-                log.info("error", e);
-            }
-        }
-    }
-
     public void delete(String id) throws SQLException {
         String sql = "delete from user where id=?";
         Connection con = null;
@@ -171,11 +146,5 @@ public class UserRepository {
             close(con, pstmt, null);
         }
     }
-
-    private Connection getConnection() {
-        return DBConnectionUtil.getConnection();
-    }
-
-
 
 }

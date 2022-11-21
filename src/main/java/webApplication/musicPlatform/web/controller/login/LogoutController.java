@@ -33,6 +33,10 @@ public class LogoutController implements ControllerInter {
                 referer = refererSplit[refererSplit.length - 1];
             }
         }else{ referer = "index";}
+        
+        if(referer.equals("logout")){
+            referer = "index";
+        }
 
         return referer;
     }
