@@ -91,3 +91,13 @@ create table webproject.boardImage(
                                       serverFilePath varchar(500) not null,
                                       foreign key (boardNumber) references board(boardNumber)
 );
+
+create table boardComment(
+                             boardCommentNumber int primary key not null auto_increment,
+                             writer varchar(20) not null,
+                             text varchar(1000) not null,
+                             writeDate datetime default now(),
+                             boardNumber int not null,
+                             foreign key (writer) references user(id) on delete cascade,
+                             foreign key (boardNumber) references board(boardNumber) on delete cascade
+);

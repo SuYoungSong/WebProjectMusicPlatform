@@ -3,10 +3,12 @@ package webApplication.musicPlatform.web.Repository.music;
 import lombok.extern.slf4j.Slf4j;
 import webApplication.musicPlatform.web.Repository.DBConnectionUtil;
 import webApplication.musicPlatform.web.Repository.ParentRepository;
+import webApplication.musicPlatform.web.domain.Board;
 import webApplication.musicPlatform.web.domain.Music;
 import webApplication.musicPlatform.web.domain.User;
 
 import java.sql.*;
+import java.util.LinkedHashMap;
 import java.util.NoSuchElementException;
 
 @Slf4j
@@ -43,6 +45,93 @@ public class MusicRepository extends ParentRepository {
             log.error("db error", e);
             throw e;
         } finally {
+            {
+                close(con, pstmt, rs);
+            }
+        }
+    }
+    public LinkedHashMap<Integer,Music> findByGenreLimit10(int page, String genere) throws SQLException {
+        String sql = "select * from music where genere=? order by musicNumber DESC LIMIT ?,10;";
+
+        page = (page-1)*10;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        LinkedHashMap<Integer, Music> musics = new LinkedHashMap<>();
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,genere);
+            pstmt.setInt(2,page);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Music music = new Music();
+                int musicNumber = rs.getInt("musicNumber");
+                music.setMusicName(rs.getString("musicName"));
+                music.setUploadUser(rs.getString("uploadUser"));
+                music.setMusicDescription(rs.getString("musicText"));
+                music.setGenre(rs.getString("genere"));
+                music.setLyrics(rs.getString("lyrics"));
+                music.setSongwriter(rs.getString("songwriter"));
+                music.setLyricwriter(rs.getString("lyricwriter"));
+                music.setMusicArranger(rs.getString("musicArranger"));
+                music.setSinger(rs.getString("singer"));
+                music.setReleaseDate(rs.getString("releaseDate"));
+
+                musics.put(musicNumber, music);
+            }
+            return musics;
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally{
+            {
+                close(con, pstmt, rs);
+            }
+        }
+    }
+    public LinkedHashMap<Integer,Music> callRecentlyMusicLimit10(int page) throws SQLException {
+        String sql = "select * from music order by musicNumber DESC LIMIT ?,10;";
+
+        page = (page-1)*10;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        LinkedHashMap<Integer, Music> musics = new LinkedHashMap<>();
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1,page);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Music music = new Music();
+                int musicNumber = rs.getInt("musicNumber");
+                music.setMusicName(rs.getString("musicName"));
+                music.setUploadUser(rs.getString("uploadUser"));
+                music.setMusicDescription(rs.getString("musicText"));
+                music.setGenre(rs.getString("genere"));
+                music.setLyrics(rs.getString("lyrics"));
+                music.setSongwriter(rs.getString("songwriter"));
+                music.setLyricwriter(rs.getString("lyricwriter"));
+                music.setMusicArranger(rs.getString("musicArranger"));
+                music.setSinger(rs.getString("singer"));
+                music.setReleaseDate(rs.getString("releaseDate"));
+
+                musics.put(musicNumber, music);
+            }
+            return musics;
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally{
             {
                 close(con, pstmt, rs);
             }

@@ -1,5 +1,5 @@
 <%@ page import="webApplication.musicPlatform.web.Repository.board.BoardImageRepository" %>
-<jsp:useBean id="paging" class="webApplication.musicPlatform.web.BoardPaging" scope="request"/>
+<jsp:useBean id="paging" class="webApplication.musicPlatform.web.api.BoardPaging" scope="request"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -9,7 +9,7 @@
     <style>
       .writeBox{
         width:600px;
-        height:600px;
+        /*height:600px;*/
         margin:20px;
         padding: 10px;
         border: 1px solid #ccc;
@@ -37,8 +37,18 @@
           margin-top: 15px;
           height: 30px;
       }
-      body{
-          margin-left:210px;
+      body {
+          margin-left: 210px;
+      }
+      .comment_write textarea{
+          width:520px;
+          height: 65px;
+          resize: none;
+      }
+      .comment_write input{
+          height: 65px;
+          vertical-align: top;
+
       }
     </style>
 </head>
@@ -63,7 +73,10 @@
   </form>
 </legend>
 </c:if>
-   <%--    처음 게시물 불러오기 --%>
+
+
+
+<%--    처음 게시물 불러오기 --%>
     <script>
         $.ajax({
             type: "get",
@@ -110,7 +123,6 @@
                 }
             }
         });
-
         function inputItem(result, key) {
             // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
             var string =
@@ -119,8 +131,45 @@
                     "<div class=\"post_title\">제목:" + result.title + "</div><br>"+
                     callPostImage(key) +
                     "<div class=\"post_content\">내용:" + result.content + "</div><br>"+
+                    "<c:if test="${not empty sessionScope.loginUser}">"+
+                        "<form action=\"/front/board/comment/save\" method=\"post\" >" +
+                            "<input type=\"hidden\" name=\"writer\" value=\"${loginUser.id}\"/>" +
+                            "<input type=\"hidden\" name=\"boardNumber\" value=\""+ key+"\"/>" +
+                            "<div class=\"comment_write\">" +
+                                "<textarea name=\"text\"></textarea>"+
+                                "<input type=\"submit\" value=\"댓글작성\"/>" +
+                            "</div>"+
+                        "</form>" +
+                    "</c:if>"+
+                    callComment(key) +
                     "</div>";
             $("body").append(string);
+        }
+
+        function callComment(key){
+            var comment = "";
+            // 댓글 불러오기
+            $.ajax({
+                type: "get",
+                url: "/api/board/comment/" + key,
+                async: false,
+                dataType: "json"
+            }).done(function (result) {
+                if(result.length == 0){
+                }else {
+                    comment += "댓글<br>"
+                    for (var cmt of result) {
+                        comment +=
+                            "<hr><div class=\"post_comment\">" +
+                            "<div>댓글 작성자:" + cmt.writer + "</div><br>" +
+                            "<div>댓글 내용:" + cmt.commentText + "</div> " +
+                            "</div>";
+                    }
+                }
+            }).fail(function (error) {
+                comment +="댓글을 불러오는데 실패했습니다.";
+            })
+            return comment;
         }
 
         function callPostImage(key){
@@ -137,7 +186,7 @@
                     for(var images of result) {
                         string +=
                             "<div class=\"post_image\">"+
-                            "<image height=\"300\" width=\"300\" src=\"../../resources/images/"+images.serverFilePath + "\"/><br>"+
+                            "<image height=\"300\" width=\"300\" src=\"/resources/images/"+images.serverFilePath + "\"/><br>"+
                             "</div><br><br>";
                     }
                 }

@@ -4,18 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        function callRecentlyMusic10(page){
+            $.ajax({
+                type: "get",
+                url: "/api/music/callMusic10/" + page,
+                dataType: "json"
+            }).done(function (result) {
+                var count = 0   // 음악이 하나도 없는경우 문구 출력용
+                Object.keys(result).map(function (key) {
+                    inputItem(result[key], key);
+                    count++;
+                });
+                if(count<1){
+                    $("recently_music_zone").append("등록된 음악이 없습니다.");
+                }
+            }).fail(function (error) {
+                $("recently_music_zone").append("음악을 불러오는데 실패했습니다.");
+            })
+        }
+        function inputItem(result, key) {
+            // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
+            var string =
+                "<div class=\"musicBox\">"+
+                callMusicImage(key) +
+                "<div class=\"music_name\">제목:" + result.musicName + "</div>"+
+                "<div class=\"music_singer\">가수:" + result.single + "</div>"+
+                "<div class=\"music_genere\">장르:" + result.genre + "</div>"+
+                "</div>";
+            $("recently_music_zone").append(string);
+        }
+
+        function callMusicImage(key){
+            // 이미지 뜨는 html 수정하려면 여기 수정하면 됌
+            var string = ""
+            $.ajax({
+                type: "get",
+                url: "/api/music/image/" + (key),
+                async: false,
+                dataType: "json"
+            }).done(function (result) {
+                string +=
+                    "<div class=\"music_image\">"+
+                    "<image  src=\"/resources/images/"+result.serverFilePath + "\"/>"+
+                    "</div>";
+            }).fail(function (error) {
+            })
+            return string;
+        }
+    </script>
     <style>
-        .viewZone {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+        .genre_music{
+             width:100px;
+             height:50px;
+            flex-direction: row;
             justify-content: center;
-            overflow-x: hidden;
         }
         body{
             margin-left:210px;
         }
+        .musicBox{
+            display:block;
+        }
+
     </style>
 </head>
 <body>
@@ -24,28 +76,32 @@
     <%@include file="sideNavigation.jsp"%>
 </div>
 <div class="viewZone">
-    <h1>index page index pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
-    <h1>index page</h1><br>
+    <h2>최신 음악</h2><br>
+    <%--    처음 영상 불러오기 --%>
+    <recently_music_zone class="recently_music_zone">
+    <script>
+        callRecentlyMusic10(1);
+    </script>
+    </recently_music_zone>
+
+    <h2>장르 음악</h2><br>
+    <button type="button" class="genre_music" onclick="location.href='#' ">발라드</button>
+    <button type="button" class="genre_music" onclick="location.href='#' ">댄스</button>
+    <button type="button" class="genre_music" onclick="location.href='#' ">힙합</button>
+    <button type="button" class="genre_music" onclick="location.href='#' ">트로트</button>
+    <button type="button" class="genre_music" onclick="location.href='#' ">클래식</button>
+    <button type="button" class="genre_music" onclick="location.href='#' ">팝</button>
+    <button type="button" class="genre_music" onclick="location.href='#' ">재즈</button>
+    <button type="button" class="genre_music" onclick="location.href='#' ">블루스</button>
+    <button type="button" class="genre_music" onclick="location.href='#' ">EDM</button>
+    <button type="button" class="genre_music" onclick="location.href='#' ">OST</button>
+    <button type="button" class="genre_music" onclick="location.href='#' ">인디</button>
+
+    <h2>인기 음악</h2><br>
+    고려중
+
 </div>
 
-
-<%--
-레이아웃 만들어서 불러오기.
-index에 화면 띄울떄 사용
-<jsp:include page="페이지" flush="false"/>
---%>
-
 </body>
+
 </html>

@@ -61,20 +61,22 @@ public class LoginProcessController implements ControllerInter {
     }
 
     private static String getLoginReferer(HttpServletRequest request) {
-        String loginReferer = request.getParameter("loginReferer");
-
-        if(!loginReferer.equals("")) {
-            String host = request.getHeader("Host");
-            loginReferer = loginReferer.replaceAll(host, "");
-            loginReferer = loginReferer.replaceAll("http://", "");
-            loginReferer = loginReferer.replaceAll("https://", "");
-            if(!loginReferer.equals("/")) {
-                String[] refererSplit = loginReferer.split("/");
-                loginReferer = refererSplit[refererSplit.length - 1];
-            }
-        }else { loginReferer = "index"; }
-
-
-        return loginReferer;
+        // 특정 페이지 오류 발견으로 Referer적용 대신 index로 보냄처리
+//        String loginReferer = request.getParameter("loginReferer");
+//
+//        if(!loginReferer.equals("")) {
+//            String host = request.getHeader("Host");
+//            loginReferer = loginReferer.replaceAll(host, "");
+//            loginReferer = loginReferer.replaceAll("http://", "");
+//            loginReferer = loginReferer.replaceAll("https://", "");
+//            if(!loginReferer.equals("/")) {
+//                String[] refererSplit = loginReferer.split("/");
+//                loginReferer = refererSplit[refererSplit.length - 1];
+//            }
+//        }else { loginReferer = "index"; }
+//
+//
+//        return loginReferer;
+        return "index";
     }
 }

@@ -1,5 +1,6 @@
 package webApplication.musicPlatform.web.controller;
 
+import webApplication.musicPlatform.web.controller.board.BoardCommentController;
 import webApplication.musicPlatform.web.controller.board.BoardController;
 import webApplication.musicPlatform.web.controller.login.LoginController;
 import webApplication.musicPlatform.web.controller.login.LoginProcessController;
@@ -30,6 +31,7 @@ public class ControllerHandler {
         controllerMappingMap.put("/front/users/userFindProcess", new userFindProcessController());
         controllerMappingMap.put("/front/users/userFindPChangePassword", new userFindChangePasswordController());
         controllerMappingMap.put("/front/board/write", new BoardProcessController());
+        controllerMappingMap.put("/front/board/comment/save", new BoardCommentController());
 
 
         // 단순 이동 Controller

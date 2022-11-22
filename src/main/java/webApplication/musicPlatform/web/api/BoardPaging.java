@@ -1,4 +1,4 @@
-package webApplication.musicPlatform.web;
+package webApplication.musicPlatform.web.api;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,14 +29,5 @@ public class BoardPaging {
         return postsLimit5;
     }
 
-    @RequestMapping(value = { "/api/board/callPostImage/{boardNum}"})
-    public ArrayList<BoardImage> callPostImage(@PathVariable  int boardNum) {
-        ArrayList<BoardImage> images = null;
-        try {
-            images = boardImageRepository.findByNumber(boardNum);
-        } catch (SQLException e) {
-            images = new ArrayList<BoardImage>();
-        }
-        return images;
-    }
+
 }

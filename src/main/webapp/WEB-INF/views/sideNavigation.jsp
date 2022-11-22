@@ -25,7 +25,7 @@
   <c:if test="${not empty sessionScope.loginUser}">
     <!-- 로그인 상태일때 보여줄 메뉴 -->
     로그인 정보<br>
-    <img src="../../resources/images/${userProfileImage.serverFilePath}"/><br>
+    <img src="/resources/images/${userProfileImage.serverFilePath}"/><br>
     아이디:${loginUser.id}<br>
     이름:${loginUser.name}<br>
     닉네임:${loginUser.nickname}<br>
