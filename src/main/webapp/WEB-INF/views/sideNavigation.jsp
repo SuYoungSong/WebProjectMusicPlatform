@@ -46,14 +46,14 @@
     <div class="navBarMenu">
       <a href="/front/music">음악</a>
       <a href="/front/video">영상</a>
-      <a href="/front/board">게시판</a>
+      <a href="/front/board">소식통</a>
       <br>
       <br>
       <hr>
       <a href="/front/musicVideoFileUpload">음악/영상 업로드</a>
     </div>
   </div><!-- 만드는중 -->
-
+  </div>
 </nav>
 </body>
 </html>
