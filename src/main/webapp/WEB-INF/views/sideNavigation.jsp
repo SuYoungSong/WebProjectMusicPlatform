@@ -2,47 +2,58 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <title>Title</title>
-  <style>
-    .navBar {
-      height: 100%;
-      width: 200px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      overflow: auto;
-      background-color: #B5B9BF;   /* 색 조정 바람 */
-      display: flex;
-      z-index: 2;
-      flex-direction: column;
-      padding-bottom: 100px;
-    }
-  </style>
+  <title>Title</title>
+  <!-- <link rel="stylesheet" href="../../css/hong.css"> -->
+  <link rel="stylesheet" href="../../css/navigation/navBarback.css">
+  <link rel="stylesheet" href="../../css/navigation/navBar_1.css">
+  <link rel="stylesheet" href="../../css/navigation/navBar_2.css">
+  <link rel="stylesheet" href="../../css/navigation/navBarmenu.css">
+
+  <style></style>
 </head>
 <body>
 
-<nav class="navBar" id="navBar">
+<nav class="navBarBack">
+  <div>
+    <div class="navBarUser">
+      <img width="200px" height="100px" src="/resources/images/defaultMusicImage.png"/>  <!-- 로고 -->
+      <hr>
+
+  <!-- 로그인 상태일때 보여줄 메뉴 -->
   <c:if test="${not empty sessionScope.loginUser}">
-    <!-- 로그인 상태일때 보여줄 메뉴 -->
-    로그인 정보<br>
-    <img src="/resources/images/${userProfileImage.serverFilePath}"/><br>
-    아이디:${loginUser.id}<br>
-    이름:${loginUser.name}<br>
-    닉네임:${loginUser.nickname}<br>
-    전화번호:${loginUser.phone}<br>
-  </c:if>
-  <c:if test="${empty sessionScope.loginUser}">
-    <!-- 비로그인 상태일때 보여줄 메뉴 -->
-    로그인 안했음.
+    <div class="navBarUserimg">
+<%--    아이디:${loginUser.id}<br>--%>
+<%--    이름:${loginUser.name}<br>--%>
+<%--    전화번호:${loginUser.phone}<br>--%>
+  <!-- 로그인 했을시 출력문 -->
+  <img src="/resources/images/${userProfileImage.serverFilePath}"/><br> <!-- 로그인시 여기에 이미지 삽입! -->
+    </div>
+  <div style="color: white; text-align: center;">${loginUser.nickname}님 환영합니다<br></div>
+    <div class ="navBarOut">
+      <a href="/front/logout">로그아웃</a>
+    </div>
   </c:if>
 
-  <h3>메뉴</h3><br>
-  <a href="/front/musicVideoFileUpload">업로드</a><br>
-  <a href="/front/login">로그인</a><br>
-  <a href="/front/logout">로그아웃</a><br>
-  <a href="/front/users/register">회원가입</a><br>
-  <a href="/front/users/userFind">아이디/비밀번호 찾기</a><br>
-  <a href="/front/board">게시판</a><br>
+  <!-- 비로그인 상태일때 보여줄 메뉴 -->
+  <c:if test="${empty sessionScope.loginUser}">
+    <div class="navBarOut"> <!-- 로그아웃상태 출력문 -->
+      <a href="/front/login">로그인</a>
+      <a href="/front/users/register">회원가입</a>
+      <a href="/front/users/userFind">아이디/비밀번호 찾기</a>
+    </div>
+  </c:if>
+    <hr>
+    <div class="navBarMenu">
+      <a href="/front/music">음악</a>
+      <a href="/front/video">영상</a>
+      <a href="/front/board">게시판</a>
+      <br>
+      <br>
+      <hr>
+      <a href="/front/musicVideoFileUpload">음악/영상 업로드</a>
+    </div>
+  </div><!-- 만드는중 -->
+
 </nav>
 </body>
 </html>

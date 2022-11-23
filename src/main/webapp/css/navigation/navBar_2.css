@@ -1,0 +1,32 @@
+.navBarOut {
+    width: 100%;
+    /* height: 100px; */
+
+}
+
+.navBarOut a {
+    width: 160px;
+    height: 40px;
+
+    font-weight: bold;
+
+    display: block;
+    line-height: 40px;  /*박스 높이랑 같으면 y축이 중앙으로 이동됨 */
+    text-align: center; /*text를 중앙 정렬 */
+
+
+    margin: 10px auto;  /* 위아래 왼오 */
+    padding: 0;
+
+    border-radius: 5px;
+    text-decoration: none; /* a의 밑줄 제거 */
+
+    color: black;
+    background-color: orange;
+    transition: background-color .2s;
+}
+
+.navBarOut a:hover {
+    background-color: yellow;
+
+}

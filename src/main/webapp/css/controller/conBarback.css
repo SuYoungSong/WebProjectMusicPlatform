@@ -1,0 +1,14 @@
+.conBarBack {
+    height: 80px;
+    width: 100%;
+    /* margin-top: 20px; */
+    position: fixed;    /* 화면에 고정 (화면 이동되어도 같이 이동함 */
+    bottom: 0;
+    left: 0;
+    overflow: hidden;   /* 만약 박스안에 내용이 튀어 나가면 튀어나간부분 자르기 */
+    background-color: #000000;
+    z-index: 2; /* 숫자가 클수록 사용자에게 먼저 보임 (디폴트:0) */
+    display: flex;  /* 디스플레이 설정*/
+    flex-direction: row; /* 밑으로 출력 안됨 옆으로 출력됨*/
+    padding-top: 20px; /* 패딩 아래 100px */
+}

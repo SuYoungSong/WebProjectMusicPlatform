@@ -2,6 +2,7 @@ package webApplication.musicPlatform.web.api;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import webApplication.musicPlatform.web.Repository.music.MusicFileRepository;
 import webApplication.musicPlatform.web.Repository.music.MusicImageFileRepository;
 import webApplication.musicPlatform.web.Repository.music.MusicRepository;
@@ -13,6 +14,7 @@ import webApplication.musicPlatform.web.domain.*;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 
+@RestController
 public class VideoPagging {
     VideoRepository videoRepository = new VideoRepository();
     VideoFileRepository videoFileRepository = new VideoFileRepository();
@@ -20,7 +22,7 @@ public class VideoPagging {
     LinkedHashMap<Integer, Video> videos;
 
     // 최신비디오 페이지별 10개 가져오기
-    @RequestMapping(value = { "/api/video/callMusic10/{page}"})
+    @RequestMapping(value = { "/api/video/callVideo10/{page}"})
     public LinkedHashMap<Integer, Video> callRecentlyVideo10(@PathVariable int page) {
         try {
             videos = videoRepository.callRecentlyVideoLimit10(page);

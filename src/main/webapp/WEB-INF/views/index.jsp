@@ -30,7 +30,7 @@
                 "<div class=\"musicBox\">"+
                 callMusicImage(key) +
                 "<div class=\"music_name\">제목:" + result.musicName + "</div>"+
-                "<div class=\"music_singer\">가수:" + result.single + "</div>"+
+                "<div class=\"music_singer\">가수:" + result.singer + "</div>"+
                 "<div class=\"music_genere\">장르:" + result.genre + "</div>"+
                 "</div>";
             $("recently_music_zone").append(string);
@@ -47,7 +47,7 @@
             }).done(function (result) {
                 string +=
                     "<div class=\"music_image\">"+
-                    "<image  src=\"/resources/images/"+result.serverFilePath + "\"/>"+
+                    "<img  src=\"/resources/images/"+result.serverFilePath + "\"/>"+
                     "</div>";
             }).fail(function (error) {
             })
@@ -58,27 +58,44 @@
         .genre_music{
              width:100px;
              height:50px;
-            flex-direction: row;
-            justify-content: center;
+             flex-direction: row;
+             justify-content: center;
         }
         body{
             margin-left:210px;
+            margin-bottom: 120px;
         }
         .musicBox{
-            display:block;
+            display: flex;
+            position: static;
         }
 
+        recently_music_zone{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+        }
+
+        .music_image img{
+            width:50px;
+            height:50px;
+            object-fit:cover;
+        }
     </style>
 </head>
 <body>
 <!-- 네비게이션 -->
-<div id="nav">
+<div>
     <%@include file="sideNavigation.jsp"%>
 </div>
+<div>
+    <%@include file="sideController.jsp"%>
+</div>
 <div class="viewZone">
-    <h2>최신 음악</h2><br>
-    <%--    처음 영상 불러오기 --%>
+    <%--    최신음악 들어있는 공간  --%>
     <recently_music_zone class="recently_music_zone">
+    <h2>최신 음악</h2><br>
     <script>
         callRecentlyMusic10(1);
     </script>
