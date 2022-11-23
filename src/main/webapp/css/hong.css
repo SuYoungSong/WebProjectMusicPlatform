@@ -1,0 +1,20 @@
+.hong button {
+    border: 1px solid;
+    background-color: black;
+    color: #ffffff;
+}
+
+.hong button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.hong a {
+    color: goldenrod;
+    background: gold;
+
+}
+.hong a:hover {
+    color: gold;
+    background: goldenrod;
+}

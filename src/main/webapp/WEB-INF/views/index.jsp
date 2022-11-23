@@ -15,15 +15,20 @@
         }
         body{
             margin-left:210px;
+            margin-bottom: 120px;
+
         }
     </style>
 </head>
 <body>
 <!-- 네비게이션 -->
-<div id="nav">
+<div>
     <%@include file="sideNavigation.jsp"%>
 </div>
-<div class="viewZone">
+<div>
+    <%@include file="sideController.jsp"%>
+</div>
+<div>
     <h1>index page index pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex pageindex page</h1><br>
     <h1>index page</h1><br>
     <h1>index page</h1><br>
