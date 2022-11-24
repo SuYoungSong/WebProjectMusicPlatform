@@ -37,7 +37,7 @@ public class MusicPaging {
 
     // 장르별 음악 10개씩 가져오기
     @RequestMapping(value = { "/api/music/genre/{genere}/{page}"})
-    public LinkedHashMap<Integer, Music> callGenereMusic(@PathVariable String genere,int page) {
+    public LinkedHashMap<Integer, Music> callGenereMusic(@PathVariable String genere,@PathVariable  int page) {
         try {
             musics = musicRepository.findByGenreLimit10(page, genere);
         } catch (SQLException e) {

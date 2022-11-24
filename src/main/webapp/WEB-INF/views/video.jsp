@@ -86,26 +86,26 @@
 <div id="nav">
   <%@include file="sideNavigation.jsp"%>
 </div>
-<%--    최신음악 들어있는 공간  --%>
+<%--    최신영ㅇ상 들어있는 공간  --%>
 <recently_video_zone class="recently_video_zone">
-    <h2>최신 영상</h2><br>
+    <h2><a href="/front/temp?nextPage=recentlyVideo">최신 영상</a></h2><br>
     <script>
         callRecentlyVideo10(1);
     </script>
 </recently_video_zone>
 
 <h2>장르 영상</h2><br>
-<button type="button" class="genre_video" onclick="location.href='#' ">발라드</button>
-<button type="button" class="genre_video" onclick="location.href='#' ">댄스</button>
-<button type="button" class="genre_video" onclick="location.href='#' ">힙합</button>
-<button type="button" class="genre_video" onclick="location.href='#' ">트로트</button>
-<button type="button" class="genre_video" onclick="location.href='#' ">클래식</button>
-<button type="button" class="genre_video" onclick="location.href='#' ">팝</button>
-<button type="button" class="genre_video" onclick="location.href='#' ">재즈</button>
-<button type="button" class="genre_video" onclick="location.href='#' ">블루스</button>
-<button type="button" class="genre_video" onclick="location.href='#' ">EDM</button>
-<button type="button" class="genre_video" onclick="location.href='#' ">OST</button>
-<button type="button" class="genre_video" onclick="location.href='#' ">인디</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=발라드' ">발라드</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=댄스' ">댄스</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=힙합' ">힙합</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=트로트' ">트로트</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=클래식' ">클래식</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=팝' ">팝</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=재즈' ">재즈</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=블루스' ">블루스</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=EDM' ">EDM</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=OST' ">OST</button>
+<button type="button" class="genre_music" onclick="location.href='/front/genereVideo?genere=인디' ">인디</button>
 
 <h2>인기 영상</h2><br>
 고려중

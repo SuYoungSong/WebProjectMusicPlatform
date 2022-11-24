@@ -92,27 +92,47 @@
 <div>
     <%@include file="sideController.jsp"%>
 </div>
+
+
+<%-- 임시 임시 임시 이동용 --%>
+<a href="/front/temp?nextPage=board">게시판</a><br>
+<a href="/front/temp?nextPage=fileUpload-result">파일업로드 결과 페이지</a><br>
+<a href="/front/temp?nextPage=genereMusic">장르 음악</a><br>
+<a href="/front/temp?nextPage=genereVideo">장르 비디오</a><br>
+<a href="/front/temp?nextPage=login">로그인</a><br>
+<a href="/front/temp?nextPage=musicVideoFileUpload">음악비디오파일업로드</a><br>
+<a href="/front/temp?nextPage=recentlyMusic">최신 음악</a><br>
+<a href="/front/temp?nextPage=recentlyVideo">최신 영상</a><br>
+<a href="/front/temp?nextPage=register">회원가입</a><br>
+<a href="/front/temp?nextPage=register-result">회원가입 결과창</a><br>
+<a href="/front/temp?nextPage=userFind">회원 찾기</a><br>
+<a href="/front/temp?nextPage=userFind-changePassword">비밀번호 변경 페이지</a><br>
+<a href="/front/temp?nextPage=userFind-result">유저찾기 결과 페이지</a><br>
+<a href="/front/temp?nextPage=video">비디오</a><br>
+<%-- 임시 임시 임시 이동용 --%>
+
+
 <div class="viewZone">
     <%--    최신음악 들어있는 공간  --%>
     <recently_music_zone class="recently_music_zone">
-    <h2>최신 음악</h2><br>
+    <h2><a href="/front/temp?nextPage=recentlyMusic">최신 음악</a><br></h2><br>
     <script>
         callRecentlyMusic10(1);
     </script>
     </recently_music_zone>
 
     <h2>장르 음악</h2><br>
-    <button type="button" class="genre_music" onclick="location.href='#' ">발라드</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">댄스</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">힙합</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">트로트</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">클래식</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">팝</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">재즈</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">블루스</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">EDM</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">OST</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">인디</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=발라드' ">발라드</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=댄스' ">댄스</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=힙합' ">힙합</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=트로트' ">트로트</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=클래식' ">클래식</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=팝' ">팝</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=재즈' ">재즈</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=블루스' ">블루스</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=EDM' ">EDM</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=OST' ">OST</button>
+    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=인디' ">인디</button>
 
     <h2>인기 음악</h2><br>
     고려중
