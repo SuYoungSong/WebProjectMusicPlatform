@@ -7,6 +7,7 @@ import webApplication.musicPlatform.web.domain.Music;
 import webApplication.musicPlatform.web.domain.Video;
 
 import java.sql.*;
+import java.util.LinkedHashMap;
 import java.util.NoSuchElementException;
 
 @Slf4j
@@ -37,6 +38,81 @@ public class VideoRepository extends ParentRepository {
             log.error("db error", e);
             throw e;
         } finally {
+            {
+                close(con, pstmt, rs);
+            }
+        }
+    }
+    public LinkedHashMap<Integer,Video> findByGenereLimited10(int page,String genere) throws SQLException {
+        String sql = "select * from video where genere=? order by videoNumber DESC LIMIT ?,10;";
+
+        page = (page-1)*10;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        LinkedHashMap<Integer, Video> videos = new LinkedHashMap<>();
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,genere);
+            pstmt.setInt(2,page);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Video video = new Video();
+                int musicNumber = rs.getInt("videoNumber");
+                video.setVideoName(rs.getString("videoName"));
+                video.setUploadUserId(rs.getString("uploadUser"));
+                video.setVideoDescription(rs.getString("videoText"));
+                video.setVideoGenre(rs.getString("genere"));
+
+                videos.put(musicNumber, video);
+            }
+            return videos;
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally{
+            {
+                close(con, pstmt, rs);
+            }
+        }
+    }
+    public LinkedHashMap<Integer,Video> callRecentlyVideoLimit10(int page) throws SQLException {
+        String sql = "select * from video order by videoNumber DESC LIMIT ?,10;";
+
+        page = (page-1)*10;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        LinkedHashMap<Integer, Video> videos = new LinkedHashMap<>();
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1,page);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Video video = new Video();
+                int musicNumber = rs.getInt("videoNumber");
+                video.setVideoName(rs.getString("videoName"));
+                video.setUploadUserId(rs.getString("uploadUser"));
+                video.setVideoDescription(rs.getString("videoText"));
+                video.setVideoGenre(rs.getString("genere"));
+
+                videos.put(musicNumber, video);
+            }
+            return videos;
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally{
             {
                 close(con, pstmt, rs);
             }

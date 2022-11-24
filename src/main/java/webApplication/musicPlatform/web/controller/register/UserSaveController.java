@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 
-public class UserSaveController implements ControllerInter {
+public class    UserSaveController implements ControllerInter {
 
     private UserRepository userRepository = new UserRepository();
 
@@ -72,6 +72,7 @@ public class UserSaveController implements ControllerInter {
         // 파라미터 받아오기
         String id = parameter.get("id");
         String password = parameter.get("password");
+        String passwordCheck = parameter.get("passwordCheck");
         String phoneFirst = parameter.get("phoneFirst");
         String phoneSecond = parameter.get("phoneSecond");
         String phoneThird = parameter.get("phoneThird");
@@ -79,13 +80,20 @@ public class UserSaveController implements ControllerInter {
         String name = parameter.get("name");
         String nickname = parameter.get("nickname");
 
+        // 비밀번호 체크 검사
+        if(!password.equals(passwordCheck)){
+            // 오류 메세지 설정
+            request.setAttribute("failRegisterMessage", "비밀번호가 일치하지 않습니다. 다시한번 확인해주세요.");
+            return returnRegisterPage(request, id, password, passwordCheck, phoneFirst, phoneSecond, phoneThird, name, nickname);
+        }
+
+
         // 만약 중복된 아이디 여부 체크
         try {
             userRepository.findById(id);
-
             // 오류 메세지 설정
             request.setAttribute("failRegisterMessage", "이미 사용중인 아이디 입니다. 다른 아이디를 사용해주세요.");
-            return returnRegisterPage(request, id, password, phoneFirst, phoneSecond, phoneThird, name, nickname);
+            return returnRegisterPage(request, id, password, passwordCheck, phoneFirst, phoneSecond, phoneThird, name, nickname);
         } catch (SQLException | NoSuchElementException e) { }
 
 
@@ -97,7 +105,7 @@ public class UserSaveController implements ControllerInter {
             userRepository.save(user);
         } catch (SQLException e) {
             request.setAttribute("failRegisterMessage","회원가입 중 문제가 발생하였습니다. <br> 지속적으로 문제가 발생하는 경우 관리자에게 문의하세요.");
-            return returnRegisterPage(request, id, password, phoneFirst, phoneSecond, phoneThird, name, nickname);
+            return returnRegisterPage(request, id, password, passwordCheck, phoneFirst, phoneSecond, phoneThird, name, nickname);
         }
 
 
@@ -113,7 +121,7 @@ public class UserSaveController implements ControllerInter {
                 // 리턴시키기
                 userRepository.delete(user.getId());
                 request.setAttribute("failRegisterMessage","회원가입 중 문제가 발생하였습니다. <br> 지속적으로 문제가 발생하는 경우 관리자에게 문의하세요.");
-                return returnRegisterPage(request, id, password, phoneFirst, phoneSecond, phoneThird, name, nickname);
+                return returnRegisterPage(request, id, password, passwordCheck, phoneFirst, phoneSecond, phoneThird, name, nickname);
             } catch (SQLException ex) {}
         }
 
@@ -126,10 +134,11 @@ public class UserSaveController implements ControllerInter {
 
     }
 
-    private static PageView returnRegisterPage(HttpServletRequest request, String id, String password, String phoneFirst, String phoneSecond, String phoneThird, String name, String nickname) {
+    private static PageView returnRegisterPage(HttpServletRequest request, String id, String password,String passwordCheck, String phoneFirst, String phoneSecond, String phoneThird, String name, String nickname) {
         // 기존 입력값 유지
         request.setAttribute("returnId", id);
         request.setAttribute("returnPassword", password);
+        request.setAttribute("returnPasswordCheck", passwordCheck);
         request.setAttribute("returnPhoneFirst", phoneFirst);
         request.setAttribute("returnPhoneSecond", phoneSecond);
         request.setAttribute("returnPhoneThird", phoneThird);

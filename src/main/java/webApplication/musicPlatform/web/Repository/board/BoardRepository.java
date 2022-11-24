@@ -1,6 +1,7 @@
 package webApplication.musicPlatform.web.Repository.board;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.json.GsonJsonParser;
 import webApplication.musicPlatform.web.Repository.ParentRepository;
 import webApplication.musicPlatform.web.domain.Board;
 import webApplication.musicPlatform.web.domain.UserProfileImage;
@@ -39,7 +40,45 @@ BoardRepository extends ParentRepository {
             throw e;
         } finally {
             {
-                close(con, pstmt, null);
+                close(con, pstmt, rs);
+            }
+        }
+    }
+
+
+    public LinkedHashMap<Integer,Board> callPostsLimit5(int page) throws SQLException {
+        String sql = "select * from board order by boardNumber DESC LIMIT ?,5;";
+
+        page = (page-1)*5;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        LinkedHashMap<Integer, Board> posts = new LinkedHashMap<>();
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1,page);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Board board = new Board();
+                int boardNumber = rs.getInt("boardNumber");
+                board.setWriter(rs.getString("writer"));
+                board.setTitle(rs.getString("title"));
+                board.setContent(rs.getString("content"));
+                board.setCategory(rs.getString("category"));
+
+                posts.put(boardNumber, board);
+            }
+            return posts;
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally{
+            {
+                close(con, pstmt, rs);
             }
         }
     }

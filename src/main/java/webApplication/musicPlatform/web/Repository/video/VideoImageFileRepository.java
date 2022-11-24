@@ -29,7 +29,7 @@ public class VideoImageFileRepository extends ParentRepository {
             pstmt.executeUpdate();
 
             rs = pstmt.getGeneratedKeys();                // 쿼리 실행 후 생성된 키 값 반환
-            int videoFileNumber = (rs.next())?rs.getInt(1):null;
+            int videoFileNumber = (rs.next()) ? rs.getInt(1) : null;
 
             return videoFileNumber;
         } catch (SQLException e) {
@@ -63,7 +63,8 @@ public class VideoImageFileRepository extends ParentRepository {
 
                 return videoImage;
             } else {
-                throw new NoSuchElementException("videoImageFile not found userId="+ videoNumber);
+//                throw new NoSuchElementException("videoImageFile not found userId="+ videoNumber);
+                return null;
             }
         } catch (SQLException e) {
             log.error("db error", e);
@@ -72,5 +73,4 @@ public class VideoImageFileRepository extends ParentRepository {
             close(con, pstmt, rs);
         }
     }
-
 }

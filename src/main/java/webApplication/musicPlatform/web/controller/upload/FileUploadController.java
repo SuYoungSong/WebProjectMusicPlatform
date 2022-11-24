@@ -130,6 +130,7 @@ public class FileUploadController implements ControllerInter {
 
                 // 영상 이미지 정보를 DB에 등록
                 serverImageFileName = (parameter.get("serverImageFileName")).equals("default")?"defaultVideoImage.png":parameter.get(serverImageFileName);
+                serverImageFileName = serverImageFileName.equals(null)?"defaultVideoImage.png":serverImageFileName;
                 VideoImage videoImage = new VideoImage(
                         videoNumber,
                         serverImageFileName
@@ -166,7 +167,7 @@ public class FileUploadController implements ControllerInter {
                 musicFileRepository.upload(musicFile);
 
                 // 음악 이미지 정보를 DB에 등록
-                serverImageFileName = (parameter.get("serverImageFileName")).equals("default")?"defaultMusicImage.png":"parameter.get(\"serverImageFileName\")";
+                serverImageFileName = (parameter.get("serverImageFileName")).equals("default")?"defaultMusicImage.png":parameter.get("serverImageFileName");
                 MusicImage musicImage = new MusicImage(
                         musicNumber,
                         serverImageFileName

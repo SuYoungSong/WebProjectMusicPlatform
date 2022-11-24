@@ -22,23 +22,25 @@ public class LogoutController implements ControllerInter {
     }
 
     private String getReferer(HttpServletRequest request) {
-        String referer = request.getHeader("Referer");
-        if (!referer.equals("")) {
-            String host = request.getHeader("Host");
-            referer = referer.replaceAll(host, "");
-            referer = referer.replaceAll("http://", "");
-            referer = referer.replaceAll("https://", "");
-            if(!referer.equals("/")) {
-                String[] refererSplit = referer.split("/");
-                referer = refererSplit[refererSplit.length - 1];
-            }
-        }else{ referer = "index";}
-        
-        if(referer.equals("logout")){
-            referer = "index";
-        }
+//        String referer = request.getHeader("Referer");
+//        if (!referer.equals("")) {
+//            String host = request.getHeader("Host");
+//            referer = referer.replaceAll(host, "");
+//            referer = referer.replaceAll("http://", "");
+//            referer = referer.replaceAll("https://", "");
+//            if(!referer.equals("/")) {
+//                String[] refererSplit = referer.split("/");
+//                referer = refererSplit[refererSplit.length - 1];
+//            }
+//        }else{ referer = "index";}
+//
+//        if(referer.equals("logout")){
+//            referer = "index";
+//        }
+//
+//        return referer;
 
-        return referer;
+        return "index";
     }
 
 }

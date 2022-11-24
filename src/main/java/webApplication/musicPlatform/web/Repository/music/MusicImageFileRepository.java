@@ -40,7 +40,7 @@ public class MusicImageFileRepository extends ParentRepository {
         }
     }
 
-    public VideoImage findByNumber(int musicNumber) throws SQLException {
+    public MusicImage findByNumber(int musicNumber) throws SQLException {
         String sql = "select * from musicimage where musicNumber=?";
 
         Connection con = null;
@@ -55,13 +55,15 @@ public class MusicImageFileRepository extends ParentRepository {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                VideoImage videoImage = new VideoImage();
-                videoImage.setVideoNumber(rs.getInt("videoNumber"));
-                videoImage.setServerFilePath(rs.getString("serverFilePath"));
+                MusicImage musicImage = new MusicImage();
+                musicImage.setMusicNumber(rs.getInt("musicNumber"));
+                musicImage.setServerFilePath(rs.getString("serverFilePath"));
 
-                return videoImage;
+                return musicImage;
             } else {
-                throw new NoSuchElementException("musicImageFile not found userId="+ musicNumber);
+                // 음악 이미지 없음
+//                throw new NoSuchElementException("musicImageFile not found userId="+ musicNumber);
+                return null;
             }
         } catch (SQLException e) {
             log.error("db error", e);
