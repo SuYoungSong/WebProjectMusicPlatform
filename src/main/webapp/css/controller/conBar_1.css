@@ -1,15 +1,25 @@
 .conBar_1 {
-    width: 33%;
+    width: 30%;
     height: 100%;
 
-
+    background-color: darkgoldenrod; /* 제거 */
 }
 
-.comBar_1 img {
+.conBar_1 div {
+    width: 80%; /*  */
+    height: 80%; /* 64px */
+
+    margin: 8px 10px;
+
+    background-color: black;
+
+}
+.conBar_1 img {
     width: 40px;
     height: 40px;
-
     border-radius: 10px;
+
+    background-color: cornflowerblue;
 
 
 }

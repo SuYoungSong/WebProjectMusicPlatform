@@ -54,6 +54,8 @@
             return string;
         }
     </script>
+    <link rel="stylesheet" href="../../css/index/inGenre.css">
+
     <style>
         .genre_music{
              width:100px;
@@ -64,6 +66,7 @@
         body{
             margin-left:210px;
             margin-bottom: 120px;
+            background-color: #0a0a0a;
         }
         .musicBox{
             display: flex;
@@ -101,19 +104,22 @@
     </script>
     </recently_music_zone>
 
-    <h2>장르 음악</h2><br>
-    <button type="button" class="genre_music" onclick="location.href='#' ">발라드</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">댄스</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">힙합</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">트로트</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">클래식</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">팝</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">재즈</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">블루스</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">EDM</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">OST</button>
-    <button type="button" class="genre_music" onclick="location.href='#' ">인디</button>
-
+    <div>
+        <h2>장르 음악</h2><br>
+        <div class="inGenre">
+            <button type="button" class="genre_music" onclick="location.href='#' ">발라드</button>
+            <button type="button" class="genre_music" onclick="location.href='#' ">댄스</button>
+            <button type="button" class="genre_music" onclick="location.href='#' ">힙합</button>
+            <button type="button" class="genre_music" onclick="location.href='#' ">트로트</button>
+            <button type="button" class="genre_music" onclick="location.href='#' ">클래식</button>
+            <button type="button" class="genre_music" onclick="location.href='#' ">팝</button>
+            <button type="button" class="genre_music" onclick="location.href='#' ">재즈</button>
+            <button type="button" class="genre_music" onclick="location.href='#' ">블루스</button>
+            <button type="button" class="genre_music" onclick="location.href='#' ">EDM</button>
+            <button type="button" class="genre_music" onclick="location.href='#' ">OST</button>
+            <button type="button" class="genre_music" onclick="location.href='#' ">인디</button>
+        </div>
+    </div>
     <h2>인기 음악</h2><br>
     고려중
 

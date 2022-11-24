@@ -10,5 +10,6 @@
     z-index: 2; /* 숫자가 클수록 사용자에게 먼저 보임 (디폴트:0) */
     display: flex;  /* 디스플레이 설정*/
     flex-direction: row; /* 밑으로 출력 안됨 옆으로 출력됨*/
-    padding-top: 20px; /* 패딩 아래 100px */
+    padding-top: 10px; /* 패딩 아래 100px */
+
 }
