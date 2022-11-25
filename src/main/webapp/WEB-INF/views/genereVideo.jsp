@@ -51,11 +51,13 @@
     function inputItem(result, key) {
         // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
         var string =
+            "<a href=/front/detailVideo?no="+ key +">" +
             "<div class=\"videoBox\">"+
             callVideoImage(key) +
             "<div class=\"video_name\">제목:" + result.videoName + "</div>"+
             "<div class=\"video_uploder\">가수:" + result.uploadUserId + "</div>"+
-            "</div>";
+            "</div>"+
+            "</a>";
         $("recently_video_zone").append(string);
     }
 

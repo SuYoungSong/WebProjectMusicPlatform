@@ -26,13 +26,16 @@
         }
         function inputItem(result, key) {
             // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
+
             var string =
+                "<a href=/front/detailMusic?no="+ key +">" +
                 "<div class=\"musicBox\">"+
                 callMusicImage(key) +
                 "<div class=\"music_name\">제목:" + result.musicName + "</div>"+
                 "<div class=\"music_singer\">가수:" + result.singer + "</div>"+
                 "<div class=\"music_genere\">장르:" + result.genre + "</div>"+
-                "</div>";
+                "</div>"+
+                "</a>" ;
             $("recently_music_zone").append(string);
         }
 
@@ -139,9 +142,6 @@
         <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=인디' ">인디</button>
     </div>
 </div>
-    <h2>인기 음악</h2><br>
-    고려중
-
 </div>
 
 </body>

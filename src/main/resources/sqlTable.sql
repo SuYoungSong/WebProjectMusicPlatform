@@ -92,7 +92,7 @@ create table webproject.boardImage(
                                       foreign key (boardNumber) references board(boardNumber)
 );
 
-create table boardComment(
+create table webproject.boardComment(
                              boardCommentNumber int primary key not null auto_increment,
                              writer varchar(20) not null,
                              text varchar(1000) not null,
@@ -100,4 +100,24 @@ create table boardComment(
                              boardNumber int not null,
                              foreign key (writer) references user(id) on delete cascade,
                              foreign key (boardNumber) references board(boardNumber) on delete cascade
+);
+
+create table webproject.videoComment(
+                             videoCommentNumber int primary key not null auto_increment,
+                             writer varchar(20) not null,
+                             text varchar(1000) not null,
+                             writeDate datetime default now(),
+                             videoNumber int not null,
+                             foreign key (writer) references user(id) on delete cascade,
+                             foreign key (videoNumber) references video(videoNumber) on delete cascade
+);
+
+create table webproject.musicComment(
+                             musicCommentNumber int primary key not null auto_increment,
+                             writer varchar(20) not null,
+                             text varchar(1000) not null,
+                             writeDate datetime default now(),
+                             musicNumber int not null,
+                             foreign key (writer) references user(id) on delete cascade,
+                             foreign key (musicNumber) references music(musicNumber) on delete cascade
 );

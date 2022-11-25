@@ -6,9 +6,7 @@ import webApplication.musicPlatform.web.controller.login.LoginController;
 import webApplication.musicPlatform.web.controller.login.LoginProcessController;
 import webApplication.musicPlatform.web.controller.login.LogoutController;
 import webApplication.musicPlatform.web.controller.board.BoardProcessController;
-import webApplication.musicPlatform.web.controller.music.MusicController;
-import webApplication.musicPlatform.web.controller.music.genereMusicController;
-import webApplication.musicPlatform.web.controller.music.recentlyMusicController;
+import webApplication.musicPlatform.web.controller.music.*;
 import webApplication.musicPlatform.web.controller.register.RegisterController;
 import webApplication.musicPlatform.web.controller.register.UserSaveController;
 import webApplication.musicPlatform.web.controller.upload.FileUploadController;
@@ -16,9 +14,7 @@ import webApplication.musicPlatform.web.controller.upload.MusicVideoFileUploadCo
 import webApplication.musicPlatform.web.controller.userFind.userFindChangePasswordController;
 import webApplication.musicPlatform.web.controller.userFind.userFindController;
 import webApplication.musicPlatform.web.controller.userFind.userFindProcessController;
-import webApplication.musicPlatform.web.controller.video.VideoController;
-import webApplication.musicPlatform.web.controller.video.genereVideoController;
-import webApplication.musicPlatform.web.controller.video.recentlyVideoController;
+import webApplication.musicPlatform.web.controller.video.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +34,8 @@ public class ControllerHandler {
         controllerMappingMap.put("/front/users/userFindPChangePassword", new userFindChangePasswordController());
         controllerMappingMap.put("/front/board/write", new BoardProcessController());
         controllerMappingMap.put("/front/board/comment/save", new BoardCommentController());
+        controllerMappingMap.put("/front/detailVideo/writeComment", new DetailVideoCommentController());
+        controllerMappingMap.put("/front/detailMusic/writeComment", new DetailMusicCommentController());
 
 
         // 단순 이동 Controller
