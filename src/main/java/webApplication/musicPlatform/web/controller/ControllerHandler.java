@@ -7,6 +7,8 @@ import webApplication.musicPlatform.web.controller.login.LoginProcessController;
 import webApplication.musicPlatform.web.controller.login.LogoutController;
 import webApplication.musicPlatform.web.controller.board.BoardProcessController;
 import webApplication.musicPlatform.web.controller.music.MusicController;
+import webApplication.musicPlatform.web.controller.music.genereMusicController;
+import webApplication.musicPlatform.web.controller.music.recentlyMusicController;
 import webApplication.musicPlatform.web.controller.register.RegisterController;
 import webApplication.musicPlatform.web.controller.register.UserSaveController;
 import webApplication.musicPlatform.web.controller.upload.FileUploadController;
@@ -15,6 +17,8 @@ import webApplication.musicPlatform.web.controller.userFind.userFindChangePasswo
 import webApplication.musicPlatform.web.controller.userFind.userFindController;
 import webApplication.musicPlatform.web.controller.userFind.userFindProcessController;
 import webApplication.musicPlatform.web.controller.video.VideoController;
+import webApplication.musicPlatform.web.controller.video.genereVideoController;
+import webApplication.musicPlatform.web.controller.video.recentlyVideoController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +48,15 @@ public class ControllerHandler {
         controllerMappingMap.put("/front/board", new BoardController());
         controllerMappingMap.put("/front/music", new MusicController());
         controllerMappingMap.put("/front/video", new VideoController());
+        controllerMappingMap.put("/front/detailVideo", new DetailVideoController());
+        controllerMappingMap.put("/front/detailMusic", new DetailMusicController());
+        controllerMappingMap.put("/front/genereVideo", new genereVideoController());
+        controllerMappingMap.put("/front/genereMusic", new genereMusicController());
+        controllerMappingMap.put("/front/recentlyVideo", new recentlyVideoController());
+        controllerMappingMap.put("/front/recentlyMusic", new recentlyMusicController());
+
+        // 임시 css 확인용
+        controllerMappingMap.put("/front/temp", new tempController());
     }
 
     public ControllerInter getController(String uri){

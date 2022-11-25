@@ -36,7 +36,7 @@ public class VideoPagging {
 
     // 장르별 비디오 10개씩 가져오기
     @RequestMapping(value = { "/api/video/genre/{genere}/{page}"})
-    public LinkedHashMap<Integer, Video> callGenereVideo(@PathVariable String genere,int page) {
+    public LinkedHashMap<Integer, Video> callGenereVideo(@PathVariable String genere,@PathVariable int page) {
         try {
             videos = videoRepository.findByGenereLimited10(page, genere);
         } catch (SQLException e) {
