@@ -109,6 +109,8 @@
 <a href="/front/temp?nextPage=userFind-changePassword">비밀번호 변경 페이지</a><br>
 <a href="/front/temp?nextPage=userFind-result">유저찾기 결과 페이지</a><br>
 <a href="/front/temp?nextPage=video">비디오</a><br>
+<a href="/front/detailMusic?no=1">음악 상세페이지</a><br>
+<a href="/front/detailVideo?no=1">비디오 상세페이지</a><br>
 <%-- 임시 임시 임시 이동용 --%>
 
 

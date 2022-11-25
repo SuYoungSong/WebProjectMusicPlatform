@@ -48,7 +48,8 @@ public class ControllerHandler {
         controllerMappingMap.put("/front/board", new BoardController());
         controllerMappingMap.put("/front/music", new MusicController());
         controllerMappingMap.put("/front/video", new VideoController());
-
+        controllerMappingMap.put("/front/detailVideo", new DetailVideoController());
+        controllerMappingMap.put("/front/detailMusic", new DetailMusicController());
         controllerMappingMap.put("/front/genereVideo", new genereVideoController());
         controllerMappingMap.put("/front/genereMusic", new genereMusicController());
         controllerMappingMap.put("/front/recentlyVideo", new recentlyVideoController());
