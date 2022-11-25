@@ -11,6 +11,5 @@
     display: flex;  /* 디스플레이 설정*/
     flex-direction: column; /*  <(br)>안써도 밑으로 출력됨*/
     padding-bottom: 100px; /* 패딩 아래 100px */
-
 }
 
