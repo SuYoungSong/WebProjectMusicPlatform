@@ -20,7 +20,7 @@
       <b style="color: #ffffff">Logo</b>    <!-- 로고 name -->
     </a>
   </div>          <!-- /로고 -->
-  <hr>
+  <div><hr></div>
   <!-- 로그인 상태일때 보여줄 메뉴 -->
   <c:if test="${not empty sessionScope.loginUser}">
     <div class="navBarUserimg">
@@ -44,7 +44,7 @@
       <a href="/front/users/userFind">아이디/비밀번호 찾기</a>
     </div>
   </c:if>
-    <hr>
+    <div><hr></div>
     <div class="navBarMenu">
       <a href="/front/music">음악</a>
       <a href="/front/video">영상</a>
