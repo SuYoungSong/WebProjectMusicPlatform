@@ -12,8 +12,7 @@
 
     display: block;
     line-height: 40px;  /*박스 높이랑 같으면 y축이 중앙으로 이동됨 */
-    text-align: center; /*text를 중앙 정렬 */
-
+    text-align: center; /* a 안에 있는 내용물(text)를 중앙 정렬 */
 
     margin: 10px auto;  /* 위아래 왼오 */
     padding: 0;

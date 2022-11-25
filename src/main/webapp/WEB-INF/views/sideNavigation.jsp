@@ -14,11 +14,13 @@
 <body>
 
 <nav class="navBarBack">
-  <div>
-    <div class="navBarUser">
-      <img width="200px" height="100px" src="/resources/images/defaultMusicImage.png"/>  <!-- 로고 -->
-      <hr>
-
+  <div class="navBarLogo">  <!-- 로고 -->
+    <a href="#">
+      <img src="/resources/images/defaultMusicImage.png"/>  <!-- 로고 img-->
+      <b style="color: #ffffff">Logo</b>    <!-- 로고 name -->
+    </a>
+  </div>          <!-- /로고 -->
+  <hr>
   <!-- 로그인 상태일때 보여줄 메뉴 -->
   <c:if test="${not empty sessionScope.loginUser}">
     <div class="navBarUserimg">
@@ -26,13 +28,13 @@
 <%--    이름:${loginUser.name}<br>--%>
 <%--    전화번호:${loginUser.phone}<br>--%>
   <!-- 로그인 했을시 출력문 -->
-  <img src="/resources/images/${userProfileImage.serverFilePath}"/><br> <!-- 로그인시 여기에 이미지 삽입! -->
+      <img src="/resources/images/${userProfileImage.serverFilePath}"/> <!-- 로그인시 여기에 이미지 삽입! -->
     </div>
-  <div style="color: white; text-align: center;">${loginUser.nickname}님 환영합니다<br></div>
+    <div style="color: white; text-align: center;">${loginUser.nickname}님 환영합니다<br></div>
     <div class ="navBarOut">
       <a href="/front/logout">로그아웃</a>
     </div>
-  </c:if>
+    </c:if>
 
   <!-- 비로그인 상태일때 보여줄 메뉴 -->
   <c:if test="${empty sessionScope.loginUser}">
@@ -52,8 +54,7 @@
       <hr>
       <a href="/front/musicVideoFileUpload">음악/영상 업로드</a>
     </div>
-  </div><!-- 만드는중 -->
-  </div>
+  <!-- 만드는중 -->
 </nav>
 </body>
 </html>

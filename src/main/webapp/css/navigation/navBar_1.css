@@ -1,3 +1,22 @@
+.navBarLogo a{
+    width: 80%;
+    height: 40px;
+    padding: 20px 10%;
+
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navBarLogo img {
+
+    height: 100%;
+
+    margin-right: 10px;
+}
+
+
+
 .navBarUser {
     width: 100%;
     height: 200px;
