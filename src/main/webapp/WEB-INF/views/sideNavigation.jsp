@@ -36,7 +36,7 @@
     </div>
   </c:if>
 
-  <!-- 비로그인 상태일때 보여줄 메뉴 -->
+  <!-- 비로그인 상태일때 보여줄 메뉴!! -->
   <c:if test="${empty sessionScope.loginUser}">
     <div class="navBarOut"> <!-- 로그아웃상태 출력문 -->
       <a href="/front/login">로그인</a>
