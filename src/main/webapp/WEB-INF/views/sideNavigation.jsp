@@ -20,21 +20,21 @@
       <b style="color: #ffffff">Logo</b>    <!-- 로고 name -->
     </a>
   </div>          <!-- /로고 -->
-  <hr>
+  <div><hr></div>
   <!-- 로그인 상태일때 보여줄 메뉴 -->
   <c:if test="${not empty sessionScope.loginUser}">
     <div class="navBarUserimg">
-<%--    아이디:${loginUser.id}<br>--%>
-<%--    이름:${loginUser.name}<br>--%>
-<%--    전화번호:${loginUser.phone}<br>--%>
-  <!-- 로그인 했을시 출력문 -->
+        <%--    아이디:${loginUser.id}<br>--%>
+        <%--    이름:${loginUser.name}<br>--%>
+        <%--    전화번호:${loginUser.phone}<br>--%>
+      <!-- 로그인 했을시 출력문 -->
       <img src="/resources/images/${userProfileImage.serverFilePath}"/> <!-- 로그인시 여기에 이미지 삽입! -->
     </div>
     <div style="color: white; text-align: center;">${loginUser.nickname}님 환영합니다<br></div>
     <div class ="navBarOut">
       <a href="/front/logout">로그아웃</a>
     </div>
-    </c:if>
+  </c:if>
 
   <!-- 비로그인 상태일때 보여줄 메뉴 -->
   <c:if test="${empty sessionScope.loginUser}">
@@ -44,16 +44,16 @@
       <a href="/front/users/userFind">아이디/비밀번호 찾기</a>
     </div>
   </c:if>
+  <div><hr></div>
+  <div class="navBarMenu">
+    <a href="/front/music">음악</a>
+    <a href="/front/video">영상</a>
+    <a href="/front/board">소식통</a>
+    <br>
+    <br>
     <hr>
-    <div class="navBarMenu">
-      <a href="/front/music">음악</a>
-      <a href="/front/video">영상</a>
-      <a href="/front/board">소식통</a>
-      <br>
-      <br>
-      <hr>
-      <a href="/front/musicVideoFileUpload">음악/영상 업로드</a>
-    </div>
+    <a href="/front/musicVideoFileUpload">음악/영상 업로드</a>
+  </div>
   <!-- 만드는중 -->
 </nav>
 </body>

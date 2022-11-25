@@ -54,29 +54,30 @@
             return string;
         }
     </script>
+    <link rel="stylesheet" href="../../css/index/inGenre.css">
+
     <style>
         .genre_music{
-             width:100px;
-             height:50px;
-             flex-direction: row;
-             justify-content: center;
+            width:100px;
+            height:50px;
+            flex-direction: row;
+            justify-content: center;
         }
         body{
             margin-left:210px;
             margin-bottom: 120px;
+            background-color: #0a0a0a;
         }
         .musicBox{
             display: flex;
             position: static;
         }
-
         recently_music_zone{
             width: 100%;
             display: flex;
             flex-direction: column;
             margin-top: 50px;
         }
-
         .music_image img{
             width:50px;
             height:50px;
@@ -122,20 +123,22 @@
         callRecentlyMusic10(1);
     </script>
     </recently_music_zone>
-
+<div>
     <h2>장르 음악</h2><br>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=발라드' ">발라드</button>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=댄스' ">댄스</button>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=힙합' ">힙합</button>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=트로트' ">트로트</button>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=클래식' ">클래식</button>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=팝' ">팝</button>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=재즈' ">재즈</button>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=블루스' ">블루스</button>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=EDM' ">EDM</button>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=OST' ">OST</button>
-    <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=인디' ">인디</button>
-
+    <div class="inGenre">
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=발라드' ">발라드</button>
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=댄스' ">댄스</button>
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=힙합' ">힙합</button>
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=트로트' ">트로트</button>
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=클래식' ">클래식</button>
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=팝' ">팝</button>
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=재즈' ">재즈</button>
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=블루스' ">블루스</button>
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=EDM' ">EDM</button>
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=OST' ">OST</button>
+        <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=인디' ">인디</button>
+    </div>
+</div>
     <h2>인기 음악</h2><br>
     고려중
 
