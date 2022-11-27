@@ -32,7 +32,7 @@
     </div>
     <div style="color: white; text-align: center;">${loginUser.nickname}님 환영합니다<br></div>
     <div class ="navBarOut">
-      <a href="/">마이페이지</a>
+      <a href="/front/myPage">마이페이지</a>
       <a href="/front/logout">로그아웃</a>
     </div>
   </c:if>

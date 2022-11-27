@@ -52,6 +52,7 @@ public class ControllerHandler {
         controllerMappingMap.put("/front/genereMusic", new genereMusicController());
         controllerMappingMap.put("/front/recentlyVideo", new recentlyVideoController());
         controllerMappingMap.put("/front/recentlyMusic", new recentlyMusicController());
+        controllerMappingMap.put("/front/myPage", new myPageController());
 
         // 임시 css 확인용
         controllerMappingMap.put("/front/temp", new tempController());
