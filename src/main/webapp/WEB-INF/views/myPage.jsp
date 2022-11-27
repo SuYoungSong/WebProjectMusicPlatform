@@ -82,9 +82,9 @@
             margin-top: 30px;
         }
         .main_item_image img{
-            width: 180px;
-            height: 180px;
-            padding-left: 5%;
+            width: 160px;
+            height: 160px;
+            padding-left: 10%;
         }
         .sub_item_image img{
             width: 30px;
@@ -93,6 +93,10 @@
             padding-left: 45px;
         }
         .music_name{
+            margin-top: 10px;
+            text-align: center;
+        }
+        .video_name{
             margin-top: 10px;
             text-align: center;
         }
@@ -132,11 +136,11 @@
 
 
         <section id="myMusic-content">
-            <c:if test="${not empty requestScope.MusicMap}">
-                <c:forEach var="video" items="${MusicMap}" varStatus="status">
+            <c:if test="${not empty requestScope.musicMap}">
+                <c:forEach var="music" items="${musicMap}" varStatus="status">
                     <section class="box">
-                        <div class="main_item_image"><img src="/resources/images/${musicImageMap[music.key].value.serverFilePath}"/></div>
-                        <div class="music_name">${music.videoName}</div>
+                        <div class="main_item_image"><img src="/resources/images/${musicImageMap[music.key].serverFilePath}"/></div>
+                        <div class="music_name">${music.value.musicName}</div>
                         <div class="sub_item_image">
                             <img src="/resources/images/defaultEditImage.png"/>
                             <img src="/resources/images/defaultDeleteImage.png"/>
@@ -144,7 +148,7 @@
                     </section>
                 </c:forEach>
             </c:if>
-            <c:if test="${empty requestScope.MusicMap}">
+            <c:if test="${empty requestScope.musicMap}">
                 <h2>업로드 한 노래가 없습니다.</h2>
             </c:if>
         </section>
@@ -152,11 +156,11 @@
 
 
         <section id="myVideo-content">
-            <c:if test="${not empty requestScope.VideoMap}">
-                <c:forEach var="video" items="${VideoMap}" varStatus="status">
+            <c:if test="${not empty requestScope.videoMap}">
+                <c:forEach var="video" items="${videoMap}" varStatus="status">
                 <section class="box">
-                    <div class="main_item_image"><img src="/resources/images/${videoImageMap[video.key].value.serverFilePath}"/></div>
-                    <div class="music_name">${video.videoName}</div>
+                    <div class="main_item_image"><img src="/resources/images/${videoImageMap[video.key].serverFilePath}"/></div>
+                    <div class="video_name">${video.value.videoName}</div>
                     <div class="sub_item_image">
                         <img src="/resources/images/defaultEditImage.png"/>
                         <img src="/resources/images/defaultDeleteImage.png"/>
@@ -164,7 +168,7 @@
                 </section>
                 </c:forEach>
             </c:if>
-            <c:if test="${empty requestScope.VideoMap}">
+            <c:if test="${empty requestScope.videoMap}">
                 <h2>업로드 한 영상이 없습니다.</h2>
             </c:if>
         </section>
