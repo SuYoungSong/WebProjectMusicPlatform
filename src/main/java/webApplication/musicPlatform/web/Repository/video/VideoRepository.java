@@ -187,4 +187,47 @@ public class VideoRepository extends ParentRepository {
             }
         }
     }
+    public void delete(int videoNumber) throws SQLException {
+        String sql = "delete from video where videoNumber=?";
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, videoNumber);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, null);
+        }
+    }
+
+
+
+    public void update(String videoName, String videoText, String genere, int videoNumber) throws SQLException {
+        String sql = "update video set videoName=?, videoText=?, genere=? where videoNumber=?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, videoName);
+            pstmt.setString(2, videoText);
+            pstmt.setString(3, genere);
+            pstmt.setInt(4, videoNumber);
+
+            pstmt.execute();
+
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, null);
+        }
+    }
 }

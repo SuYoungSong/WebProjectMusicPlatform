@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
     <title>Title</title>
@@ -80,17 +81,29 @@
             border-radius: 15px 50px;
             margin-left: 30px;
             margin-top: 30px;
+            box-shadow: 1px 1px 5px rgba(220, 175, 255, 0.6);
         }
         .main_item_image img{
             width: 160px;
             height: 160px;
             padding-left: 10%;
         }
+        .sub_item_image{
+            display:flex;
+        }
+        .sub_item_image button{
+            cursor: pointer;
+            background: transparent;
+            width: 30px;
+            height: 30px;
+            border: none;
+            margin-top: 15px;
+            margin-left: 45px;
+        }
         .sub_item_image img{
             width: 30px;
             height: 30px;
-            padding-top: 15px;
-            padding-left: 45px;
+
         }
         .music_name{
             margin-top: 10px;
@@ -109,6 +122,9 @@
 <div id="nav">
     <%@include file="sideNavigation.jsp"%>
 </div>
+<div>
+    <%@include file="sideController.jsp"%>
+</div>
 
 <c:if test="${not empty sessionScope.loginUser}">
     <fieldset>
@@ -125,11 +141,11 @@
 </fieldset>
 
     <div class="tab-value">
-        <input class="radio_none" id="myMusic" type="radio" name="tabs" checked>
+        <input class="radio_none" id="myMusic" type="radio" name="tabs" checked ${myMusicChecked}>
         <label for="myMusic">내 음악</label>
-        <input class="radio_none" id="myVideo" type="radio" name="tabs">
+        <input class="radio_none" id="myVideo" type="radio" name="tabs" ${myVideoChecked}>
         <label for="myVideo">내 비디오</label>
-        <input class="radio_none" id="userInfoEdit" type="radio" name="tabs">
+        <input class="radio_none" id="userInfoEdit" type="radio" name="tabs" ${userInfoChecked}>
         <label for="userInfoEdit">회원 정보 수정</label>
         <input class="radio_none" id="userExit" type="radio" name="tabs">
         <label for="userExit">회원 탈퇴</label>
@@ -142,8 +158,14 @@
                         <div class="main_item_image"><img src="/resources/images/${musicImageMap[music.key].serverFilePath}"/></div>
                         <div class="music_name">${music.value.musicName}</div>
                         <div class="sub_item_image">
-                            <img src="/resources/images/defaultEditImage.png"/>
-                            <img src="/resources/images/defaultDeleteImage.png"/>
+                            <form action="/front/music/edit" method="post">
+                                <input type="hidden" name="musicNumber" value="${music.key}"/>
+                                <button type="submit"><img src="/resources/images/defaultEditImage.png"/></button>
+                            </form>
+                            <form action="/front/music/delete" method="post">
+                                <input type="hidden" name="musicNumber" value="${music.key}"/>
+                                <button type="submit"><img src="/resources/images/defaultDeleteImage.png"/></button>
+                            </form>
                         </div>
                     </section>
                 </c:forEach>
@@ -162,8 +184,14 @@
                     <div class="main_item_image"><img src="/resources/images/${videoImageMap[video.key].serverFilePath}"/></div>
                     <div class="video_name">${video.value.videoName}</div>
                     <div class="sub_item_image">
-                        <img src="/resources/images/defaultEditImage.png"/>
-                        <img src="/resources/images/defaultDeleteImage.png"/>
+                        <form action="/front/video/edit" method="post">
+                            <input type="hidden" name="videoNumber" value="${video.key}"/>
+                            <button type="submit"><img src="/resources/images/defaultEditImage.png"/></button>
+                        </form>
+                        <form action="/front/video/delete" method="post">
+                            <input type="hidden" name="videoNumber" value="${video.key}"/>
+                            <button type="submit"><img src="/resources/images/defaultDeleteImage.png"/></button>
+                        </form>
                     </div>
                 </section>
                 </c:forEach>
@@ -176,14 +204,27 @@
 
 
         <section id="userInfoEdit-content">
-            <p>tab menu3의 내용</p>
+            <c:set var="phone" value="${fn:split(loginUser.phone, '-')}" />
+            <form action="/front/users/edit" method="post" enctype="multipart/form-data">
+                아이디: ${loginUser.id}<br>
+                비밀번호: <input type="password" name="password" maxlength="20"/><br>
+                비밀번호 확인: <input type="password" name="passwordCheck" maxlength="20"/><br>
+                연락처: <input type="text" name="phoneFirst" value="${phone[0]}" maxlength="3"/>-<input type="text" name="phoneSecond" value="${phone[1]}" maxlength="4"/>-<input type="text" name="phoneThird"value="${phone[2]}" maxlength="4"/><br>
+                이름: <input type="text" name="name" value="${loginUser.name}"maxlength="10"/><br>
+                닉네임: <input type="text" name="nickname" value="${loginUser.nickname}" maxlength="10"/><br>
+                프로필사진: <input type="file" name="profileImage" accept="image/*"/><br>
+                <input type="submit" value="회원정보 수정"/><br>
+                <br>
+            </form>
+            ${failUserEditMessage}
         </section>
 
         <section id="userExit-content">
             <p>회원 탈퇴시 모든 기록이 사라지며 복구가 불가능 합니다.</p>
             <p>신중하게 선택해주세요.</p>
-
-            <input type="submit" value="회원탈퇴">
+            <form action="/front/users/exit" method="post">
+                <input type="submit" value="회원탈퇴">
+            </form>
         </section>
 
     </div>

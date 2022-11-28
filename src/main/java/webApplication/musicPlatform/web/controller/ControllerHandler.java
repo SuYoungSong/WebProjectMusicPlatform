@@ -6,7 +6,9 @@ import webApplication.musicPlatform.web.controller.login.LoginController;
 import webApplication.musicPlatform.web.controller.login.LoginProcessController;
 import webApplication.musicPlatform.web.controller.login.LogoutController;
 import webApplication.musicPlatform.web.controller.board.BoardProcessController;
+import webApplication.musicPlatform.web.controller.register.userExitController;
 import webApplication.musicPlatform.web.controller.music.*;
+import webApplication.musicPlatform.web.controller.myPage.myPageController;
 import webApplication.musicPlatform.web.controller.register.RegisterController;
 import webApplication.musicPlatform.web.controller.register.UserSaveController;
 import webApplication.musicPlatform.web.controller.upload.FileUploadController;
@@ -31,14 +33,21 @@ public class ControllerHandler {
         controllerMappingMap.put("/front/loginProcess", new LoginProcessController());
         controllerMappingMap.put("/front/fileUploadProcess", new FileUploadController());
         controllerMappingMap.put("/front/users/userFindProcess", new userFindProcessController());
+        controllerMappingMap.put("/front/users/exit", new userExitController());
+        controllerMappingMap.put("/front/users/edit", new userEditController());
         controllerMappingMap.put("/front/users/userFindPChangePassword", new userFindChangePasswordController());
         controllerMappingMap.put("/front/board/write", new BoardProcessController());
         controllerMappingMap.put("/front/board/comment/save", new BoardCommentController());
         controllerMappingMap.put("/front/detailVideo/writeComment", new DetailVideoCommentController());
-        controllerMappingMap.put("/front/detailMusic/writeComment", new DetailMusicCommentController());
+        controllerMappingMap.put("/front/music/editProcess", new EditMusicProcessController());
+        controllerMappingMap.put("/front/video/editProcess", new EditVideoProcessController());
+        controllerMappingMap.put("/front/music/delete", new DeleteMusicController());
+        controllerMappingMap.put("/front/video/delete", new DeleteVideoController());
 
 
         // 단순 이동 Controller
+        controllerMappingMap.put("/front/music/edit", new EditMusicController());
+        controllerMappingMap.put("/front/video/edit", new EditVideoController());
         controllerMappingMap.put("/front/users/register", new RegisterController());
         controllerMappingMap.put("/front/users/userFind", new userFindController());
         controllerMappingMap.put("/front/users/save", new UserSaveController());

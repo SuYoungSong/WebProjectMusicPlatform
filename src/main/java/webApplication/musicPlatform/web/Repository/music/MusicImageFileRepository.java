@@ -72,4 +72,25 @@ public class MusicImageFileRepository extends ParentRepository {
             close(con, pstmt, rs);
         }
     }
+
+
+    public void update(int musicNumber, String serverFilePath) throws SQLException {
+        String sql = "update musicImage set serverFilePath=? where musicNumber=?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, serverFilePath);
+            pstmt.setInt(2, musicNumber);
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, null);
+        }
+    }
 }

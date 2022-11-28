@@ -1,10 +1,11 @@
-package webApplication.musicPlatform.web.controller;
+package webApplication.musicPlatform.web.controller.video;
 
 import webApplication.musicPlatform.web.PageView;
 import webApplication.musicPlatform.web.Repository.music.MusicImageFileRepository;
 import webApplication.musicPlatform.web.Repository.music.MusicRepository;
 import webApplication.musicPlatform.web.Repository.video.VideoImageFileRepository;
 import webApplication.musicPlatform.web.Repository.video.VideoRepository;
+import webApplication.musicPlatform.web.controller.ControllerInter;
 import webApplication.musicPlatform.web.domain.*;
 
 import javax.servlet.ServletException;
@@ -14,15 +15,26 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 
-public class myPageController implements ControllerInter {
+public class DeleteVideoController implements ControllerInter {
     @Override
     public PageView process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("myVideoChecked","Checked");
+        VideoRepository videoRepository = new VideoRepository();
+
+        int videoNumber = Integer.parseInt(request.getParameter("videoNumber"));
+
+        try {
+            videoRepository.delete(videoNumber);
+        } catch (SQLException e) {
+            // 비디오 삭제 실패
+            e.printStackTrace();
+        }
+
 
         User user = (User) request.getSession().getAttribute("loginUser");
 
         if (!(user == null)){
             MusicRepository musicRepository = new MusicRepository();
-            VideoRepository videoRepository = new VideoRepository();
 
             LinkedHashMap<Integer, Music> musics = null;
             LinkedHashMap<Integer, Video> videos = null;

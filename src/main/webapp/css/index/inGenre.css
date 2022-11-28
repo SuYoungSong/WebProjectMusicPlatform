@@ -3,7 +3,10 @@
     /*height: 0; */
     flex-direction: row;
     flex-wrap: wrap;
+}
 
+.inGenre h2 {
+    color: #cccccc;
 }
 
 .inGenre button {
@@ -20,7 +23,6 @@
 
 .inGenre button:hover {
     background-color: #333333;
-
 }
 
 .inGenre button:active {
