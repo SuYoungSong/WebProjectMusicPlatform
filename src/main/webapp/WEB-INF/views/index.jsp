@@ -54,8 +54,9 @@
             return string;
         }
     </script>
-    <link rel="stylesheet" href="../../css/index/inGenre.css">
 
+    <link rel="stylesheet" href="../../css/index/inGenre.css">
+    <link rel="stylesheet" href="../../css/index/inLatest.css">
     <style>
         .genre_music{
             width:100px;
@@ -64,6 +65,8 @@
             justify-content: center;
         }
         body{
+            width: 100%;
+            
             margin-left:210px;
             margin-bottom: 120px;
             background-color: #0a0a0a;
@@ -72,18 +75,14 @@
             display: flex;
             position: static;
         }
-        recently_music_zone{
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            margin-top: 50px;
-        }
+
         .music_image img{
             width:50px;
             height:50px;
             object-fit:cover;
         }
     </style>
+
 </head>
 <body>
 <!-- 네비게이션 -->
@@ -115,17 +114,24 @@
 <%-- 임시 임시 임시 이동용 --%>
 
 
-<div class="viewZone">
+<div class="inLatest">
     <%--    최신음악 들어있는 공간  --%>
-    <recently_music_zone class="recently_music_zone">
-    <h2><a href="/front/temp?nextPage=recentlyMusic">최신 음악</a><br></h2><br>
-    <script>
-        callRecentlyMusic10(1);
-    </script>
-    </recently_music_zone>
-<div>
-    <h2>장르 음악</h2><br>
-    <div class="inGenre">
+    <div>
+        <h2>
+            <a href="/front/temp?nextPage=recentlyMusic">최신 음악 ▶</a>
+        </h2><br>
+    </div>
+    <div class="recently_music_zone">
+        <script>
+            callRecentlyMusic10(1);
+        </script>
+    </div>
+</div>
+<div class="inGenre">
+    <div>
+        <h2>장르 음악 ▶</h2>
+    </div>
+    <div>
         <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=발라드' ">발라드</button>
         <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=댄스' ">댄스</button>
         <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=힙합' ">힙합</button>

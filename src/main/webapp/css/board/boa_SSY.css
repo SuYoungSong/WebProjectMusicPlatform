@@ -1,0 +1,49 @@
+.writeBox{
+    width:400px;
+    /*height:600px;*/
+
+    border: 1px solid #ccc;
+
+    margin:20px;
+    padding: 10px;
+
+}
+.postBox{
+    width:400px;
+    /* height:300px; */ height: auto;
+
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 20px;
+    margin:20px;
+
+    display: flex;
+    flex-direction: column;
+}
+.writeBox textarea{
+    width: 100%;
+    height: 70%;
+    resize: none;
+    margin-bottom: 10px;
+}
+.writeZone{
+    height: 40px;
+    width: 100%;
+    margin-bottom: 5px;
+    color: #cccccc;
+}
+.writeButton{
+    width: 100%;
+    margin-top: 15px;
+    height: 30px;
+}
+.comment_write textarea{
+    width:520px;
+    height: 65px;
+    resize: none;
+}
+.comment_write input{
+    height: 65px;
+    vertical-align: top;
+
+}

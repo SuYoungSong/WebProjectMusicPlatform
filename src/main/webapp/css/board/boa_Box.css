@@ -1,0 +1,40 @@
+.postBox {
+    width: 400px;
+    height: auto;
+
+    border: solid 1px #cccccc;
+    border-radius: 20px;    /* 모서리 동글 */
+    padding: 20px;
+    margin: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.post_write {
+    color: #cccccc;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #cccccc;
+    font-weight: bold; /* 굵게 */
+}
+.post_title {
+    color: #cccccc;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #cccccc;
+}
+
+.post_img img{ /* jsp 에서 수정해야 제대로 완성됨 */
+    width: 400px;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.post_content {
+    width: 400px;
+    height: auto;
+
+    color: #cccccc;
+
+    border-top: solid 1px #cccccc;
+}

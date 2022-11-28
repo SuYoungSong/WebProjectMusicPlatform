@@ -17,11 +17,12 @@
   <div class="navBarLogo">  <!-- 로고 -->
     <a href="#">
       <img src="/resources/images/defaultMusicImage.png"/>  <!-- 로고 img-->
-      <b style="color: #ffffff">Logo</b>    <!-- 로고 name -->
+      <b>Logo</b>    <!-- 로고 name -->
     </a>
   </div>          <!-- /로고 -->
-  <div><hr></div>
+
   <!-- 로그인 상태일때 보여줄 메뉴 -->
+  <div class="navBarUser">
   <c:if test="${not empty sessionScope.loginUser}">
     <div class="navBarUserimg">
         <%--    아이디:${loginUser.id}<br>--%>
@@ -44,13 +45,11 @@
       <a href="/front/users/userFind">아이디/비밀번호 찾기</a>
     </div>
   </c:if>
-  <div><hr></div>
+  </div>
   <div class="navBarMenu">
     <a href="/front/music">음악</a>
     <a href="/front/video">영상</a>
     <a href="/front/board">소식통</a>
-    <br>
-    <br>
     <hr>
     <a href="/front/musicVideoFileUpload">음악/영상 업로드</a>
   </div>

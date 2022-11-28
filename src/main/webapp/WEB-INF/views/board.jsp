@@ -7,72 +7,47 @@
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <style>
-      .writeBox{
-        width:600px;
-        /*height:600px;*/
-        margin:20px;
-        padding: 10px;
-        border: 1px solid #ccc;
-      }
-      .postBox{
-          width:600px;
-   /*       height:300px; */
-          margin:20px;
-          padding: 10px;
-          border: 1px solid #ccc;
-      }
-      .writeBox textarea{
-        width: 100%;
-        height: 70%;
-        resize: none;
-        margin-bottom: 10px;
-      }
-      .writeZone{
-          height: 40px;
-          width: 100%;
-          margin-bottom: 5px;
-      }
-      .writeButton{
-          width: 100%;
-          margin-top: 15px;
-          height: 30px;
-      }
-      body {
-          margin-left: 210px;
-      }
-      .comment_write textarea{
-          width:520px;
-          height: 65px;
-          resize: none;
-      }
-      .comment_write input{
-          height: 65px;
-          vertical-align: top;
-
-      }
+        body {
+            margin-left: 210px;
+            margin-bottom: 120px;
+            background-color: #0a0a0a;
+        }
     </style>
+    <link rel="stylesheet" href="../../css/board/boaBox.css">
+    <!-- <link rel="stylesheet" href="../../css/board/boa_SSY.css"> -->
+    <link rel="stylesheet" href="../../css/board/boa_Box.css">
 </head>
 <body>
 <!-- 네비게이션 -->
-<div id="nav">
-    <%@include file="sideNavigation.jsp"%>
-</div>
-<%--로그인시 게시글 작성칸 보이기 --%>
-<c:if test="${not empty sessionScope.loginUser}">
-<legend>
-  <form action="/front/board/write" method="Post" enctype="multipart/form-data">
-    <div class="writeBox">
-      <input type="text" class="writeZone" name="title" placeholder="제목을 입력하세요."/>
-      <textarea name="content" placeholder="내용을 입력하세요."></textarea><br>
+    <div>
+        <%@include file="sideNavigation.jsp"%>
+    </div>
+    <div>
+        <%@include file="sideController.jsp"%>
+    </div>
+    <!-- test용 실행 -->
+    <div class="boaBox">
+        <h2> 제목:123 </h2>
+        <img src="/resources/images/defaultMusicImage.png">
+        <p>1231941927349871289305798 27349613295798123749061293587912347961532</p>
+    </div>
+
+    <%--로그인시 게시글 작성칸 보이기 --%>
+    <c:if test="${not empty sessionScope.loginUser}">
+    <div class="postBox">
+    <form action="/front/board/write" method="Post" enctype="multipart/form-data">
+        <div class="writeBox">
+            <input type="text" class="writeZone" name="title" placeholder="제목을 입력하세요."/>
+            <textarea name="content" placeholder="내용을 입력하세요."></textarea><br>
         이미지1:<input type="file" name="file" accept="image/*"/><br>
         이미지2:<input type="file" name="file" accept="image/*"/><br>
         이미지3:<input type="file" name="file" accept="image/*"/><br>
-      <input type="submit" class="writeButton" value="작성하기"/>
+        <input type="submit" class="writeButton" value="작성하기"/>
 
+        </div>
+    </form>
     </div>
-  </form>
-</legend>
-</c:if>
+    </c:if>
 
 
 
@@ -127,10 +102,10 @@
             // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
             var string =
                 "<div class=\"postBox\">"+
-                    "<div class=\"post_write\">글쓴이:" + result.writer + "</div><br>"+
-                    "<div class=\"post_title\">제목:" + result.title + "</div><br>"+
-                    callPostImage(key) +
-                    "<div class=\"post_content\">내용:" + result.content + "</div><br>"+
+                    "<div class=\"post_write\">글쓴이:" + result.writer + "</div>"+
+                    "<div class=\"post_title\">제목:" + result.title + "</div>"+
+                    "<div class=\"post_img\">" + callPostImage(key) + "</div>"+
+                    "<div class=\"post_content\">내용:" + result.content + "</div>"+
                     "<c:if test="${not empty sessionScope.loginUser}">"+
                         "<form action=\"/front/board/comment/save\" method=\"post\" >" +
                             "<input type=\"hidden\" name=\"writer\" value=\"${loginUser.id}\"/>" +

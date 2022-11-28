@@ -1,0 +1,17 @@
+.inLatest {
+
+}
+
+.inLatest h2 {
+    margin-bottom: 50px;
+}
+.inLatest h2 a {
+    color: #cccccc;
+    text-decoration: none;  /* a태그의 밑줄을 없앰(none) */
+
+}
+.inLatest .recently_music_zone{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,60 @@
+.log {
+    display: flex;
+    justify-content: center;
+}
+
+.logBack {
+    width: 400px;
+    height: 200px;
+    border: solid 4px #cccccc;
+    border-radius: 20px;
+    padding: 20px;
+
+    color: #cccccc;
+}
+.logBack .logId {
+    width: 100%;
+    height: auto;
+
+    margin: 20px 0;
+
+}
+.logBack .logId input {
+    width: 100%;
+    height: auto;
+    border: solid 3px #cccccc;
+    border-radius: 10px;
+    background-color: black;
+    color: #cccccc;
+
+    padding: 10px;
+    margin: 5px 0;
+
+}
+
+.logBack .logInput {
+    border: solid 1px #cccccc;
+    background-color: rgba(255,255,0,0);
+}
+
+.logBack .sub {
+
+}
+
+.logBack .sub input{    /* 로그인버튼 */
+    width: 100px;
+    height: 50px;
+
+    font-size: 20px;
+    text-align: center;
+    background-color: goldenrod;
+    border-radius: 100px;
+}
+
+.logBack .sub input:hover {
+    background-color: gold;
+}
+.logBack .sub input:active {
+    background-color: goldenrod;
+
+}

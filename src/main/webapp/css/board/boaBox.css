@@ -1,0 +1,35 @@
+.boaBox {
+    width: 400px;
+    height: auto;
+
+    border: solid 1px #cccccc;
+    border-radius: 20px;    /* 모서리 동글 */
+    padding: 20px;
+    margin: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.boaBox h2 {
+    color: #cccccc;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #cccccc;
+}
+
+.boaBox img {
+    width: 400px;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.boaBox p {
+    width: 400px;
+    height: auto;
+
+    color: #cccccc;
+
+    border-top: solid 1px #cccccc;
+}
+

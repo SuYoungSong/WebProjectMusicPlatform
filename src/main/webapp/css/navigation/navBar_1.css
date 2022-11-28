@@ -1,25 +1,33 @@
+.navBarLogo {
+    border-bottom: solid;
+    border-bottom-color: #cccccc;
+}
+
 .navBarLogo a{
     width: 80%;
     height: 40px;
-    padding: 20px 10%;
+    margin: 20px 10%;
 
     display: flex;
     align-items: center;
     text-decoration: none;
 }
 
-.navBarLogo img {
+.navBarLogo a img {
 
     height: 100%;
 
     margin-right: 10px;
 }
 
-
-
+.navBarLogo a b {
+    color: #cccccc;
+}
+/*--------------------*/
 .navBarUser {
     width: 100%;
     height: 200px;
+    border-bottom: solid #cccccc;
 }
 
 .navBarUserimg {
