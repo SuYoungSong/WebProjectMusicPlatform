@@ -91,12 +91,11 @@
 <body>
 <!-- 네비게이션 -->
 <div>
-    <%@include file="sideNavigation.jsp"%>
+    <jsp:include page = "sideNavigation.jsp"></jsp:include>
 </div>
 <div>
-    <%@include file="sideController.jsp"%>
+    <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
-
 
 <%-- 임시 임시 임시 이동용 --%>
 <a href="/front/temp?nextPage=board">게시판</a><br>
