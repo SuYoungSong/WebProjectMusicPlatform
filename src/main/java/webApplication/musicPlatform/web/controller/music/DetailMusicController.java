@@ -1,8 +1,9 @@
-package webApplication.musicPlatform.web.controller;
+package webApplication.musicPlatform.web.controller.music;
 
 import webApplication.musicPlatform.web.PageView;
 import webApplication.musicPlatform.web.Repository.music.MusicImageFileRepository;
 import webApplication.musicPlatform.web.Repository.music.MusicRepository;
+import webApplication.musicPlatform.web.controller.ControllerInter;
 import webApplication.musicPlatform.web.domain.Music;
 import webApplication.musicPlatform.web.domain.MusicImage;
 
@@ -31,8 +32,9 @@ public class DetailMusicController implements ControllerInter {
 
         request.setAttribute("detailMusicInfo",music);
         request.setAttribute("detailMusicImage",musicImage);
-
+        request.setAttribute("detailMusicNumber",musicNumber);
 
         return new PageView("detailMusic");
+
     }
 }

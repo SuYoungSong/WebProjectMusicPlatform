@@ -22,30 +22,34 @@
   </div>          <!-- /로고 -->
 
   <!-- 로그인 상태일때 보여줄 메뉴 -->
-  <div class="navBarUser">
-  <c:if test="${not empty sessionScope.loginUser}">
-    <div class="navBarUserimg">
-        <%--    아이디:${loginUser.id}<br>--%>
-        <%--    이름:${loginUser.name}<br>--%>
-        <%--    전화번호:${loginUser.phone}<br>--%>
-      <!-- 로그인 했을시 출력문 -->
-      <img src="/resources/images/${userProfileImage.serverFilePath}"/> <!-- 로그인시 여기에 이미지 삽입! -->
-    </div>
-    <div style="color: white; text-align: center;">${loginUser.nickname}님 환영합니다<br></div>
-    <div class ="navBarOut">
-      <a href="/front/logout">로그아웃</a>
-    </div>
-  </c:if>
+    <c:if test="${not empty sessionScope.loginUser}">
+    <div class="navBarUser_login">
+      <div class="navBarUserimg">
+          <%--    아이디:${loginUser.id}<br>--%>
+          <%--    이름:${loginUser.name}<br>--%>
+          <%--    전화번호:${loginUser.phone}<br>--%>
+        <!-- 로그인 했을시 출력문 -->
+        <img src="/resources/images/${userProfileImage.serverFilePath}"/> <!-- 로그인시 여기에 이미지 삽입! -->
+      </div>
+      <div style="color: white; text-align: center;">${loginUser.nickname}님 환영합니다<br></div>
+      <div class ="navBarOut">
+        <a style="color:white;" href="/front/myPage">마이페이지</a>
+        <a style="color:white;" href="/front/logout">로그아웃</a>
+      </div></div>
+    </c:if>
 
-  <!-- 비로그인 상태일때 보여줄 메뉴!! -->
-  <c:if test="${empty sessionScope.loginUser}">
-    <div class="navBarOut"> <!-- 로그아웃상태 출력문 -->
-      <a href="/front/login">로그인</a>
-      <a href="/front/users/register">회원가입</a>
-      <a href="/front/users/userFind">아이디/비밀번호 찾기</a>
-    </div>
-  </c:if>
+    <!-- 비로그인 상태일때 보여줄 메뉴!! -->
+
+    <c:if test="${empty sessionScope.loginUser}">
+  <div class="navBarUser_not_login">
+      <div class="navBarOut"> <!-- 로그아웃상태 출력문 -->
+        <a href="/front/login">로그인</a>
+        <a href="/front/users/register">회원가입</a>
+        <a href="/front/users/userFind">아이디/비밀번호 찾기</a>
+      </div>
   </div>
+    </c:if>
+
   <div class="navBarMenu">
     <a href="/front/music">음악</a>
     <a href="/front/video">영상</a>

@@ -176,4 +176,98 @@ public class MusicRepository extends ParentRepository {
             close(con, pstmt, rs);
         }
     }
-}
+
+    public LinkedHashMap<Integer,Music> findById(String userId) throws SQLException {
+        String sql = "select * from music where uploadUser=?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, userId);
+
+            rs = pstmt.executeQuery();
+            LinkedHashMap<Integer, Music> musics = new LinkedHashMap<>();
+
+            while (rs.next()) {
+                Music music = new Music();
+                int musicNumber = rs.getInt("musicNumber");
+                music.setMusicName(rs.getString("musicName"));
+                music.setUploadUser(rs.getString("uploadUser"));
+                music.setMusicDescription(rs.getString("musicText"));
+                music.setGenre(rs.getString("genere"));
+                music.setLyrics(rs.getString("lyrics"));
+                music.setSongwriter(rs.getString("songwriter"));
+                music.setLyricwriter(rs.getString("lyricwriter"));
+                music.setMusicArranger(rs.getString("musicArranger"));
+                music.setSinger(rs.getString("singer"));
+                music.setReleaseDate(rs.getString("releaseDate"));
+
+                musics.put(musicNumber, music);
+            }
+            return musics;
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally {
+            {
+                close(con, pstmt, rs);
+            }
+        }
+
+        }
+
+    public void delete(int musicNumber) throws SQLException {
+        String sql = "delete from music where musicNumber=?";
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, musicNumber);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, null);
+        }
+    }
+
+    public void update(String musicName, String musicText, String genere, String lyrics, String songwriter, String lyricwriter, String musicArranger, String singer, String releaseDate, int musicNumber) throws SQLException {
+        String sql = "update music set musicName=?, musicText=?, genere=?, lyrics=?, songwriter=?, lyricwriter=?, musicArranger=?, singer=?, releaseDate=? where musicNumber=?";
+
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, musicName);
+            pstmt.setString(2, musicText);
+            pstmt.setString(3, genere);
+            pstmt.setString(4, lyrics);
+            pstmt.setString(5, songwriter);
+            pstmt.setString(6, lyricwriter);
+            pstmt.setString(7, musicArranger);
+            pstmt.setString(8, singer);
+            pstmt.setString(9, releaseDate);
+            pstmt.setInt(10, musicNumber);
+
+            pstmt.execute();
+
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, rs);
+        }
+    }
+
+
+    }

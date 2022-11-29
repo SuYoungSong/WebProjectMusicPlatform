@@ -26,13 +26,16 @@
         }
         function inputItem(result, key) {
             // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
+
             var string =
+                "<a href=/front/detailMusic?no="+ key +">" +
                 "<div class=\"musicBox\">"+
                 callMusicImage(key) +
                 "<div class=\"music_name\">제목:" + result.musicName + "</div>"+
                 "<div class=\"music_singer\">가수:" + result.singer + "</div>"+
                 "<div class=\"music_genere\">장르:" + result.genre + "</div>"+
-                "</div>";
+                "</div>"+
+                "</a>" ;
             $("recently_music_zone").append(string);
         }
 
@@ -54,6 +57,8 @@
             return string;
         }
     </script>
+    <link rel="stylesheet" href="../../css/index/inGenre.css">
+    <link rel="stylesheet" href="../../css/index/inLatest.css">
 
     <link rel="stylesheet" href="../../css/index/inGenre.css">
     <link rel="stylesheet" href="../../css/index/inLatest.css">
@@ -66,7 +71,7 @@
         }
         body{
             width: 100%;
-            
+
             margin-left:210px;
             margin-bottom: 120px;
             background-color: #0a0a0a;
@@ -75,7 +80,6 @@
             display: flex;
             position: static;
         }
-
         .music_image img{
             width:50px;
             height:50px;
@@ -111,27 +115,21 @@
 <a href="/front/temp?nextPage=video">비디오</a><br>
 <a href="/front/detailMusic?no=1">음악 상세페이지</a><br>
 <a href="/front/detailVideo?no=1">비디오 상세페이지</a><br>
+<a href="/front/myPage">마이페이지</a><br>
 <%-- 임시 임시 임시 이동용 --%>
 
 
 <div class="inLatest">
     <%--    최신음악 들어있는 공간  --%>
-    <div>
-        <h2>
-            <a href="/front/temp?nextPage=recentlyMusic">최신 음악 ▶</a>
-        </h2><br>
-    </div>
-    <div class="recently_music_zone">
-        <script>
-            callRecentlyMusic10(1);
-        </script>
-    </div>
-</div>
-<div class="inGenre">
-    <div>
-        <h2>장르 음악 ▶</h2>
-    </div>
-    <div>
+    <recently_music_zone class="recently_music_zone">
+    <h2><a href="/front/temp?nextPage=recentlyMusic">최신 음악</a><br></h2><br>
+    <script>
+        callRecentlyMusic10(1);
+    </script>
+    </recently_music_zone>
+<div>
+    <h2>장르 음악</h2><br>
+    <div class="inGenre">
         <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=발라드' ">발라드</button>
         <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=댄스' ">댄스</button>
         <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=힙합' ">힙합</button>
@@ -145,9 +143,6 @@
         <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=인디' ">인디</button>
     </div>
 </div>
-    <h2>인기 음악</h2><br>
-    고려중
-
 </div>
 
 </body>

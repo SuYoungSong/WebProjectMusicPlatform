@@ -71,5 +71,26 @@ public class UserProfileImageRepository extends ParentRepository {
             close(con, pstmt, rs);
         }
     }
+    public void update(String serverFilePath, String userUploadFileName, String userId) throws SQLException {
+        String sql = "update userprofileimage set serverFilePath=?, userUploadFileName=? where userId=?";
 
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try{
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,serverFilePath);
+            pstmt.setString(2, userUploadFileName);
+            pstmt.setString(3, userId);
+
+            int resultSize = pstmt.executeUpdate();
+            log.info("resultSize={}", resultSize);
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, null);
+        }
+    }
 }
