@@ -76,10 +76,7 @@
         }
 
     </script>
-    <link rel="stylesheet" href="../../css/index/inGenre.css">
     <link rel="stylesheet" href="../../css/bodycss.css">
-    <link rel="stylesheet" href="../../css/index/inLatest.css">
-
     <link rel="stylesheet" href="../../css/index/inGenre.css">
     <link rel="stylesheet" href="../../css/index/inLatest.css">
     <style>
