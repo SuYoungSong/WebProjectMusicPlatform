@@ -39,6 +39,16 @@ public class MusicPaging {
         return musics;
     }
 
+    @RequestMapping(value = { "/api/music/callMusic5/{page}"})
+    public LinkedHashMap<Integer, Music> callRecentlyMusic5(@PathVariable int page) {
+        try {
+            musics = musicRepository.callRecentlyMusicLimit5(page);
+        } catch (SQLException e) {
+            // 음악 불러오기 실패시
+            musics = new LinkedHashMap<>();
+        }
+        return musics;
+    }
 
     // 장르별 음악 10개씩 가져오기
     @RequestMapping(value = { "/api/music/genre/{genere}/{page}"})
@@ -76,10 +86,15 @@ public class MusicPaging {
         return file;
     }
 
+
     // https://focus-dev.tistory.com/105
     //https://luvstudy.tistory.com/172
-    @RequestMapping(value = "/api/music/play/{music}", method = RequestMethod.GET)
-    public ResponseEntity<ResourceRegion> musicRegion(@RequestHeader HttpHeaders headers, @PathVariable String music) throws Exception {
+    @RequestMapping(value = "/api/music/play/{musicNumber}", method = RequestMethod.GET)
+    public ResponseEntity<ResourceRegion> musicRegion(@RequestHeader HttpHeaders headers, @PathVariable int musicNumber) throws Exception {
+
+        MusicFile musicFile = musicFileRepository.findByNumber(musicNumber);
+        String music = musicFile.getServerFileName();
+
         String path = "src/main/webapp/resources/musics/" + music;
 
         Resource resource = new FileSystemResource(path);

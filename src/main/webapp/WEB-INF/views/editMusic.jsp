@@ -4,12 +4,7 @@
 <html>
 <head>
     <title>Title</title>
-    <style>
-      body{
-        margin-left:210px;
-        margin-bottom: 120px;
-      }
-    </style>
+  <link rel="stylesheet" href="../../css/bodycss.css">
 </head>
 <body>
 <div id="nav">

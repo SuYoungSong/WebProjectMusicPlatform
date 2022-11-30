@@ -3,11 +3,7 @@
 <html>
 <head>
     <title>Title</title>
-    <style>
-        body{
-            margin-left:210px;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/bodycss.css">
 </head>
 <body>
 <!-- 네비게이션 -->

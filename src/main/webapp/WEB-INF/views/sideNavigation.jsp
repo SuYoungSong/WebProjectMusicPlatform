@@ -17,7 +17,7 @@
   <div class="navBarLogo">  <!-- 로고 -->
     <a href="#">
       <img src="/resources/images/defaultMusicImage.png"/>  <!-- 로고 img-->
-      <b>Logo</b>    <!-- 로고 name -->
+      <b>Dream</b>    <!-- 로고 name -->
     </a>
   </div>          <!-- /로고 -->
 

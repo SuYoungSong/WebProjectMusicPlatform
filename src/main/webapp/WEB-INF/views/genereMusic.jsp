@@ -80,11 +80,8 @@
         return string;
     }
 </script>
+<link rel="stylesheet" href="../../css/bodycss.css">
 <style>
-    body{
-        margin-left:210px;
-        margin-bottom: 120px;
-    }
     .musicBox{
         display: flex;
         position: static;

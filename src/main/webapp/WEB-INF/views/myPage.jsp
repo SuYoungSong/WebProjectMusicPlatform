@@ -4,12 +4,8 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="../../css/bodycss.css">
      <style>
-        body{
-            margin-left:210px;
-            margin-bottom: 120px;
-        }
-
         .myInfo {
             display: flex;
             flex-direction: row;

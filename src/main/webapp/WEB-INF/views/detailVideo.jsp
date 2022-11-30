@@ -60,10 +60,8 @@
             $("comment_zone").append(string);
         }
     </script>
+    <link rel="stylesheet" href="../../css/bodycss.css">
     <style>
-        body{
-            margin-left:210px;
-        }
         .writeBox{
             width:600px;
             height:150px;

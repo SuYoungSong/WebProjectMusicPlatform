@@ -119,6 +119,44 @@ public class VideoRepository extends ParentRepository {
         }
     }
 
+    public LinkedHashMap<Integer,Video> callRecentlyVideoLimit5(int page) throws SQLException {
+        String sql = "select * from video order by videoNumber DESC LIMIT ?,5;";
+
+        page = (page-1)*5;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        LinkedHashMap<Integer, Video> videos = new LinkedHashMap<>();
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1,page);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Video video = new Video();
+                int videoNumber = rs.getInt("videoNumber");
+                video.setVideoName(rs.getString("videoName"));
+                video.setUploadUserId(rs.getString("uploadUser"));
+                video.setVideoDescription(rs.getString("videoText"));
+                video.setVideoGenre(rs.getString("genere"));
+
+                videos.put(videoNumber, video);
+            }
+            return videos;
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally{
+            {
+                close(con, pstmt, rs);
+            }
+        }
+    }
+
     public Video findByNumber(int videoNumber) throws SQLException {
         String sql = "select * from video where videoNumber=?";
 

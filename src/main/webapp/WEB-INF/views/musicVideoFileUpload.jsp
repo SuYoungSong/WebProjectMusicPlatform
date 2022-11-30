@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="../../css/bodycss.css">
     <style>
         #music, #video{
             display:none;
@@ -9,9 +10,6 @@
         #musictab:checked ~ #music,
         #videotab:checked ~ #video{
             display: flex;
-        }
-        body{
-            margin-left:210px;
         }
     </style>
 </head>

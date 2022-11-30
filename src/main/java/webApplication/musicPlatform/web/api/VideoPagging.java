@@ -38,7 +38,16 @@ public class VideoPagging {
         }
         return videos;
     }
-
+    @RequestMapping(value = { "/api/video/callVideo5/{page}"})
+    public LinkedHashMap<Integer, Video> callRecentlyVideo5(@PathVariable int page) {
+        try {
+            videos = videoRepository.callRecentlyVideoLimit5(page);
+        } catch (SQLException e) {
+            // 음악 불러오기 실패시
+            videos = new LinkedHashMap<>();
+        }
+        return videos;
+    }
 
     // 장르별 비디오 10개씩 가져오기
     @RequestMapping(value = { "/api/video/genre/{genere}/{page}"})

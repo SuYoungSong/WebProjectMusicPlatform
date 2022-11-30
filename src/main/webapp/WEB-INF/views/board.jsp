@@ -6,13 +6,7 @@
 <head>
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <style>
-        body {
-            margin-left: 210px;
-            margin-bottom: 120px;
-            background-color: #0a0a0a;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/bodycss.css">
     <link rel="stylesheet" href="../../css/board/boaBox.css">
     <!-- <link rel="stylesheet" href="../../css/board/boa_SSY.css"> -->
     <link rel="stylesheet" href="../../css/board/boa_Box.css">

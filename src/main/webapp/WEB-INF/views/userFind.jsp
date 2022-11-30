@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Title</title>
+  <link rel="stylesheet" href="../../css/bodycss.css">
   <style>
     #userId, #userPw{
       display:none;
@@ -9,9 +10,6 @@
     #idTab:checked ~ #userId,
     #pwTab:checked ~ #userPw{
       display: flex;
-    }
-    body{
-      margin-left:210px;
     }
   </style>
 </head>
