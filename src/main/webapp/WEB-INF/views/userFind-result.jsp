@@ -10,6 +10,9 @@
 <div id="nav">
     <%@include file="sideNavigation.jsp"%>
 </div>
+<div>
+    <jsp:include page = "sideController.jsp"></jsp:include>
+</div>
 ${successMessage}<br>
 
 <c:if test="${not empty requestScope.findId}">

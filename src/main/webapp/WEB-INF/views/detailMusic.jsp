@@ -90,6 +90,46 @@
             vertical-align: top;
 
         }
+        .music_image:hover .music_play_button{
+            cursor: pointer;
+            display: block;
+            opacity: 100%;
+        }
+        .music_image:hover .musicImagIcon{
+            opacity: 0.5;
+        }
+        .music_image{
+            position: relative;
+            padding-right: 90px;
+            padding-bottom: 75px;
+        }
+        .musicImagIcon{
+            position: absolute;
+            width:300px;
+            height:300px;
+            object-fit:cover;
+        }
+        .music_play_button img{
+            position: absolute;
+            top:65%;
+            left:85%;
+            width:200px;
+            height:200px;
+        }
+        .music_play_button{
+            position: absolute;
+            background-color: transparent;
+            border: 0px;
+            left:2px;
+            top:3px;
+            width: 70px;
+            height: 70px;
+            display:none;
+        }
+        .music{
+            display: block;
+            height: 330px;
+        }
     </style>
 
 </head>
@@ -100,11 +140,18 @@
     <%@include file="sideNavigation.jsp"%>
 </div>
 <div>
-    <%@include file="sideController.jsp"%>
+    <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
-
-
-<img src="/resources/images/${detailMusicImage.serverFilePath}"/><br>
+<div class="music">
+    <div class="music_image">
+        <img class="musicImagIcon" src="/resources/images/${detailMusicImage.serverFilePath}"/>
+        <button class="music_play_button" onclick="musicPlayButton(${detailMusicNumber})">
+            <img src="/resources/images/defaultPlayImage.png"/>
+        </button>
+    </div>
+</div>
+<div>
+<br>
 음악 제목: ${detailMusicInfo.musicName}<br>
 음악 업로더: ${detailMusicInfo.uploadUser}<br>
 음악 설명: ${detailMusicInfo.musicDescription}<br>
@@ -115,7 +162,7 @@
 음악 편곡가: ${detailMusicInfo.musicArranger}<br>
 음악 가수: ${detailMusicInfo.singer}<br>
 음악 발매일: ${detailMusicInfo.releaseDate}<br>
-
+</div>
 
 <%--로그인 한 경우 댓글 작성 가능하게--%>
 <c:if test="${not empty sessionScope.loginUser}">

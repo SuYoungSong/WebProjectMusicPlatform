@@ -28,29 +28,33 @@
         function inputItem(result, key, tag) {
             // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
             var string =
-
-
                 "<div class=\"videoBox\">"+
-                callVideoImage(key) +
-                "<a class=\"video_a_tag\" href=/front/detailVideo?no="+ key +">" +
-                "<div class=\"video_name\">" + result.videoName + "</div>"+
-                "<div class=\"video_uploder\">" + result.uploadUserId + "</div>"+
-                "</a>"+
+                    "<a class=\"video_a_tag\" href=/front/detailVideo?no="+ key +">" +
+                        callVideoImage(key) +
+                    "<div class=\"video_text\">" +
+                        "<div class=\"video_name\">" + result.videoName + "</div>"+
+                        "<div class=\"video_uploder\">" + result.uploadUserId + "</div>"+
+                    "</div>" +
+                    "</a>" +
                 "</div>";
+
             $(tag).append(string);
         }
         function inputNoneItem(tag) {
             // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
             var string =
-                "<a class=\"video_a_tag\">" +
                 "<div class=\"videoBox\">"+
-                "<div class=\"video_image\">"+
-                "<img  src=\"/resources/images/defaultVideoImage.png\"/>"+
-                "</div>" +
-                "<div class=\"video_name\">등록된 영상이 없습니다</div>"+
-                "<div class=\"video_uploder\">미등록</div>"+
-                "</div>" +
-                "</a>";
+                    "<a class=\"video_a_tag\">" +
+                        "<div class=\"video_image\">"+
+                            "<img  src=\"/resources/images/defaultVideoImage.png\"/>"+
+                        "</div>" +
+                        "<div class=\"video_text\">" +
+                            "<div class=\"video_name\">등록된 영상이 없습니다</div>"+
+                            "<div class=\"video_uploder\">미등록</div>"+
+                        "</div>" +
+                    "</a>" +
+                "</div>";
+
 
             $(tag).append(string);
         }
@@ -77,9 +81,15 @@
     <link rel="stylesheet" href="../../css/index/inGenre.css">
     <link rel="stylesheet" href="../../css/index/inLatest.css">
     <style>
+        .video_text{
+            display: flex;
+            flex-direction: column;
+        }
         .video_a_tag{
             padding-top:15px;
             text-decoration: none;
+            display: flex;
+            flex-direction: row;
         }
         .videoBox:hover .video_name{
             color:#007bff;
@@ -103,6 +113,7 @@
         }
         .videoBox{
             display: flex;
+            /*flex-direction: row;*/
             position: static;
             margin-bottom: 10px;
         }
@@ -145,6 +156,9 @@
 <!-- 네비게이션 -->
 <div id="nav">
   <%@include file="sideNavigation.jsp"%>
+</div>
+<div>
+    <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 
 <script>

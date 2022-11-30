@@ -68,12 +68,13 @@
                 string +=
                     "<div class=\"music_image\">"+
                     "<img  class=\"musicImagIcon\" src=\"/resources/images/"+result.serverFilePath + "\"/>"+
-                    "<button class=\"music_play_button\" onclick='musicPlayButton()'><img src=\"/resources/images/defaultPlayImage.png\"/></button>" +
+                    "<button class=\"music_play_button\" onclick='musicPlayButton("+key+")'><img src=\"/resources/images/defaultPlayImage.png\"/></button>" +
                     "</div>";
             }).fail(function (error) {
             })
             return string;
         }
+
     </script>
     <link rel="stylesheet" href="../../css/index/inGenre.css">
     <link rel="stylesheet" href="../../css/bodycss.css">
@@ -202,7 +203,6 @@
     callRecentlyMusic5(2,"middlePane");
     callRecentlyMusic5(3,"rightPane");
 </script>
-<br><br>
 <div class="inLatest">
     <%--    최신음악 들어있는 공간  --%>
     <h1><a href="/front/temp?nextPage=recentlyMusic">최신 음악</a><br></h1><br>

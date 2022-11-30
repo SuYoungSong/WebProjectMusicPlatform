@@ -5,7 +5,7 @@
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script>
-    var page = 0;
+    var page = 1;
     var isNext = true;
     $(window).scroll(function() {
         // 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성
@@ -41,23 +41,46 @@
                 inputItem(result[key], key);
                 count++;
             });
-            if(count<1){
-                $("recently_video_zone").append("등록된 영상이 없습니다.");
+            for ( let i = 0 ; i < 10-count ; i++ ){
+                inputNoneItem()
             }
         }).fail(function (error) {
-            $("recently_video_zone").append("영상을 불러오는데 실패했습니다.");
+            for ( let i = 0 ; i < 10 ; i++ ){
+                inputNoneItem()
+            }
+            console.log("영상 로딩 실패")
+            $("recently_music_zone").append("영상을 불러오는데 실패했습니다.");
         })
     }
     function inputItem(result, key) {
         // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
         var string =
-            "<a href=/front/detailVideo?no="+ key +">" +
             "<div class=\"videoBox\">"+
+            "<a class=\"video_a_tag\" href=/front/detailVideo?no="+ key +">" +
             callVideoImage(key) +
-            "<div class=\"video_name\">제목:" + result.videoName + "</div>"+
-            "<div class=\"video_uploder\">가수:" + result.uploadUserId + "</div>"+
-            "</div>"+
-            "</a>";
+            "<div class=\"video_text\">" +
+            "<div class=\"video_name\">" + result.videoName + "</div>"+
+            "<div class=\"video_uploder\">" + result.uploadUserId + "</div>"+
+            "</div>" +
+            "</a>" +
+            "</div>";
+        $("recently_video_zone").append(string);
+    }
+    function inputNoneItem() {
+        // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
+        var string =
+            "<div class=\"videoBox\">"+
+            "<a class=\"video_a_tag\">" +
+            "<div class=\"video_image\">"+
+            "<img  src=\"/resources/images/defaultVideoImage.png\"/>"+
+            "</div>" +
+            "<div class=\"video_text\">" +
+            "<div class=\"video_name\">등록된 영상이 없습니다</div>"+
+            "<div class=\"video_uploder\">미등록</div>"+
+            "</div>" +
+            "</a>" +
+            "</div>";
+
         $("recently_video_zone").append(string);
     }
 
@@ -81,9 +104,45 @@
 </script>
 <link rel="stylesheet" href="../../css/bodycss.css">
 <style>
+    .video_text{
+        padding-top:15px;
+        display: flex;
+        flex-direction: column;
+    }
+    .video_a_tag{
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+    }
+    .videoBox:hover .video_name{
+        color:#007bff;
+
+    }
+    .videoBox:hover .video_uploder{
+        color:#6c757d;
+    }
+    .video_uploder{
+        color:#9d9d9d;
+    }
+    .videoBox:hover img{
+        opacity: 0.6;
+    }
     .videoBox{
         display: flex;
+        flex-direction: row;
         position: static;
+        margin-bottom: 10px;
+    }
+    .video_image{
+        position: relative;
+        padding-right: 90px;
+        padding-bottom: 75px;
+    }
+    .video_image img{
+        position: absolute;
+        width:75px;
+        height:75px;
+        object-fit:cover;
     }
 
     recently_video_zone{
@@ -92,12 +151,6 @@
         flex-direction: column;
         margin-top: 50px;
     }
-
-    .video_image img{
-        width:50px;
-        height:50px;
-        object-fit:cover;
-    }
 </style>
 <body>
 <!-- 네비게이션 -->
@@ -105,7 +158,7 @@
     <%@include file="sideNavigation.jsp"%>
 </div>
 <div>
-    <%@include file="sideController.jsp"%>
+    <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 
 

@@ -9,6 +9,9 @@
 <div id="nav">
     <%@include file="sideNavigation.jsp"%>
 </div>
+<div>
+    <jsp:include page = "sideController.jsp"></jsp:include>
+</div>
 
 ${user.name}님 가입을 환영합니다<br>
 <img src="../../resources/images/${userProfileImage.serverFilePath}"/><br>

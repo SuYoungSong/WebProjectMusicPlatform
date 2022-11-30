@@ -12,32 +12,20 @@
 <body>
 <div class="conBarBack">
   <div class="conBar_1">
-    <div>
-
+    <div class="play_music_info">
+      <div class="play_music_image">
+        <img src=""/>
+      </div>
+      <div class="play_music_text">
+        <div class="play_music_title">
+          하늘바라기
+        </div>
+        <div class="play_music_singer">
+          홍길동
+        </div>
+      </div>
     </div>
   </div>
-
-<%--  <div class="conBar_2">--%>
-<%--    <div class="main_bar">--%>
-<%--      <div class="music_controll">--%>
-<%--        <button onclick="musicPlay()" >재생</button>--%>
-<%--      </div>--%>
-<%--      <div id="waveform"></div>--%>
-<%--    </div>--%>
-
-<%--    <div class="sub_Bar">--%>
-<%--      <div class="volume">--%>
-<%--        <img id="volumeIcon" class="volume-icon" src="assets/icons/volume.png"/>--%>
-<%--        <input id="volumeSlider" class="volume-slider" type="range" name="volume-slider" min="0" max="100" value="50"/>--%>
-<%--      </div>--%>
-<%--    </div>--%>
-<%--      <div class="time_bar">--%>
-<%--        <span id="waveform-time-indicator">00:00:00</span>/<span id="waveform-time-end">00:00:00</span>--%>
-<%--      </div>--%>
-<%--    </div>--%>
-<%--  </div>--%>
-
-
   <div class="conBar_2">
     <main class="container">
       <div class="audio-player">
@@ -86,7 +74,16 @@
   function getMusicPlayState(){
     return localStorage.getItem("playState")
   }
+  function musicPlayButton(key){
+    localStorage.setItem("playMusicNumber", key)
+    setMusic()
+    wavesurfer.setCurrentTime(0)
+    setMusicPlayTime(0)
+    setMusicPlayState(1)
+    wavesurfer.play()
+    playButtonIcon.src = "/resources/images/pause.png"
 
+  }
   // 페이지 이동시 음악 상태에 따라서 출력시키기
   function update(){
     var isPlay = localStorage.getItem("playState")

@@ -18,7 +18,9 @@
 <div id="nav">
   <%@include file="sideNavigation.jsp"%>
 </div>
-
+<div>
+  <jsp:include page = "sideController.jsp"></jsp:include>
+</div>
 
 <input type="radio" name="tabs" id="idTab" checked>아이디 찾기</input>
 <input type="radio" name="tabs" id="pwTab" ${checkedReturn}>비밀번호 찾기</input>

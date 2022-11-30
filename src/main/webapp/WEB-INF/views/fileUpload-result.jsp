@@ -10,6 +10,9 @@
 <div id="nav">
     <%@include file="sideNavigation.jsp"%>
 </div>
+<div>
+    <jsp:include page = "sideController.jsp"></jsp:include>
+</div>
 <c:if test="${not empty requestScope.uploadFileInfo}">
     [ ${uploadFileInfo.userUploadFileName} ] 파일 등록을 성공하였습니다.
 </c:if>

@@ -9,7 +9,9 @@
 <div id="nav">
   <%@include file="sideNavigation.jsp"%>
 </div>
-
+<div>
+  <jsp:include page = "sideController.jsp"></jsp:include>
+</div>
   <form action="/front/users/save" method="post" enctype="multipart/form-data">
     아이디: <input type="text" name="id" value="${returnId}" maxlength="20"/><br>
     비밀번호: <input type="password" name="password" value="${returnPassword}" maxlength="20"/><br>

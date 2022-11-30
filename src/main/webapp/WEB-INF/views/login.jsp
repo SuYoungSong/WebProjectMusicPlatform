@@ -9,9 +9,9 @@
     <div>
         <%@include file="sideNavigation.jsp"%>
     </div>
-    <div>
-        <%@include file="sideController.jsp"%>
-    </div>
+<div>
+    <jsp:include page = "sideController.jsp"></jsp:include>
+</div>
     <div class="log">
         <div class="logBack">
             <form action="/front/loginProcess" method="POST">

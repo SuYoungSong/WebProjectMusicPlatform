@@ -9,6 +9,9 @@
 <div id="nav">
     <%@include file="sideNavigation.jsp"%>
 </div>
+<div>
+    <jsp:include page = "sideController.jsp"></jsp:include>
+</div>
 <h2>변경할 비밀번호를 입력하세요</h2>
 <form action="/front/users/userFindPChangePassword" method="post">
     아이디 : ${findId}<br>

@@ -119,7 +119,7 @@
     <%@include file="sideNavigation.jsp"%>
 </div>
 <div>
-    <%@include file="sideController.jsp"%>
+    <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 
 <c:if test="${not empty sessionScope.loginUser}">
