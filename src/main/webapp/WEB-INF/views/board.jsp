@@ -20,11 +20,11 @@
     <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 <!-- test용 실행 -->
-<div class="boaBox">
-    <h2> 제목:123 </h2>
-    <img src="/resources/images/defaultMusicImage.png">
-    <p>1231941927349871289305798 27349613295798123749061293587912347961532</p>
-</div>
+<%--<div class="boaBox">--%>
+<%--    <h2> 제목:123 </h2>--%>
+<%--    <img src="/resources/images/defaultMusicImage.png">--%>
+<%--    <p>1231941927349871289305798 27349613295798123749061293587912347961532</p>--%>
+<%--</div>--%>
 
 <%--로그인시 게시글 작성칸 보이기 --%>
 <c:if test="${not empty sessionScope.loginUser}">
@@ -125,12 +125,12 @@
         }).done(function (result) {
             if(result.length == 0){
             }else {
-                comment += "댓글<br>"
+                comment += "<h2>댓글</h2><br>"
                 for (var cmt of result) {
                     comment +=
-                        "<hr><div class=\"post_comment\">" +
-                        "<div>댓글 작성자:" + cmt.writer + "</div><br>" +
-                        "<div>댓글 내용:" + cmt.commentText + "</div> " +
+                        "<div class=\"post_comment\">" +
+                        "<div>[" + cmt.writer + "]</div>" +
+                        "<div>▶" + cmt.commentText + "</div><br><br> " +
                         "</div>";
                 }
             }
