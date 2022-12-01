@@ -122,13 +122,13 @@
 <div class="inLatest">
     <%--    최신음악 들어있는 공간  --%>
     <recently_music_zone class="recently_music_zone">
-    <h2><a href="/front/temp?nextPage=recentlyMusic">최신 음악</a><br></h2><br>
+    <h2><a href="/front/temp?nextPage=recentlyMusic">최신 음악</a></h2><br>
     <script>
         callRecentlyMusic10(1);
     </script>
     </recently_music_zone>
 <div>
-    <h2>장르 음악</h2><br>
+    <h2><a href="/front/temp?nextPage=recentlyVideo">장르 음악</a></h2><br>
     <div class="inGenre">
         <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=발라드' ">발라드</button>
         <button type="button" class="genre_music" onclick="location.href='/front/genereMusic?genere=댄스' ">댄스</button>

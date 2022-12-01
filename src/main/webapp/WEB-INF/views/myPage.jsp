@@ -51,12 +51,6 @@
               border-top: 2px solid #2e9cdf;
               border-bottom: 1px solid #ffffff;
           }
-        input:checked + label {
-            color: #555;
-            border: 1px solid #ddd;
-            border-top: 2px solid #2e9cdf;
-            border-bottom: 1px solid #ffffff;
-        }
 
         #myMusic:checked ~ #myMusic-content,
         #myVideo:checked ~ #myVideo-content,

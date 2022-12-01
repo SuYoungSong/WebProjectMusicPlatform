@@ -28,6 +28,7 @@
     width: 100%;
     height: 300px;
     border-bottom: solid #cccccc;
+    margin: 18px 0;
 }
 
 .navBarUser_not_login {
@@ -38,7 +39,7 @@
 .navBarUserimg {
     width: 150px;
     height: 150px;
-    margin: auto;
+    margin: 0 auto;
     border-radius: 50px;
     overflow: hidden;
 }

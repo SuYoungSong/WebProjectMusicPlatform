@@ -1,0 +1,42 @@
+.none {
+    display: none;  /* 디스플레이 없엠 */
+}
+
+
+/* -------- */
+label {
+    position: relative;
+    left: 60px;
+    top: 10px;
+    display: inline-block;
+    margin: 0;
+    padding: 15px 25px 9px 25px;
+    font-weight: 600;
+    text-align: center;
+
+
+    color: #daa520;
+    border: 5px solid #daa520;
+    border-radius: 10px 10px 0 0;
+    background-color: #000000;
+
+    transition: all .2s;
+}
+
+label:hover {
+    color: #000000;
+    background-color: #daa520;
+    cursor: pointer;    /* 마우스를 포인터로 바꿈 */
+}
+
+input:checked + label {
+    top:0;
+    padding-bottom: 15px;
+    color: black;
+    background-color: #daa520;
+    /* color: #555;
+    border: 1px solid #ddd;
+    border-top: 2px solid #2e9cdf;
+    border-bottom: 1px solid #ffffff; */
+}
+

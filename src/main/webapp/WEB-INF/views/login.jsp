@@ -4,9 +4,11 @@
     <title>Title</title>
     <style>
         body{
-            margin-left:210px;
+
+            margin-left: 210px;
             margin-bottom: 120px;
             background-color: #0a0a0a;
+
         }
     </style>
     <link rel="stylesheet" href="../../css/login/logBack.css">
