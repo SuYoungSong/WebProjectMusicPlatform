@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Title</title>2
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script>

@@ -13,15 +13,15 @@
 <div class="conBarBack">
   <div class="conBar_1">
     <div class="play_music_info">
-      <div class="play_music_image">
-        <img src=""/>
+      <div class="play_music_image" id="play_music_image">
+        <img src="/resources/images/defaultPlayImage.png"/>
       </div>
-      <div class="play_music_text">
-        <div class="play_music_title">
-          하늘바라기
+      <div class="play_music_text" id="play_music_text">
+        <div class="play_music_title" id="play_music_title">
+          재생중인 음악이 없습니다.
         </div>
-        <div class="play_music_singer">
-          홍길동
+        <div class="play_music_singer" id="play_music_singer">
+
         </div>
       </div>
     </div>
@@ -77,6 +77,7 @@
   function musicPlayButton(key){
     localStorage.setItem("playMusicNumber", key)
     setMusic()
+    setPlayMusicInfo()
     wavesurfer.setCurrentTime(0)
     setMusicPlayTime(0)
     setMusicPlayState(1)
@@ -105,6 +106,7 @@
       wavesurfer.load("/resources/musics/defaultMusic.mp3")
     }else{
       wavesurfer.load("/api/music/play/" + localStorage.getItem("playMusicNumber"))
+      setPlayMusicInfo()
     }
   }
 
@@ -227,4 +229,23 @@
   wavesurfer.on("finish", () => {
     playButtonIcon.src = "/resources/images/play.png"
   })
+
+
+
+  // ===================================
+  //     플레이 중인 음악 정보 관련 함수
+  // ===================================
+  const playMusicImage = document.getElementById("play_music_image")
+  const playMusicTitle = document.getElementById("play_music_title")
+  const playMusicSinger = document.getElementById("play_music_singer")
+
+  function setPlayMusicInfo(){
+    var musicNumber = localStorage.getItem("playMusicNumber")
+
+    if ( musicNumber != null){
+      playMusicImage.src = ""
+
+    }
+  }
+
 </script>

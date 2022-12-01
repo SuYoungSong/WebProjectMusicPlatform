@@ -4,7 +4,7 @@
 }
 
 .logBack {
-    width: 400px;
+    min-width: 400px;
     height: 200px;
     border: solid 4px #cccccc;
     border-radius: 20px;

@@ -16,7 +16,7 @@
 <nav class="navBarBack">
   <div class="navBarLogo">  <!-- 로고 -->
     <a href="#">
-      <img src="/resources/images/defaultMusicImage.png"/>  <!-- 로고 img-->
+      <img src="/resources/images/defaultPlayMusicImage.png"/>  <!-- 로고 img-->
       <b>Dream</b>    <!-- 로고 name -->
     </a>
   </div>          <!-- /로고 -->
@@ -33,8 +33,8 @@
       </div>
       <div style="color: white; text-align: center;">${loginUser.nickname}님 환영합니다<br></div>
       <div class ="navBarOut">
-        <a style="color:white;" href="/front/myPage">마이페이지</a>
-        <a style="color:white;" href="/front/logout">로그아웃</a>
+        <a  href="/front/myPage">마이페이지</a>
+        <a  href="/front/logout">로그아웃</a>
       </div></div>
     </c:if>
 
