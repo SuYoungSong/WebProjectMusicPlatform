@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../../css/controller/conBar_1.css">
   <link rel="stylesheet" href="../../css/controller/conBar_2.css">
   <link rel="stylesheet" href="../../css/controller/conBar_3.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <body>
@@ -14,7 +15,7 @@
   <div class="conBar_1">
     <div class="play_music_info">
       <div class="play_music_image" id="play_music_image">
-        <img src="/resources/images/defaultPlayImage.png"/>
+        <img src="/resources/images/defaultPlayMusicImage.png"/>
       </div>
       <div class="play_music_text" id="play_music_text">
         <div class="play_music_title" id="play_music_title">
@@ -77,11 +78,11 @@
   function musicPlayButton(key){
     localStorage.setItem("playMusicNumber", key)
     setMusic()
-    setPlayMusicInfo()
     wavesurfer.setCurrentTime(0)
     setMusicPlayTime(0)
     setMusicPlayState(1)
     wavesurfer.play()
+    setPlayMusicInfo()
     playButtonIcon.src = "/resources/images/pause.png"
 
   }
@@ -104,6 +105,7 @@
   function setMusic(){
     if(localStorage.getItem("playMusicNumber") == null){
       wavesurfer.load("/resources/musics/defaultMusic.mp3")
+      setPlayMusicInfo()
     }else{
       wavesurfer.load("/api/music/play/" + localStorage.getItem("playMusicNumber"))
       setPlayMusicInfo()
@@ -235,17 +237,55 @@
   // ===================================
   //     플레이 중인 음악 정보 관련 함수
   // ===================================
-  const playMusicImage = document.getElementById("play_music_image")
-  const playMusicTitle = document.getElementById("play_music_title")
-  const playMusicSinger = document.getElementById("play_music_singer")
+
 
   function setPlayMusicInfo(){
+
+    const playMusicTitle = document.getElementById("play_music_title")
+    const playMusicSinger = document.getElementById("play_music_singer")
+    const playMusicImage = document.getElementById("play_music_image")
+
     var musicNumber = localStorage.getItem("playMusicNumber")
-
+    var musicInfo = getMusicInfo(musicNumber)
     if ( musicNumber != null){
-      playMusicImage.src = ""
-
+      playMusicImage.innerHTML = callMusicImage(musicNumber)
+      playMusicTitle.innerHTML = musicInfo.musicName
+      playMusicSinger.innerHTML = musicInfo.singer
+    }else{
+      playMusicImage.innerHTML = "<img src=\"/resources/images/defaultPlayMusicImage.png\"/>"
+      playMusicTitle.innerHTML = "재생중인 음악이 없습니다."
+      playMusicSinger.innerHTML = ""
     }
+  }
+
+  function getMusicInfo(musicNumber){
+    var temp;
+    $.ajax({
+      type: "get",
+      url: "/api/music/info/" + musicNumber,
+      async: false,
+      dataType: "json"
+    }).done(function (result) {
+      temp = result
+    }).fail(function (error) {
+      console.log("음악 정보 로딩 실패");
+    })
+    return temp
+  }
+
+  function callMusicImage(key){
+    // 이미지 뜨는 html 수정하려면 여기 수정하면 됌
+    var string = ""
+    $.ajax({
+      type: "get",
+      url: "/api/music/image/" + (key),
+      async: false,
+      dataType: "json"
+    }).done(function (result) {
+        string +="<img src=\"/resources/images/"+ result.serverFilePath +"\"/>"
+    }).fail(function (error) {
+    })
+    return string;
   }
 
 </script>

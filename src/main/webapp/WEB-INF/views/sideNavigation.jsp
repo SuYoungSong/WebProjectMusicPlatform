@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../../css/navigation/navBar_1.css">
   <link rel="stylesheet" href="../../css/navigation/navBar_2.css">
   <link rel="stylesheet" href="../../css/navigation/navBarmenu.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
   <style></style>
 </head>
@@ -16,8 +17,8 @@
 <nav class="navBarBack">
   <div class="navBarLogo">  <!-- 로고 -->
     <a href="#">
-      <img src="/resources/images/defaultPlayMusicImage.png"/>  <!-- 로고 img-->
-      <b>Dream</b>    <!-- 로고 name -->
+      <img src="/resources/images/defaultDreamLogo.png"/>  <!-- 로고 img-->
+      <h1><b>Dream</b></h1>    <!-- 로고 name -->
     </a>
   </div>          <!-- /로고 -->
 

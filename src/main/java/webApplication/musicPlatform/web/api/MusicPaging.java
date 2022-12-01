@@ -86,6 +86,17 @@ public class MusicPaging {
         return file;
     }
 
+    // 음악 정보 가져오기
+    @RequestMapping(value = { "/api/music/info/{musicNum}"})
+    public Music callMusicInfo(@PathVariable  int musicNum) {
+        Music music = null;
+        try {
+            music = musicRepository.findByNumber(musicNum);
+        } catch (SQLException e) {
+            music = new Music();
+        }
+        return music;
+    }
 
     // https://focus-dev.tistory.com/105
     //https://luvstudy.tistory.com/172

@@ -31,12 +31,12 @@
             // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
             var string =
                 "<div class=\"musicBox\">"+
-                callMusicImage(key) +
-                "<a class=\"music_a_tag\" href=/front/detailMusic?no="+ key +">" +
-                "<div class=\"music_name\">" + result.musicName + "</div>"+
-                "<div class=\"music_singer\">" + result.singer + "</div>"+
-                "</div>"+
-                "</a>" ;
+                    callingMusicImage(key) +
+                    "<a class=\"music_a_tag\" href=/front/detailMusic?no="+ key +">" +
+                    "<div class=\"music_name\">" + result.musicName + "</div>"+
+                    "<div class=\"music_singer\">" + result.singer + "</div>"+
+                    "</a>"+
+                    "</div>" ;
             $(tag).append(string);
         }
 
@@ -56,7 +56,7 @@
         }
 
 
-        function callMusicImage(key){
+        function callingMusicImage(key){
             // 이미지 뜨는 html 수정하려면 여기 수정하면 됌
             var string = ""
             $.ajax({
@@ -96,7 +96,6 @@
         }
         .music_a_tag:hover .music_name{
             color:#007bff;
-
         }
         .music_a_tag:hover .music_singer{
             color:#6c757d;
