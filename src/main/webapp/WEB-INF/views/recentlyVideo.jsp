@@ -5,7 +5,7 @@
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script>
-        var page = 0;
+        var page = 1;
         var isNext = true;
         $(window).scroll(function() {
         // 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성
