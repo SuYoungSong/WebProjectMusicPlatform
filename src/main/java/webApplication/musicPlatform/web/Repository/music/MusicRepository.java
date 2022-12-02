@@ -220,6 +220,127 @@ public class MusicRepository extends ParentRepository {
         }
     }
 
+    public LinkedHashMap<Integer, Music> findByTitle(String title) throws SQLException {
+        String sql = "select * from music where singer like ?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        LinkedHashMap<Integer, Music> musics = new LinkedHashMap<>();
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%"+title+"%");
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Music music = new Music();
+                int musicNumber = rs.getInt("musicNumber");
+                music.setMusicName(rs.getString("musicName"));
+                music.setUploadUser(rs.getString("uploadUser"));
+                music.setMusicDescription(rs.getString("musicText"));
+                music.setGenre(rs.getString("genere"));
+                music.setLyrics(rs.getString("lyrics"));
+                music.setSongwriter(rs.getString("songwriter"));
+                music.setLyricwriter(rs.getString("lyricwriter"));
+                music.setMusicArranger(rs.getString("musicArranger"));
+                music.setSinger(rs.getString("singer"));
+                music.setReleaseDate(rs.getString("releaseDate"));
+
+                musics.put(musicNumber, music);
+            }
+            return musics;
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, rs);
+        }
+    }
+
+
+    public LinkedHashMap<Integer, Music> findByUpload(String uploader) throws SQLException {
+        String sql = "select * from music where uploadUser like ?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        LinkedHashMap<Integer, Music> musics = new LinkedHashMap<>();
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%"+uploader+"%");
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Music music = new Music();
+                int musicNumber = rs.getInt("musicNumber");
+                music.setMusicName(rs.getString("musicName"));
+                music.setUploadUser(rs.getString("uploadUser"));
+                music.setMusicDescription(rs.getString("musicText"));
+                music.setGenre(rs.getString("genere"));
+                music.setLyrics(rs.getString("lyrics"));
+                music.setSongwriter(rs.getString("songwriter"));
+                music.setLyricwriter(rs.getString("lyricwriter"));
+                music.setMusicArranger(rs.getString("musicArranger"));
+                music.setSinger(rs.getString("singer"));
+                music.setReleaseDate(rs.getString("releaseDate"));
+
+                musics.put(musicNumber, music);
+            }
+            return musics;
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, rs);
+        }
+    }
+
+    public LinkedHashMap<Integer, Music> findBySinger(String singer) throws SQLException {
+        String sql = "select * from music where singer like ?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        LinkedHashMap<Integer, Music> musics = new LinkedHashMap<>();
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%"+singer+"%");
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Music music = new Music();
+                int musicNumber = rs.getInt("musicNumber");
+                music.setMusicName(rs.getString("musicName"));
+                music.setUploadUser(rs.getString("uploadUser"));
+                music.setMusicDescription(rs.getString("musicText"));
+                music.setGenre(rs.getString("genere"));
+                music.setLyrics(rs.getString("lyrics"));
+                music.setSongwriter(rs.getString("songwriter"));
+                music.setLyricwriter(rs.getString("lyricwriter"));
+                music.setMusicArranger(rs.getString("musicArranger"));
+                music.setSinger(rs.getString("singer"));
+                music.setReleaseDate(rs.getString("releaseDate"));
+
+                musics.put(musicNumber, music);
+            }
+            return musics;
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, rs);
+        }
+    }
+
     public LinkedHashMap<Integer,Music> findById(String userId) throws SQLException {
         String sql = "select * from music where uploadUser=?";
 

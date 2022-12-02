@@ -102,7 +102,7 @@
         return string;
     }
 </script>
-<link rel="stylesheet" href="../../css/bodycss.css">
+<link rel="stylesheet" href="/css/bodycss.css">
 <style>
     .video_text{
         padding-top:15px;

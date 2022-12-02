@@ -1,0 +1,149 @@
+.music_play_button{
+    position: absolute;
+    background-color: transparent;
+    border: 0px;
+    left:2px;
+    top:3px;
+    width: 70px;
+    height: 70px;
+    display:none;
+}
+.music_a_tag{
+    padding-top:15px;
+    text-decoration: none;
+}
+.music_a_tag:hover .music_name{
+    color:#007bff;
+
+}
+.music_a_tag:hover .music_singer{
+    color:#6c757d;
+}
+.music_singer{
+    color:#9d9d9d;
+}
+
+.music_image:hover .music_play_button{
+    cursor: pointer;
+    display: block;
+    opacity: 100%;
+}
+.music_image:hover .musicImagIcon{
+    opacity: 0.5;
+}
+.musicBox{
+    display: flex;
+    flex-direction: row;
+    position: static;
+    margin-bottom: 10px;
+}
+.music_image{
+    position: relative;
+    padding-right: 90px;
+    padding-bottom: 75px;
+}
+.music_image img{
+    position: absolute;
+    width:75px;
+    height:75px;
+    object-fit:cover;
+}
+.music_play_button img{
+    position: absolute;
+    top:25%;
+    left:30%;
+    width:35px;
+    height:35px;
+}
+.video_text{
+    padding-top:15px;
+    display: flex;
+    flex-direction: column;
+}
+.video_a_tag{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+}
+.videoBox:hover .video_name{
+    color:#007bff;
+
+}
+.videoBox:hover .video_uploder{
+    color:#6c757d;
+}
+.video_uploder{
+    color:#9d9d9d;
+}
+.videoBox:hover img{
+    opacity: 0.6;
+}
+.videoBox{
+    display: flex;
+    flex-direction: row;
+    position: static;
+    margin-bottom: 10px;
+}
+.video_image{
+    position: relative;
+    padding-right: 90px;
+    padding-bottom: 75px;
+}
+.video_image img{
+    position: absolute;
+    width:75px;
+    height:75px;
+    object-fit:cover;
+}
+
+searchZone{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+
+#searchMusic:checked ~ #searchMusic-content,
+#searchVideo:checked ~ #searchVideo-content{
+    display: block;
+}
+
+section {
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;}
+
+.radio_none{
+    display: none;
+}
+
+section {
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;
+}
+
+label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+
+    border: 1px solid transparent;}
+
+label:hover {
+    color: #2e9cdf;
+    cursor: pointer;}
+
+input:checked + label {
+    color: yellow;
+    border: 1px solid #ddd;
+    border-top: 2px solid #2e9cdf;
+    border-bottom: 1px solid #ffffff;
+}
+
+.tab-value {
+    padding-top: 30px;
+}

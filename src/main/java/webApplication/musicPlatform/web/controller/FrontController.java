@@ -24,9 +24,10 @@ public class FrontController extends HttpServlet {
         System.out.println("requestURI = " + requestURI);
         ControllerInter controller = controllerHandler.getController(requestURI);
 
-        // 만약 사용자가 요청한 Controller을 찾을 수 없다면 NOT FOUND 응답
+        // 만약 사용자가 요청한 Controller을 찾을 수 없다면 error Page 반환
         if (controller == null){
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            response.sendRedirect("/front/error");
+//            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 

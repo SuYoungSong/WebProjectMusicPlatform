@@ -190,6 +190,78 @@ public class VideoRepository extends ParentRepository {
         }
     }
 
+    public LinkedHashMap<Integer,Video> findByTitle(String title) throws SQLException {
+        String sql = "select * from video where videoName like ?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%"+title+"%");
+
+            rs = pstmt.executeQuery();
+            LinkedHashMap<Integer, Video> videos = new LinkedHashMap<>();
+
+            while (rs.next()) {
+                Video video = new Video();
+                int videoNumber = rs.getInt("videoNumber");
+                video.setVideoName(rs.getString("videoName"));
+                video.setUploadUserId(rs.getString("uploadUser"));
+                video.setVideoDescription(rs.getString("videoText"));
+                video.setVideoGenre(rs.getString("genere"));
+
+                videos.put(videoNumber, video);
+            }
+            return videos;
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally{
+            {
+                close(con, pstmt, rs);
+            }
+        }
+    }
+
+    public LinkedHashMap<Integer,Video> findByUploader(String uploader) throws SQLException {
+        String sql = "select * from video where uploadUser like ?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%"+uploader+"%");
+
+            rs = pstmt.executeQuery();
+            LinkedHashMap<Integer, Video> videos = new LinkedHashMap<>();
+
+            while (rs.next()) {
+                Video video = new Video();
+                int videoNumber = rs.getInt("videoNumber");
+                video.setVideoName(rs.getString("videoName"));
+                video.setUploadUserId(rs.getString("uploadUser"));
+                video.setVideoDescription(rs.getString("videoText"));
+                video.setVideoGenre(rs.getString("genere"));
+
+                videos.put(videoNumber, video);
+            }
+            return videos;
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally{
+            {
+                close(con, pstmt, rs);
+            }
+        }
+    }
+
     public LinkedHashMap<Integer,Video> findById(String userId) throws SQLException {
         String sql = "select * from video where uploadUser=?";
 

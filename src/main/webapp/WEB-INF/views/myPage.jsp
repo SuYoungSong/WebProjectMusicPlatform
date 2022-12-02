@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../../css/bodycss.css">
+    <link rel="stylesheet" href="/css/bodycss.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
      <style>
         .myInfo {
@@ -23,7 +23,8 @@
         section {
             display: none;
             padding: 20px 0 0;
-            border-top: 1px solid #ddd;}
+            border-top: 1px solid #ddd;
+        }
 
           .radio_none{
               display: none;
@@ -48,12 +49,6 @@
               border-top: 2px solid #2e9cdf;
               border-bottom: 1px solid #ffffff;
           }
-        /*input:checked + label {*/
-        /*    color: #555;*/
-        /*    border: 1px solid #ddd;*/
-        /*    border-top: 2px solid #2e9cdf;*/
-        /*    border-bottom: 1px solid #ffffff;*/
-        /*}*/
 
         #myMusic:checked ~ #myMusic-content,
         #myVideo:checked ~ #myVideo-content,

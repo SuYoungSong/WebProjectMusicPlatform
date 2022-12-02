@@ -79,7 +79,7 @@
         return string;
     }
 </script>
-<link rel="stylesheet" href="../../css/bodycss.css">
+<link rel="stylesheet" href="/css/bodycss.css">
 <style>
     .videoBox{
         display: flex;

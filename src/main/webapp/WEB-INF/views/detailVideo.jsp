@@ -60,7 +60,7 @@
             $("comment_zone").append(string);
         }
     </script>
-    <link rel="stylesheet" href="../../css/bodycss.css">
+    <link rel="stylesheet" href="/css/bodycss.css">
     <style>
         .writeBox{
             width:600px;
