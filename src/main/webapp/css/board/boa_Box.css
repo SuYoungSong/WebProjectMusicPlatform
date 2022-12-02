@@ -50,6 +50,19 @@
     margin-bottom: 5px;
     color: #cccccc;
 }
+.imageZone{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+.imageAddButton{
+    height: 50px;
+    margin-right: 10px;
+}
+.board_image_file{
+    display: flex;
+    flex-direction: column;
+}
 .writeButton{
     width: 100%;
     margin-top: 15px;

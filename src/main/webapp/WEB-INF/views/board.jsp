@@ -33,9 +33,12 @@
             <div class="writeBox">
                 <input type="text" class="writeZone" name="title" placeholder="제목을 입력하세요."/>
                 <textarea name="content" placeholder="내용을 입력하세요."></textarea><br>
-                이미지1:<input type="file" name="file" accept="image/*"/><br>
-                이미지2:<input type="file" name="file" accept="image/*"/><br>
-                이미지3:<input type="file" name="file" accept="image/*"/><br>
+                <div class="imageZone">
+                    <input class="imageAddButton" type="button" value="이미지 추가" onclick="addFileUpload()"/>
+                    <div class="board_image_file" id="board_image_file">
+                        이미지:<input type="file" name="file" accept="image/*"/><br>
+                    </div>
+                </div>
                 <input type="submit" class="writeButton" value="작성하기"/>
 
             </div>
@@ -92,6 +95,11 @@
             }
         }
     });
+    function addFileUpload(){
+        var imageField = document.getElementById("board_image_file")
+        var imageTag = '이미지:<input type="file" name="file" accept="image/*"/><br>'
+        imageField.innerHTML += imageTag
+    }
     function inputItem(result, key) {
         // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
         var string =
