@@ -13,22 +13,24 @@
 <div>
     <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
-    <div class="log">
-        <div class="logBack">
-            <form action="/front/loginProcess" method="POST">
-                <div class="logId">
-                    <input type="text" name="id" placeholder="아이디:" value="${returnId}"/>
-                    <input type="password" name="pass" placeholder="비밀번호:" value="${returnPass}"/>
-                </div>
-                <div class="sub">
-                    <input type="submit" value="로그인"/>
-                </div>
-                <br>
-                <input type="hidden" name="loginReferer" value="${loginReferer}"/>
-                <br>
-                ${loginFailMessage}
-            </form>
-        </div>
+<div class="log">
+    <div class="logBack">
+        <form action="/front/loginProcess" method="POST">
+            <div class="logId">
+                <input type="text" name="id" placeholder="아이디:" value="${returnId}"/>
+                <input type="password" name="pass" placeholder="비밀번호:" value="${returnPass}"/>
+            </div>
+            <div class="sub">
+                <input type="submit" value="로그인"/>
+            </div>
+            <br>
+            <input type="hidden" name="loginReferer" value="${loginReferer}"/>
+            <br>
+        </form>
     </div>
-    </body>
+    <div class="loginFail">
+        ${loginFailMessage}
+    </div>
+</div>
+</body>
 </html>

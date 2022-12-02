@@ -4,7 +4,6 @@
     position: fixed;   /* 화면에 고정  화면 이동되어도 같이 이동함 */
     top: 0;
     left: 0;
-    bottom: 100px;
     overflow: auto;   /* 만약 박스안에 내용이 튀어 나가면 휠로 이동가능하게 만드는것 */
     background-color: #2b2b2b;   /* 검정색 */
     z-index: 1; /* 숫자가 클수록 사용자에게 먼저 보임 (디폴트:0) */

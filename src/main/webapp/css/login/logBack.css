@@ -1,16 +1,17 @@
 .log {
+    height:100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-
 }
 
 .logBack {
     min-width: 400px;
     height: 200px;
-    border: solid 4px #cccccc;
+    border: solid 4px #daa520;
     border-radius: 20px;
     padding: 20px;
-
     color: #cccccc;
 }
 .logBack .logId {
@@ -23,7 +24,7 @@
 .logBack .logId input {
     width: 100%;
     height: auto;
-    border: solid 3px #cccccc;
+    border: solid 3px #daa520;
     border-radius: 10px;
     background-color: black;
     color: #cccccc;
@@ -57,5 +58,12 @@
 }
 .logBack .sub input:active {
     background-color: goldenrod;
+}
+.loginFail {
+    margin: 20px;
 
+    color: goldenrod;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
 }

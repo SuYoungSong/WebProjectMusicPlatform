@@ -1,0 +1,75 @@
+fieldset {
+    min-width: 900px;
+    border: solid 5px #daa520;
+    border-radius: 35px;
+    background-color: #333333;
+}
+legend {
+    color: #333333;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-left: 30px;
+    background-color: goldenrod;
+}
+.myInfo {
+    display: flex;
+    flex-direction: row;
+
+}
+.myInfo .image img{
+    width: 300px;
+    height: 300px;
+}
+.myInfo .textbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.myInfo .textbox .text{
+    font-size: 32px;
+    font-weight: bold;
+}
+/* ---------------- */
+section {
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;
+}
+.radio_none{    /* 라디오 버튼 없에버리는 스타일 */
+    display: none;
+}
+label {
+    position: relative;
+    top: 10px;
+    display: inline-block;;
+    flex-direction: row;
+    margin: 0 0 0 0;
+    padding: 15px 25px 10px 25px;
+    font-weight: 600;
+    text-align: center; /* 중앙정렬 */
+
+    color: #daa520;
+    border: 5px solid #daa520;
+    border-radius: 10px 10px 0 0;
+    background-color: #000000;
+
+    transition: all .2s;
+}
+label:hover {
+    color: #000000;
+    background-color: #daa520;
+    cursor: pointer;    /* 마우스를 포인터로 바꿈 */
+}
+input:checked + label {
+    top: 0;
+    padding-bottom: 20px;
+    color: black;
+    background-color: #daa520;
+}
+/*input:checked + label {*/
+/*    color: #555;*/
+/*    border: 1px solid #ddd;*/
+/*    border-top: 2px solid #2e9cdf;*/
+/*    border-bottom: 1px solid #ffffff;*/
+/*}*/

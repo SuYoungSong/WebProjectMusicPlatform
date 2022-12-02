@@ -1,19 +1,15 @@
 .none {
     display: none;  /* 디스플레이 없엠 */
 }
-
-
 /* -------- */
 label {
     position: relative;
     left: 60px;
     top: 10px;
     display: inline-block;
-    margin: 0;
     padding: 15px 25px 9px 25px;
     font-weight: 600;
     text-align: center;
-
 
     color: #daa520;
     border: 5px solid #daa520;
@@ -30,7 +26,7 @@ label:hover {
 }
 
 input:checked + label {
-    top:0;
+    top: 0;
     padding-bottom: 15px;
     color: black;
     background-color: #daa520;
