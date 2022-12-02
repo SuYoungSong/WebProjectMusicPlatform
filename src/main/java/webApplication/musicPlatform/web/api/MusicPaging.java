@@ -1,8 +1,11 @@
 package webApplication.musicPlatform.web.api;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.ResourceRegion;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
 import webApplication.musicPlatform.web.Repository.board.BoardImageRepository;
 import webApplication.musicPlatform.web.Repository.board.BoardRepository;
 import webApplication.musicPlatform.web.Repository.music.MusicFileRepository;
@@ -13,8 +16,10 @@ import webApplication.musicPlatform.web.domain.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.concurrent.TimeUnit;
 
 @RestController
+@Slf4j
 public class MusicPaging {
     MusicRepository musicRepository = new MusicRepository();
     MusicFileRepository musicFileRepository = new MusicFileRepository();
@@ -34,6 +39,16 @@ public class MusicPaging {
         return musics;
     }
 
+    @RequestMapping(value = { "/api/music/callMusic5/{page}"})
+    public LinkedHashMap<Integer, Music> callRecentlyMusic5(@PathVariable int page) {
+        try {
+            musics = musicRepository.callRecentlyMusicLimit5(page);
+        } catch (SQLException e) {
+            // 음악 불러오기 실패시
+            musics = new LinkedHashMap<>();
+        }
+        return musics;
+    }
 
     // 장르별 음악 10개씩 가져오기
     @RequestMapping(value = { "/api/music/genre/{genere}/{page}"})
@@ -70,4 +85,57 @@ public class MusicPaging {
         }
         return file;
     }
+
+    // 음악 정보 가져오기
+    @RequestMapping(value = { "/api/music/info/{musicNum}"})
+    public Music callMusicInfo(@PathVariable  int musicNum) {
+        Music music = null;
+        try {
+            music = musicRepository.findByNumber(musicNum);
+        } catch (SQLException e) {
+            music = new Music();
+        }
+        return music;
+    }
+
+    // https://focus-dev.tistory.com/105
+    //https://luvstudy.tistory.com/172
+    @RequestMapping(value = "/api/music/play/{musicNumber}", method = RequestMethod.GET)
+    public ResponseEntity<ResourceRegion> musicRegion(@RequestHeader HttpHeaders headers, @PathVariable int musicNumber) throws Exception {
+
+        MusicFile musicFile = musicFileRepository.findByNumber(musicNumber);
+        String music = musicFile.getServerFileName();
+
+        String path = "src/main/webapp/resources/musics/" + music;
+
+        Resource resource = new FileSystemResource(path);
+
+        long chunkSize = 1024 * 1024;
+        long contentLength = resource.contentLength();
+
+        ResourceRegion region;
+
+        try {
+            HttpRange httpRange = headers.getRange().stream().findFirst().get();
+            long start = httpRange.getRangeStart(contentLength);
+            long end = httpRange.getRangeEnd(contentLength);
+            long rangeLength = Long.min(chunkSize, end -start + 1);
+
+            log.info("start === {} , end == {}", start, end);
+
+            region = new ResourceRegion(resource, start, rangeLength);
+        } catch (Exception e) {
+            long rangeLength = Long.min(chunkSize, contentLength);
+            region = new ResourceRegion(resource, 0, rangeLength);
+        }
+
+        return ResponseEntity.status(HttpStatus.PARTIAL_CONTENT)
+                .cacheControl(CacheControl.maxAge(10, TimeUnit.MINUTES))
+                .contentType(MediaTypeFactory.getMediaType(resource).orElse(MediaType.APPLICATION_OCTET_STREAM))
+                .header("Accept-Ranges", "bytes")
+                .eTag(path)
+                .body(region);
+
+    }
 }
+

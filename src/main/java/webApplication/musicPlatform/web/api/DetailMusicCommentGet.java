@@ -18,6 +18,7 @@ public class DetailMusicCommentGet {
 
     @RequestMapping(value = { "/api/detailMusic/callComment/{musicNumber}/{page}"})
     public ArrayList<DetailMusicComment> findByNumber(@PathVariable int musicNumber, @PathVariable int page) {
+
         try {
             commentList = detailMusicCommentRepository.findByNumber(musicNumber);
         } catch (Exception e) {

@@ -6,13 +6,7 @@
 <head>
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <style>
-        body {
-            margin-left: 210px;
-            margin-bottom: 120px;
-            background-color: #0a0a0a;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/bodycss.css">
     <link rel="stylesheet" href="../../css/board/boaBox.css">
     <!-- <link rel="stylesheet" href="../../css/board/boa_SSY.css"> -->
     <link rel="stylesheet" href="../../css/board/boa_Box.css">
@@ -23,14 +17,14 @@
     <%@include file="sideNavigation.jsp"%>
 </div>
 <div>
-    <%@include file="sideController.jsp"%>
+    <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 <!-- test용 실행 -->
-<div class="boaBox">
-    <h2> 제목:123 </h2>
-    <img src="/resources/images/defaultMusicImage.png">
-    <p>1231941927349871289305798 27349613295798123749061293587912347961532</p>
-</div>
+<%--<div class="boaBox">--%>
+<%--    <h2> 제목:123 </h2>--%>
+<%--    <img src="/resources/images/defaultMusicImage.png">--%>
+<%--    <p>1231941927349871289305798 27349613295798123749061293587912347961532</p>--%>
+<%--</div>--%>
 
 <%--로그인시 게시글 작성칸 보이기 --%>
 <c:if test="${not empty sessionScope.loginUser}">
@@ -39,9 +33,12 @@
             <div class="writeBox">
                 <input type="text" class="writeZone" name="title" placeholder="제목을 입력하세요."/>
                 <textarea name="content" placeholder="내용을 입력하세요."></textarea><br>
-                이미지1:<input type="file" name="file" accept="image/*"/><br>
-                이미지2:<input type="file" name="file" accept="image/*"/><br>
-                이미지3:<input type="file" name="file" accept="image/*"/><br>
+                <div class="imageZone">
+                    <input class="imageAddButton" type="button" value="이미지 추가" onclick="addFileUpload()"/>
+                    <div class="board_image_file" id="board_image_file">
+                        이미지:<input type="file" name="file" accept="image/*"/><br>
+                    </div>
+                </div>
                 <input type="submit" class="writeButton" value="작성하기"/>
 
             </div>
@@ -98,6 +95,11 @@
             }
         }
     });
+    function addFileUpload(){
+        var imageField = document.getElementById("board_image_file")
+        var imageTag = '이미지:<input type="file" name="file" accept="image/*"/><br>'
+        imageField.innerHTML += imageTag
+    }
     function inputItem(result, key) {
         // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
         var string =
@@ -131,12 +133,12 @@
         }).done(function (result) {
             if(result.length == 0){
             }else {
-                comment += "댓글<br>"
+                comment += "<h2>댓글</h2><br>"
                 for (var cmt of result) {
                     comment +=
-                        "<hr><div class=\"post_comment\">" +
-                        "<div>댓글 작성자:" + cmt.writer + "</div><br>" +
-                        "<div>댓글 내용:" + cmt.commentText + "</div> " +
+                        "<div class=\"post_comment\">" +
+                        "<div>[" + cmt.writer + "]</div>" +
+                        "<div>▶" + cmt.commentText + "</div><br><br> " +
                         "</div>";
                 }
             }

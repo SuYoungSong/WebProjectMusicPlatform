@@ -5,7 +5,7 @@
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script>
-    var page = 0;
+    var page = 1;
     var isNext = true;
     $(window).scroll(function() {
         // 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성
@@ -41,28 +41,46 @@
                 inputItem(result[key], key);
                 count++;
             });
-            if(count<1){
-                $("recently_music_zone").append("등록된 음악이 없습니다.");
+            for ( let i = 0 ; i < 10-count ; i++ ){
+                inputNoneItem()
             }
         }).fail(function (error) {
+            for ( let i = 0 ; i < 10 ; i++ ){
+                inputNoneItem()
+            }
+            console.log("음악 로딩 실패")
             $("recently_music_zone").append("음악을 불러오는데 실패했습니다.");
         })
     }
     function inputItem(result, key) {
         // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
         var string =
-            "<a href=/front/detailMusic?no="+ key +">" +
             "<div class=\"musicBox\">"+
-            callMusicImage(key) +
-            "<div class=\"music_name\">제목:" + result.musicName + "</div>"+
-            "<div class=\"music_singer\">가수:" + result.singer + "</div>"+
-            "<div class=\"music_genere\">장르:" + result.genre + "</div>"+
-            "</div>"+
-            "</a>" ;
+            callingMusicImage(key) +
+            "<a class=\"music_a_tag\" href=/front/detailMusic?no="+ key +">" +
+            "<div class=\"music_name\">" + result.musicName + "</div>"+
+            "<div class=\"music_singer\">" + result.singer + "</div>"+
+            "</a>"+
+            "</div>" ;
         $("recently_music_zone").append(string);
     }
 
-    function callMusicImage(key){
+    function inputNoneItem() {
+        // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
+        var string =
+            "<div class=\"musicBox\">"+
+            "<div class=\"music_image\">"+
+            "<img  class=\"musicImagIcon\" src=\"/resources/images/defaultMusicImage.png\"/>"+
+            "</div>" +
+            "<a class=\"music_a_tag\">" +
+            "<div class=\"music_name\">등록된 음악이 없습니다</div>"+
+            "<div class=\"music_singer\">미등록</div>"+
+            "</div>"+
+            "</a>" ;
+        $('recently_music_zone').append(string);
+    }
+
+    function callingMusicImage(key){
         // 이미지 뜨는 html 수정하려면 여기 수정하면 됌
         var string = ""
         $.ajax({
@@ -73,28 +91,73 @@
         }).done(function (result) {
             string +=
                 "<div class=\"music_image\">"+
-                "<img  src=\"/resources/images/"+result.serverFilePath + "\"/>"+
+                "<img  class=\"musicImagIcon\" src=\"/resources/images/"+result.serverFilePath + "\"/>"+
+                "<button class=\"music_play_button\" onclick='musicPlayButton("+key+")'><img src=\"/resources/images/defaultPlayImage.png\"/></button>" +
                 "</div>";
         }).fail(function (error) {
         })
         return string;
     }
 </script>
+<link rel="stylesheet" href="../../css/bodycss.css">
 <style>
-    body{
-        margin-left:210px;
-        margin-bottom: 120px;
+    .music_play_button{
+        position: absolute;
+        background-color: transparent;
+        border: 0px;
+        left:2px;
+        top:3px;
+        width: 70px;
+        height: 70px;
+        display:none;
+    }
+    .music_a_tag{
+        padding-top:15px;
+        text-decoration: none;
+    }
+    .music_a_tag:hover .music_name{
+        color:#007bff;
+
+    }
+    .music_a_tag:hover .music_singer{
+        color:#6c757d;
+    }
+    .music_singer{
+        color:#9d9d9d;
+    }
+
+    .music_image:hover .music_play_button{
+        cursor: pointer;
+        display: block;
+        opacity: 100%;
+    }
+    .music_image:hover .musicImagIcon{
+        opacity: 0.5;
     }
     .musicBox{
         display: flex;
+        flex-direction: row;
         position: static;
+        margin-bottom: 10px;
+    }
+    .music_image{
+        position: relative;
+        padding-right: 90px;
+        padding-bottom: 75px;
     }
     .music_image img{
-        width:50px;
-        height:50px;
+        position: absolute;
+        width:75px;
+        height:75px;
         object-fit:cover;
     }
-
+    .music_play_button img{
+        position: absolute;
+        top:25%;
+        left:30%;
+        width:35px;
+        height:35px;
+    }
     recently_music_zone{
         width: 100%;
         display: flex;
@@ -109,7 +172,7 @@
     <%@include file="sideNavigation.jsp"%>
 </div>
 <div>
-    <%@include file="sideController.jsp"%>
+    <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 
 

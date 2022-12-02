@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Title</title>
+  <link rel="stylesheet" href="../../css/bodycss.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <style>
     #userId, #userPw{
       display:none;
@@ -10,9 +12,6 @@
     #pwTab:checked ~ #userPw{
       display: flex;
     }
-    body{
-      margin-left:210px;
-    }
   </style>
 </head>
 <body>
@@ -20,7 +19,9 @@
 <div id="nav">
   <%@include file="sideNavigation.jsp"%>
 </div>
-
+<div>
+  <jsp:include page = "sideController.jsp"></jsp:include>
+</div>
 
 <input type="radio" name="tabs" id="idTab" checked>아이디 찾기</input>
 <input type="radio" name="tabs" id="pwTab" ${checkedReturn}>비밀번호 찾기</input>

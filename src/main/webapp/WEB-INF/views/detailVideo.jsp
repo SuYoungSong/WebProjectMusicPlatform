@@ -60,10 +60,8 @@
             $("comment_zone").append(string);
         }
     </script>
+    <link rel="stylesheet" href="../../css/bodycss.css">
     <style>
-        body{
-            margin-left:210px;
-        }
         .writeBox{
             width:600px;
             height:150px;
@@ -104,7 +102,8 @@
 </div>
 
 <video controls="controls" poster="/resources/images/${videoImage.serverFilePath}">
-    <source src="/resources/videos/${videoFile.serverFileName}" type="video/mp4" />
+<%--    <source src="/resources/videos/${videoFile.serverFileName}" type="video/mp4" />--%>
+    <source src="/api/video/show/${videoFile.serverFileName}" type="video/mp4" />
 </video><br>
 
 영상 제목: ${videoInfo.videoName}<br>

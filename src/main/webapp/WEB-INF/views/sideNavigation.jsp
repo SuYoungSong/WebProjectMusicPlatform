@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../../css/navigation/navBar_1.css">
   <link rel="stylesheet" href="../../css/navigation/navBar_2.css">
   <link rel="stylesheet" href="../../css/navigation/navBarmenu.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
   <style></style>
 </head>
@@ -16,8 +17,8 @@
 <nav class="navBarBack">
   <div class="navBarLogo">  <!-- 로고 -->
     <a href="#">
-      <img src="/resources/images/defaultMusicImage.png"/>  <!-- 로고 img-->
-      <b>Logo</b>    <!-- 로고 name -->
+      <img src="/resources/images/defaultDreamLogo.png"/>  <!-- 로고 img-->
+      <h1><b>Dream</b></h1>    <!-- 로고 name -->
     </a>
   </div>          <!-- /로고 -->
 
@@ -33,12 +34,13 @@
       </div>
       <div style="color: white; text-align: center;">${loginUser.nickname}님 환영합니다<br></div>
       <div class ="navBarOut">
-        <a href="/front/myPage">마이페이지</a>
-        <a href="/front/logout">로그아웃</a>
+        <a  href="/front/myPage">마이페이지</a>
+        <a  href="/front/logout">로그아웃</a>
       </div></div>
     </c:if>
 
     <!-- 비로그인 상태일때 보여줄 메뉴!! -->
+
     <c:if test="${empty sessionScope.loginUser}">
   <div class="navBarUser_not_login">
       <div class="navBarOut"> <!-- 로그아웃상태 출력문 -->

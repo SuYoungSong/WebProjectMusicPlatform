@@ -2,24 +2,17 @@
 <html>
 <head>
     <title>Title</title>
-    <style>
-        body{
-
-            margin-left: 210px;
-            margin-bottom: 120px;
-            background-color: #0a0a0a;
-
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/bodycss.css">
     <link rel="stylesheet" href="../../css/login/logBack.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
     <!-- 네비게이션 -->
     <div>
         <%@include file="sideNavigation.jsp"%>
     </div>
-    <div>
-        <%@include file="sideController.jsp"%>
-    </div>
+<div>
+    <jsp:include page = "sideController.jsp"></jsp:include>
+</div>
     <div class="log">
         <div class="logBack">
             <form action="/front/loginProcess" method="POST">

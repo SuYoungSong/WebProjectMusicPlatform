@@ -5,7 +5,7 @@
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script>
-        var page = 0;
+        var page = 1;
         var isNext = true;
         $(window).scroll(function() {
         // 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성
@@ -79,11 +79,8 @@
         return string;
     }
 </script>
+<link rel="stylesheet" href="../../css/bodycss.css">
 <style>
-    body{
-        margin-left:210px;
-        margin-bottom: 120px;
-    }
     .videoBox{
         display: flex;
         position: static;
@@ -108,7 +105,7 @@
     <%@include file="sideNavigation.jsp"%>
 </div>
 <div>
-    <%@include file="sideController.jsp"%>
+    <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 
 

@@ -1,0 +1,16 @@
+body{
+    /*width: 100%;*/
+    color:white;
+    margin-top: 60px;
+    margin-left:240px;
+    margin-bottom: 120px;
+    background-color: #0a0a0a;
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+a:hover{
+    color:darkgray;
+}

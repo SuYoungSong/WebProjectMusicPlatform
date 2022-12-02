@@ -2,16 +2,16 @@
 <html>
 <head>
     <title>Title</title>
-    <style>
-        body{
-            margin-left:210px;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/bodycss.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
 <!-- 네비게이션 -->
 <div id="nav">
     <%@include file="sideNavigation.jsp"%>
+</div>
+<div>
+    <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 <h2>변경할 비밀번호를 입력하세요</h2>
 <form action="/front/users/userFindPChangePassword" method="post">

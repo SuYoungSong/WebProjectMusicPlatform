@@ -4,19 +4,15 @@
 <html>
 <head>
     <title>Title</title>
-    <style>
-      body{
-        margin-left:210px;
-        margin-bottom: 120px;
-      }
-    </style>
+  <link rel="stylesheet" href="../../css/bodycss.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
 <div id="nav">
   <%@include file="sideNavigation.jsp"%>
 </div>
 <div>
-  <%@include file="sideController.jsp"%>
+  <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 <div id="music">
   <form action="/front/music/editProcess" method="POST" enctype="multipart/form-data">

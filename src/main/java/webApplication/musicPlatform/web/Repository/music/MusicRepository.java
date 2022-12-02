@@ -138,6 +138,49 @@ public class MusicRepository extends ParentRepository {
         }
     }
 
+    public LinkedHashMap<Integer,Music> callRecentlyMusicLimit5(int page) throws SQLException {
+        String sql = "select * from music order by musicNumber DESC LIMIT ?,5;";
+
+        page = (page-1)*5;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        LinkedHashMap<Integer, Music> musics = new LinkedHashMap<>();
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1,page);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Music music = new Music();
+                int musicNumber = rs.getInt("musicNumber");
+                music.setMusicName(rs.getString("musicName"));
+                music.setUploadUser(rs.getString("uploadUser"));
+                music.setMusicDescription(rs.getString("musicText"));
+                music.setGenre(rs.getString("genere"));
+                music.setLyrics(rs.getString("lyrics"));
+                music.setSongwriter(rs.getString("songwriter"));
+                music.setLyricwriter(rs.getString("lyricwriter"));
+                music.setMusicArranger(rs.getString("musicArranger"));
+                music.setSinger(rs.getString("singer"));
+                music.setReleaseDate(rs.getString("releaseDate"));
+
+                musics.put(musicNumber, music);
+            }
+            return musics;
+        } catch(SQLException e){
+            log.error("db error", e);
+            throw e;
+        } finally{
+            {
+                close(con, pstmt, rs);
+            }
+        }
+    }
     public Music findByNumber(int musicNumber) throws SQLException {
         String sql = "select * from music where musicNumber=?";
 

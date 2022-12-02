@@ -4,12 +4,9 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="../../css/bodycss.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
      <style>
-        body{
-            margin-left:210px;
-            margin-bottom: 120px;
-        }
-
         .myInfo {
             display: flex;
             flex-direction: row;
@@ -51,6 +48,12 @@
               border-top: 2px solid #2e9cdf;
               border-bottom: 1px solid #ffffff;
           }
+        /*input:checked + label {*/
+        /*    color: #555;*/
+        /*    border: 1px solid #ddd;*/
+        /*    border-top: 2px solid #2e9cdf;*/
+        /*    border-bottom: 1px solid #ffffff;*/
+        /*}*/
 
         #myMusic:checked ~ #myMusic-content,
         #myVideo:checked ~ #myVideo-content,
@@ -117,7 +120,7 @@
     <%@include file="sideNavigation.jsp"%>
 </div>
 <div>
-    <%@include file="sideController.jsp"%>
+    <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 
 <c:if test="${not empty sessionScope.loginUser}">

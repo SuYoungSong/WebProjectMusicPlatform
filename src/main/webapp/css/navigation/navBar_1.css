@@ -39,6 +39,7 @@
 .navBarUserimg {
     width: 150px;
     height: 150px;
+    margin: auto;
     margin: 0 auto;
     border-radius: 50px;
     overflow: hidden;
