@@ -4,36 +4,134 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../../css/bodycss.css">
-    <link rel="stylesheet" href="../../css/mypage/S.css">
-    <link rel="stylesheet" href="../../css/mypage/myInfo.css">
+    <link rel="stylesheet" href="/css/bodycss.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+     <style>
+        .myInfo {
+            display: flex;
+            flex-direction: row;
+            alignment: center;
+        }
+        .myInfo_image img{
+            width: 300px;
+            height: 300px;
+        }
+        .myInfo_text{
+           margin-top: 10%;
+            font-size: 25px;
+        }
+        section {
+            display: none;
+            padding: 20px 0 0;
+            border-top: 1px solid #ddd;
+        }
+
+          .radio_none{
+              display: none;
+          }
+
+        label {
+            display: inline-block;
+            margin: 0 0 -1px;
+            padding: 15px 25px;
+            font-weight: 600;
+            text-align: center;
+
+            border: 1px solid transparent;}
+
+        label:hover {
+            color: #2e9cdf;
+            cursor: pointer;}
+
+        input:checked + label {
+              color: #555;
+              border: 1px solid #ddd;
+              border-top: 2px solid #2e9cdf;
+              border-bottom: 1px solid #ffffff;
+          }
+
+        #myMusic:checked ~ #myMusic-content,
+        #myVideo:checked ~ #myVideo-content,
+        #userInfoEdit:checked ~ #userInfoEdit-content,
+        #userExit:checked ~ #userExit-content
+        {
+            display: block;
+        }
+        .tab-value {
+            padding-top: 30px;
+        }
+        p {
+            margin: 0 0 20px;
+            line-height: 1.5;
+        }
+
+        .box {
+            width: 200px;
+            height: 280px;
+            display: inline-block;
+            background: cornsilk;
+            border-radius: 15px 50px;
+            margin-left: 30px;
+            margin-top: 30px;
+            box-shadow: 1px 1px 5px rgba(220, 175, 255, 0.6);
+        }
+        .main_item_image img{
+            width: 160px;
+            height: 160px;
+            padding-left: 10%;
+        }
+        .sub_item_image{
+            display:flex;
+        }
+        .sub_item_image button{
+            cursor: pointer;
+            background: transparent;
+            width: 30px;
+            height: 30px;
+            border: none;
+            margin-top: 15px;
+            margin-left: 45px;
+        }
+        .sub_item_image img{
+            width: 30px;
+            height: 30px;
+
+        }
+        .music_name{
+            margin-top: 10px;
+            text-align: center;
+        }
+        .video_name{
+            margin-top: 10px;
+            text-align: center;
+        }
+
+
+     </style>
 </head>
 <body>
 <!-- 네비게이션 -->
-<div>
+<div id="nav">
     <%@include file="sideNavigation.jsp"%>
 </div>
 <div>
     <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
-<!-- 로그인 상태일때 보여줄 메뉴 -->
+
 <c:if test="${not empty sessionScope.loginUser}">
-    <fieldset>  <!-- 가장자리가 보이는 박스 생성 -->
-        <legend>내정보</legend>    <!-- 박스에 이름 생성 -->
-        <div class="myInfo">
-            <div class="image">
-                <img src="/resources/images/${userProfileImage.serverFilePath}"/>
+    <fieldset>
+    <legend>내정보</legend>
+    <div class="myInfo">
+            <div class="myInfo_image"><img src="/resources/images/${userProfileImage.serverFilePath}"/><br></div>
+            <div class="myInfo_text">
+                아이디:${loginUser.id}<br>
+                이름:${loginUser.name}<br>
+                닉네임:${loginUser.nickname}<br>
+                전화번호:${loginUser.phone}<br>
             </div>
-            <div class="textbox">
-                <div class="text">아이디: ${loginUser.id}</div>
-                <div class="text">이름: ${loginUser.name}</div>
-                <div class="text">닉네임: ${loginUser.nickname}</div>
-                <div class="text">전화번호: ${loginUser.phone}</div>
-            </div>
-        </div>
-    </fieldset>
-<!-- ---------------------------------------- -->
+    </div>
+</fieldset>
+
     <div class="tab-value">
         <input class="radio_none" id="myMusic" type="radio" name="tabs" checked ${myMusicChecked}>
         <label for="myMusic">내 음악</label>

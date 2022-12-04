@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../../css/bodycss.css">
-    <link rel="stylesheet" href="../../css/login/logBack.css">
+    <link rel="stylesheet" href="/css/bodycss.css">
+    <link rel="stylesheet" href="/css/login/logBack.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
     <!-- 네비게이션 -->

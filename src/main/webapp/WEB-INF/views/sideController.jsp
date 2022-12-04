@@ -3,10 +3,10 @@
 <html>
 <head>
   <title>Title</title>
-  <link rel="stylesheet" href="../../css/controller/conBarback.css">
-  <link rel="stylesheet" href="../../css/controller/conBar_1.css">
-  <link rel="stylesheet" href="../../css/controller/conBar_2.css">
-  <link rel="stylesheet" href="../../css/controller/conBar_3.css">
+  <link rel="stylesheet" href="/css/controller/conBarback.css">
+  <link rel="stylesheet" href="/css/controller/conBar_1.css">
+  <link rel="stylesheet" href="/css/controller/conBar_2.css">
+  <link rel="stylesheet" href="/css/controller/conBar_3.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
@@ -58,9 +58,6 @@
 
 
 <script>
-
-
-  var played = false
   var tillPlayed = getMusicPlayTime();
 
   function setMusicPlayTime(playTime){
@@ -89,15 +86,19 @@
   // 페이지 이동시 음악 상태에 따라서 출력시키기
   function update(){
     var isPlay = localStorage.getItem("playState")
+    var iconUrlSplit = playButtonIcon.src.split("/")
+    var iconUrl = iconUrlSplit.pop()
 
     if( isPlay == 1 ){
       wavesurfer.play()
-      playButtonIcon.src = "/resources/images/pause.png"
-      played = true;
+      if(iconUrl != "pause.png"){
+        playButtonIcon.src = "/resources/images/pause.png"
+      }
     }else{
       wavesurfer.pause()
-      playButtonIcon.src = "/resources/images/play.png"
-      played = false;
+      if(iconUrl != "play.png"){
+        playButtonIcon.src = "/resources/images/play.png"
+      }
     }
   }
 

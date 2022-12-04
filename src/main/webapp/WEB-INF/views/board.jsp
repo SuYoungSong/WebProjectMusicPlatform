@@ -6,10 +6,10 @@
 <head>
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <link rel="stylesheet" href="../../css/bodycss.css">
-    <link rel="stylesheet" href="../../css/board/boaBox.css">
-    <!-- <link rel="stylesheet" href="../../css/board/boa_SSY.css"> -->
-    <link rel="stylesheet" href="../../css/board/boa_Box.css">
+    <link rel="stylesheet" href="/css/bodycss.css">
+    <link rel="stylesheet" href="/css/board/boaBox.css">
+    <!-- <link rel="stylesheet" href="/css/board/boa_SSY.css"> -->
+    <link rel="stylesheet" href="/css/board/boa_Box.css">
 </head>
 <body>
 <!-- 네비게이션 -->

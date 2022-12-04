@@ -3,11 +3,11 @@
 <html>
 <head>
   <title>Title</title>
-  <!-- <link rel="stylesheet" href="../../css/hong.css"> -->
-  <link rel="stylesheet" href="../../css/navigation/navBarback.css">
-  <link rel="stylesheet" href="../../css/navigation/navBar_1.css">
-  <link rel="stylesheet" href="../../css/navigation/navBar_2.css">
-  <link rel="stylesheet" href="../../css/navigation/navBarmenu.css">
+  <!-- <link rel="stylesheet" href="/css/hong.css"> -->
+  <link rel="stylesheet" href="/css/navigation/navBarback.css">
+  <link rel="stylesheet" href="/css/navigation/navBar_1.css">
+  <link rel="stylesheet" href="/css/navigation/navBar_2.css">
+  <link rel="stylesheet" href="/css/navigation/navBarmenu.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
   <style></style>

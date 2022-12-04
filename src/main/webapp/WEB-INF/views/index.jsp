@@ -76,10 +76,10 @@
         }
 
     </script>
-    <link rel="stylesheet" href="../../css/bodycss.css">
-    <link rel="stylesheet" href="../../css/index/inGenre.css">
-    <link rel="stylesheet" href="../../css/index/inLatest.css">
-    <style>
+    <link rel="stylesheet" href="/css/bodycss.css">
+    <link rel="stylesheet" href="/css/index/inGenre.css">
+    <link rel="stylesheet" href="/css/index/inLatest.css">
+   <style>
         .music_play_button{
             position: absolute;
             background-color: transparent;
@@ -174,7 +174,36 @@
     <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
 
-<%--&lt;%&ndash; 임시 임시 임시 이동용 &ndash;%&gt;--%>
+<%--검색 폼 미리 만듦--%>
+<link rel="stylesheet" href="/css/search_form.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+<section id="search">
+    <form action="/front/search" method="get">
+        <div class="selectBox">
+            <select class="selectList" name="searchType">
+                <option>제목</option>
+                <option>가수</option>
+                <option>업로더</option>
+            </select>
+            <i class="fas fa-caret-down"></i>
+        </div>
+        <input type="text" name="inputText" placeholder="키워드를 입력하세요."/>
+        <button type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</section>
+
+<%--검색 폼 미리 만듦--%>
+<script>
+    callRecentlyMusic5(1,"leftPane");
+    callRecentlyMusic5(2,"middlePane");
+    callRecentlyMusic5(3,"rightPane");
+</script>
+
+
+<%-- 임시 임시 임시 이동용 --%>
 <%--<a href="/front/temp?nextPage=board">게시판</a><br>--%>
 <%--<a href="/front/temp?nextPage=fileUpload-result">파일업로드 결과 페이지</a><br>--%>
 <%--<a href="/front/temp?nextPage=genereMusic">장르 음악</a><br>--%>
@@ -194,11 +223,6 @@
 <%--<a href="/front/myPage">마이페이지</a><br>--%>
 <%--&lt;%&ndash; 임시 임시 임시 이동용 &ndash;%&gt;--%>
 
-<script>
-    callRecentlyMusic5(1,"leftPane");
-    callRecentlyMusic5(2,"middlePane");
-    callRecentlyMusic5(3,"rightPane");
-</script>
 <div class="inLatest">
     <%--    최신음악 들어있는 공간  --%>
     <h1><a href="/front/temp?nextPage=recentlyMusic">최신 음악</a><br></h1><br>

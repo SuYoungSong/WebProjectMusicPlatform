@@ -2,6 +2,7 @@ package webApplication.musicPlatform.web.controller;
 
 import webApplication.musicPlatform.web.controller.board.BoardCommentController;
 import webApplication.musicPlatform.web.controller.board.BoardController;
+import webApplication.musicPlatform.web.controller.error.ErrorController;
 import webApplication.musicPlatform.web.controller.login.LoginController;
 import webApplication.musicPlatform.web.controller.login.LoginProcessController;
 import webApplication.musicPlatform.web.controller.login.LogoutController;
@@ -11,6 +12,7 @@ import webApplication.musicPlatform.web.controller.music.*;
 import webApplication.musicPlatform.web.controller.myPage.myPageController;
 import webApplication.musicPlatform.web.controller.register.RegisterController;
 import webApplication.musicPlatform.web.controller.register.UserSaveController;
+import webApplication.musicPlatform.web.controller.serach.SearchController;
 import webApplication.musicPlatform.web.controller.upload.FileUploadController;
 import webApplication.musicPlatform.web.controller.upload.MusicVideoFileUploadController;
 import webApplication.musicPlatform.web.controller.userFind.userFindChangePasswordController;
@@ -43,6 +45,7 @@ public class ControllerHandler {
         controllerMappingMap.put("/front/video/editProcess", new EditVideoProcessController());
         controllerMappingMap.put("/front/music/delete", new DeleteMusicController());
         controllerMappingMap.put("/front/video/delete", new DeleteVideoController());
+        controllerMappingMap.put("/front/search", new SearchController());
 
 
         // 단순 이동 Controller
@@ -62,6 +65,7 @@ public class ControllerHandler {
         controllerMappingMap.put("/front/recentlyVideo", new recentlyVideoController());
         controllerMappingMap.put("/front/recentlyMusic", new recentlyMusicController());
         controllerMappingMap.put("/front/myPage", new myPageController());
+        controllerMappingMap.put("/front/error", new ErrorController());
 
         // 임시 css 확인용
         controllerMappingMap.put("/front/temp", new tempController());

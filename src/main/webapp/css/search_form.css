@@ -1,0 +1,75 @@
+#search form {
+    display: inline-flex;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0 0 15px #555555;
+    transition: all ease 0.3s;
+}
+#search .selectBox {
+    color: #555555;
+    /* padding: 22px 70px 0px 30px; */
+    border-right: 1px solid #e5e5e5;
+    padding: 0px;
+    margin: 0px;
+}
+#search .selectBox select {
+    color: #555555;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 7px 7px 0 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 22px 70px 0px 30px;
+    width: 100%;
+    position: relative;
+    top: 3px;
+}
+#search .selectBox:hover select {
+    color: #000;
+}
+#search .selectBox i {
+    color: #e5e5e5;
+    position: relative;
+    left: 150px;
+    bottom: 25px;
+    transition: all ease 0.5s;
+    font-size: 2em;
+}
+#search .selectBox:hover i {
+    transform: rotate(-180deg);
+    color: #63c76a;
+}
+#search button {
+    background-color: #63c76a;
+    padding: 20px;
+    margin: 0px;
+    border: none;
+    border-radius: 0 7px 7px 0;
+    transition: all ease 0.3s;
+}
+#search button:hover {
+    box-shadow: 0 0 10px #50c058 inset;
+    background-color: #50c058;
+    cursor: pointer;
+}
+#search button i {
+    font-size: 3em;
+    color: #fff;
+    padding: 0px 0px 0px 3px;
+}
+#search input {
+    width: 50vw;
+    font-size: 1.5em;
+    border: none;
+    padding: 20px;
+}
+select:focus {
+    outline: none;
+}
+input:focus {
+    outline: none;
+}
+button:focus {
+    outline: none;
+}

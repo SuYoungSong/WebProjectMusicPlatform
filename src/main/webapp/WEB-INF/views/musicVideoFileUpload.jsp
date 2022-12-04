@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../../css/bodycss.css">
+    <link rel="stylesheet" href="/css/bodycss.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <style>
         #music, #video{
@@ -13,8 +13,9 @@
             display: flex;
         }
     </style>
-    <link rel="stylesheet" href="../../css/musicvideofileupload/vfuBack.css">
-    <link rel="stylesheet" href="../../css/musicvideofileupload/vfuRadio.css">
+    <link rel="stylesheet" href="/css/musicvideofileupload/vfuBack.css">
+    <link rel="stylesheet" href="/css/musicvideofileupload/vfuRadio.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
 <!-- 네비게이션 -->
