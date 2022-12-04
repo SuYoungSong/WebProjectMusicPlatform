@@ -1,19 +1,21 @@
-#search form {
+#search form {      /* 검색창 전체 */
     display: inline-flex;
-    background-color: #fff;
+    border: 5px solid #daa520;
+    background-color: #0a0a0a;
     border-radius: 7px;
-    box-shadow: 0 0 15px #555555;
+    /* box-shadow: 0 0 15px #555555; */
     transition: all ease 0.3s;
 }
 #search .selectBox {
     color: #555555;
-    /* padding: 22px 70px 0px 30px; */
-    border-right: 1px solid #e5e5e5;
+    border-radius: 7px 0 0 7px; /* 왼쪽 위 오른쪽 아래 */
+    border-right: 0px solid #333333;
     padding: 0px;
     margin: 0px;
+    background-color: #0a0a0a;
 }
-#search .selectBox select {
-    color: #555555;
+#search .selectBox select { /* .selectList */
+    color: #daa520;
     font-size: 1.5em;
     border: none;
     border-radius: 7px 7px 0 0;
@@ -24,12 +26,13 @@
     width: 100%;
     position: relative;
     top: 3px;
+    background-color: #0a0a0a;
 }
 #search .selectBox:hover select {
-    color: #000;
+    /* color: gold; */    /* ffd700 */
 }
-#search .selectBox i {
-    color: #e5e5e5;
+#search .selectBox i {  /* ▽버튼 */
+    color: #daa520;
     position: relative;
     left: 150px;
     bottom: 25px;
@@ -37,20 +40,20 @@
     font-size: 2em;
 }
 #search .selectBox:hover i {
-    transform: rotate(-180deg);
-    color: #63c76a;
+    /* transform: rotate(-180deg); */
+    color: #ffd700;
 }
 #search button {
-    background-color: #63c76a;
+    background-color: #daa520;
     padding: 20px;
     margin: 0px;
     border: none;
-    border-radius: 0 7px 7px 0;
+    /* border-radius: 0 7px 7px 0; */
     transition: all ease 0.3s;
 }
 #search button:hover {
-    box-shadow: 0 0 10px #50c058 inset;
-    background-color: #50c058;
+    /* box-shadow: 0 0 10px #50c058 inset; */
+    background-color: #ca9510;
     cursor: pointer;
 }
 #search button i {
@@ -58,14 +61,16 @@
     color: #fff;
     padding: 0px 0px 0px 3px;
 }
-#search input {
+#search input {     /* 검색창 */
+    color: #daa520;
     width: 50vw;
     font-size: 1.5em;
     border: none;
     padding: 20px;
+    background-color: #0a0a0a;
 }
-select:focus {
-    outline: none;
+select:focus {  /* 클릭했을때 */
+    outline: none; /* 클릭햇을 시 기본적으로 outline가 생성됨으로 제거해야함 */
 }
 input:focus {
     outline: none;
