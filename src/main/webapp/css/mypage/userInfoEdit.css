@@ -1,0 +1,29 @@
+#userInfoEdit-content form{
+    font-size: 20px;
+}
+#userInfoEdit-content form input {
+    width: 150px;
+    height: 30px;
+
+    border: solid 3px #daa520;
+    border-radius: 15px;
+    padding: 3px 15px;
+
+    color: #cccccc;
+    background-color: #0a0a0a;
+}
+#userInfoEdit-content form .submit {
+    font-weight: 900;
+
+    color: #0a0a0a;
+    background-color: goldenrod;
+}
+#userInfoEdit-content form .submit:hover {
+    border-color: gold;
+    background-color: gold;
+}
+#userInfoEdit-content form .submit:active {
+    color: black;
+    border-color: #c08f06;
+    background-color: #c08f06;
+}

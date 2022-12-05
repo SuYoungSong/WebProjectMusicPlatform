@@ -62,7 +62,6 @@
     </form>
 </div>
 
-
 <div id="video" class="vfu">
     <form action="/front/fileUploadProcess" method="POST" enctype="multipart/form-data">
         <input type="text" name="fileType" value="videos" style="display:none" readonly/>

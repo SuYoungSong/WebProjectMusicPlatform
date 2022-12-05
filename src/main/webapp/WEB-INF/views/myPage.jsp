@@ -6,11 +6,10 @@
     <title>Title</title>
     <link rel="stylesheet" href="/css/bodycss.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-     <style>
-
-     </style>
     <link rel="stylesheet" href="../../css/mypage/S.css">
     <link rel="stylesheet" href="../../css/mypage/myInfo.css">
+    <link rel="stylesheet" href="../../css/mypage/userInfoEdit.css">
+    <link rel="stylesheet" href="../../css/mypage/userExit.css">
 </head>
 <body>
 <!-- 네비게이션 -->
@@ -25,13 +24,13 @@
     <fieldset>
     <legend>내정보</legend>
     <div class="myInfo">
-            <div class="image"><img src="/resources/images/${userProfileImage.serverFilePath}"/><br></div>
-            <div class="textbox">
-                아이디:${loginUser.id}<br>
-                이름:${loginUser.name}<br>
-                닉네임:${loginUser.nickname}<br>
-                전화번호:${loginUser.phone}<br>
-            </div>
+        <div class="image"><img src="/resources/images/${userProfileImage.serverFilePath}"/><br></div>
+        <div class="textbox">
+            아이디:${loginUser.id}<br>
+            이름:${loginUser.name}<br>
+            닉네임:${loginUser.nickname}<br>
+            전화번호:${loginUser.phone}<br>
+        </div>
     </div>
 </fieldset>
 
@@ -108,7 +107,7 @@
                 이름: <input type="text" name="name" value="${loginUser.name}"maxlength="10"/><br>
                 닉네임: <input type="text" name="nickname" value="${loginUser.nickname}" maxlength="10"/><br>
                 프로필사진: <input type="file" name="profileImage" accept="image/*"/><br>
-                <input type="submit" value="회원정보 수정"/><br>
+                <input class="submit" type="submit" value="회원정보 수정"/>
                 <br>
             </form>
             ${failUserEditMessage}

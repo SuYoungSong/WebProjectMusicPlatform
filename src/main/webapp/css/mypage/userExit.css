@@ -1,0 +1,32 @@
+#userExit-content {
+
+    flex-direction: column;
+}
+#userExit-content p {
+    font-size: 18px;
+    font-weight: bold;
+}
+#userExit-content input {
+    width: 150px;
+    height: 30px;
+
+    border: solid 3px #ff0000;
+    border-radius: 15px;
+    padding: 3px 15px;
+
+    font-weight: bold;
+    color: #cccccc;
+    background-color: #0a0a0a;
+
+    transition: .2s;
+}
+#userExit-content input:hover {
+    color: #000000;
+    border-color: red;
+    background-color: red;
+}
+#userExit-content input:active {
+    color: #000000;
+    border-color: #aa0000;
+    background-color: #aa0000;
+}

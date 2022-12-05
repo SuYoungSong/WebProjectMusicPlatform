@@ -33,7 +33,7 @@ legend {
 section {
     display: none;
     padding: 20px 0 0;
-    border-top: 1px solid #ddd;
+    border-top: 5px solid #daa520;
 }
 .radio_none{    /* 라디오 버튼 없에버리는 스타일 */
     display: none;
@@ -43,13 +43,14 @@ label {
     top: 10px;
     display: inline-block;;
     flex-direction: row;
-    margin: 0 0 0 0;
+    margin: 0;
     padding: 15px 25px 10px 25px;
     font-weight: 600;
     text-align: center; /* 중앙정렬 */
 
     color: #daa520;
     border: 5px solid #daa520;
+    border-bottom: 1px;
     border-radius: 10px 10px 0 0;
     background-color: #000000;
 
