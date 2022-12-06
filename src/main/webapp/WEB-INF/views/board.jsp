@@ -107,7 +107,7 @@
             "<div class=\"post_write\">글쓴이:" + result.writer + "</div>"+
             "<div class=\"post_title\">제목:" + result.title + "</div>"+
             "<div class=\"post_img\">" + callPostImage(key) + "</div>"+
-            "<div class=\"post_content\">내용:" + result.content + "</div>"+
+            "<div class=\"post_content\">" + result.content + "</div>"+ /* 내용 */
             "<c:if test="${not empty sessionScope.loginUser}">"+
             "<form action=\"/front/board/comment/save\" method=\"post\" >" +
             "<input type=\"hidden\" name=\"writer\" value=\"${loginUser.id}\"/>" +

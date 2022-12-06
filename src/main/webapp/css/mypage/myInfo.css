@@ -20,12 +20,20 @@ legend {
 .myInfo .image img{
     width: 300px;
     height: 300px;
+
+    -webkit-mask-image: url("/resources/images/defaultMusicImage.png");  /* 크롬에서만 작동 */
+    -webkit-mask-repeat: no-repeat;         /* 크롬에서만 작동 */
+    -webkit-mask-size: 100% 100%;           /* 크롬에서만 작동 */
+    mask-image: url("/resources/images/defaultMusicImage.png");
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
 }
 .myInfo .textbox {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
+    padding-left: 50px;
     font-size: 32px;
     font-weight: bold;
 }

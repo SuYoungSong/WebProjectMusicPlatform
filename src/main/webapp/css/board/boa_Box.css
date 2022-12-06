@@ -1,8 +1,8 @@
 .postBox {
-    width: 800px;
+    width: 600px;
     height: auto;
 
-    border: solid 1px #cccccc;
+    border: solid 3px #daa520;
     border-radius: 20px;    /* 모서리 동글 */
     padding: 20px;
     margin: 20px;
@@ -13,30 +13,31 @@
 
 .post_write {
     color: #cccccc;
-    padding-bottom: 10px;
-    border-bottom: solid 1px #cccccc;
+    padding-bottom: 20px;
+    border-bottom: solid 1px #daa520;
     font-weight: bold; /* 굵게 */
 }
 .post_title {
     color: #cccccc;
+    padding-top: 10px;
     padding-bottom: 10px;
-    border-bottom: solid 1px #cccccc;
+    border-bottom: solid 1px #daa520;
 }
 
 .post_img img{ /* jsp 에서 수정해야 제대로 완성됨 */
-    width: 400px;
+    width: 100%;
     height: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 12px;
 }
-
 .post_content {
-    width: 400px;
+    width: 100%;
     height: auto;
 
     color: #cccccc;
-
-    border-top: solid 1px #cccccc;
+    border-top: solid 1px #daa520;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 .writeBox textarea{
     width: 100%;
@@ -49,24 +50,6 @@
     width: 100%;
     margin-bottom: 5px;
     color: #cccccc;
-}
-.imageZone{
-    display: flex;
-    flex-direction: row;
-    align-content: space-between;
-}
-.imageAddButton{
-    height: 50px;
-    margin-right: 10px;
-}
-.board_image_file{
-    display: flex;
-    flex-direction: column;
-}
-.writeButton{
-    width: 100%;
-    margin-top: 15px;
-    height: 30px;
 }
 .comment_write{
     margin-top: 30px;

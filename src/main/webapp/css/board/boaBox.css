@@ -1,34 +1,44 @@
-.boaBox {
-    width: 400px;
-    height: auto;
+.writeBox{
+}
+.writeBox .writeZone {
+    width: 100%;
+    height: 36px;
 
-    border: solid 1px #cccccc;
-    border-radius: 20px;    /* 모서리 동글 */
-    padding: 20px;
-    margin: 20px;
+    color: white;
 
+    border: solid 3px #daa520;
+    border-radius: 12px;
+
+    padding: 0 6px;
+    background-color: black;
+}
+.writeBox textarea{
+    width: 100%;
+    height: 70%;
+    resize: none;
+    color: white;
+
+    border: solid 3px #daa520;
+    border-radius: 12px;
+
+    padding: 6px;
+    background-color: black;
+}
+.writeButton{
+    width: 100%;
+    margin-top: 15px;
+    height: 30px;
+}
+.imageZone{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+.imageAddButton{
+    height: 50px;
+    margin-right: 10px;
+}
+.board_image_file{
     display: flex;
     flex-direction: column;
-}
-
-.boaBox h2 {
-    color: #cccccc;
-    padding-bottom: 10px;
-    border-bottom: solid 1px #cccccc;
-}
-
-.boaBox img {
-    width: 400px;
-    height: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.boaBox p {
-    width: 400px;
-    height: auto;
-
-    color: #cccccc;
-
-    border-top: solid 1px #cccccc;
 }
