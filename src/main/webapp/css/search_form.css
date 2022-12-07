@@ -1,10 +1,26 @@
+#search {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row-reverse;
+    z-index: 1;
+}
+#search:hover {
+    width: auto;
+}
 #search form {      /* 검색창 전체 */
     display: inline-flex;
-    border: 5px solid #daa520;
-    background-color: #0a0a0a;
-    border-radius: 7px;
+    border: none;
     /* box-shadow: 0 0 15px #555555; */
     transition: all ease 0.3s;
+}
+#search form:hover {
+    border: 2px solid #daa520;
+    background-color: #0a0a0a;
+    border-radius: 10px;
 }
 #search .selectBox {
     color: #555555;
@@ -48,11 +64,12 @@
     padding: 20px;
     margin: 0px;
     border: none;
-    /* border-radius: 0 7px 7px 0; */
-    transition: all ease 0.3s;
+
+    transition: all 0.3s;
 }
 #search button:hover {
     /* box-shadow: 0 0 10px #50c058 inset; */
+    border-radius: 0 7px 7px 0;
     background-color: #ca9510;
     cursor: pointer;
 }
