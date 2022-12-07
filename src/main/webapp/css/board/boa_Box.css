@@ -39,18 +39,6 @@
     padding-top: 10px;
     padding-bottom: 20px;
 }
-.writeBox textarea{
-    width: 100%;
-    height: 250px;
-    resize: none;
-    margin-bottom: 10px;
-}
-.writeZone{
-    height: 40px;
-    width: 100%;
-    margin-bottom: 5px;
-    color: #cccccc;
-}
 .comment_write{
     margin-top: 30px;
 }

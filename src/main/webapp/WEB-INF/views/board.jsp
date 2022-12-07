@@ -40,13 +40,10 @@
                     </div>
                 </div>
                 <input type="submit" class="writeButton" value="작성하기"/>
-
             </div>
         </form>
     </div>
 </c:if>
-
-
 
 <%--    처음 게시물 불러오기 --%>
 <script>

@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<nav class="navBarBack">
+<div class="navBarBack">
   <div class="navBarLogo">  <!-- 로고 -->
     <a href="#">
       <img src="/resources/images/defaultDreamLogo.png"/>  <!-- 로고 img-->
@@ -58,7 +58,6 @@
     <hr>
     <a href="/front/musicVideoFileUpload">음악/영상 업로드</a>
   </div>
-  <!-- 만드는중 -->
-</nav>
+</div>
 </body>
 </html>
