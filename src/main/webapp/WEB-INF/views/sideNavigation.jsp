@@ -16,7 +16,7 @@
 
 <div class="navBarBack">
   <div class="navBarLogo">  <!-- 로고 -->
-    <a href="#">
+    <a href="/">
       <img src="/resources/images/defaultDreamLogo.png"/>  <!-- 로고 img-->
       <h1><b>Dream</b></h1>    <!-- 로고 name -->
     </a>

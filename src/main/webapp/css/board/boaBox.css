@@ -29,16 +29,33 @@
 .imageZone{
     display: flex;
     flex-direction: row;
-    align-content: space-between;
 }
-.imageAddButton{
+.imageAddButton{        /* 이미지 추가 버튼 */
     height: 50px;
     margin-right: 10px;
+
+    color: #ffd700;
+    border: solid 2px #daa520;
+    border-radius: 6px;
+    background-color: #202020;
+
+    transition: all .2s;
+}
+.imageAddButton:hover {
+    background-color: #644220;
 }
 .board_image_file {
     display: flex;
     flex-direction: column;
 }
+.board_image_file input {
+
+    color: #ffd700;
+    border: solid 2px #daa520;
+    border-radius: 6px;
+    background-color: #202020;
+}
+
 .writeButton {
     width: 100%;
     margin-top: 15px;

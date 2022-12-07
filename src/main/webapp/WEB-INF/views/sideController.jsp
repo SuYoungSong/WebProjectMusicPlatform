@@ -230,7 +230,9 @@
   })
   // 오디오 종료 후 재생 버튼 아이콘을 재설정
   wavesurfer.on("finish", () => {
+    wavesurfer.pause()
     playButtonIcon.src = "/resources/images/play.png"
+    setMusicPlayState(0)
   })
 
 
