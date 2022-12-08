@@ -103,7 +103,6 @@ searchZone{
     margin-top: 50px;
 }
 
-
 #searchMusic:checked ~ #searchMusic-content,
 #searchVideo:checked ~ #searchVideo-content{
     display: block;
