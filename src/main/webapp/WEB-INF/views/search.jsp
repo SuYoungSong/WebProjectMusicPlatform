@@ -41,7 +41,7 @@
                     <a class="music_a_tag" href="/front/detailMusic?no=${music.key}">
                     <div class="music_name">${music.value.musicName}</div>
                     <div class="music_singer">${music.value.singer}</div>
-                </a>
+                    </a>
                 </div>
             </c:forEach>
         </c:if>
