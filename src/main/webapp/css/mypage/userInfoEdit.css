@@ -1,20 +1,48 @@
 #userInfoEdit-content form{
     font-size: 20px;
+    display: flex;
+    flex-direction: column;
 }
-#userInfoEdit-content form input {
+#userInfoEdit-content form .row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
+}
+#userInfoEdit-content form .text {
+    width: 200px;
+    height: auto;
+    margin-right: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+#userInfoEdit-content form .edit_box {
+
+}
+#userInfoEdit-content form .edit_box input{
     width: 150px;
     height: 30px;
 
     border: solid 3px #daa520;
     border-radius: 15px;
     padding: 3px 15px;
-
     color: #cccccc;
     background-color: #0a0a0a;
+
+}
+#userInfoEdit-content form .edit_box input:focus {
+    outline: none;
 }
 #userInfoEdit-content form .submit {
-    font-weight: 900;
+    width: 150px;
+    height: 36px;
 
+    border: solid 3px #daa520;
+    border-radius: 18px;
+    padding: 3px 15px;
+    margin-top: 12px;
+
+    font-size: 18px;
+    font-weight: 900;
     color: #0a0a0a;
     background-color: goldenrod;
 }

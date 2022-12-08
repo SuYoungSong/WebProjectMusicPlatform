@@ -99,17 +99,19 @@
 
         <section id="userInfoEdit-content">
             <c:set var="phone" value="${fn:split(loginUser.phone, '-')}" />
+            <div>
             <form action="/front/users/edit" method="post" enctype="multipart/form-data">
-                아이디: ${loginUser.id}<br>
-                비밀번호: <input type="password" name="password" maxlength="20"/><br>
-                비밀번호 확인: <input type="password" name="passwordCheck" maxlength="20"/><br>
-                연락처: <input type="text" name="phoneFirst" value="${phone[0]}" maxlength="3"/>-<input type="text" name="phoneSecond" value="${phone[1]}" maxlength="4"/>-<input type="text" name="phoneThird"value="${phone[2]}" maxlength="4"/><br>
-                이름: <input type="text" name="name" value="${loginUser.name}"maxlength="10"/><br>
-                닉네임: <input type="text" name="nickname" value="${loginUser.nickname}" maxlength="10"/><br>
-                프로필사진: <input type="file" name="profileImage" accept="image/*"/><br>
-                <input class="submit" type="submit" value="회원정보 수정"/>
+                <div class="row"><div class="text">아이디: </div><div class="edit_box">${loginUser.id}</div></div>
+                <div class="row"><div class="text">비밀번호: </div><div class="edit_box"><input type="password" name="password" maxlength="20"/></div></div>
+                <div class="row"><div class="text">비밀번호 확인: </div><div class="edit_box"><input type="password" name="passwordCheck" maxlength="20"/></div></div>
+                <div class="row"><div class="text">연락처: </div><div class="edit_box"><input type="text" name="phoneFirst" value="${phone[0]}" maxlength="3"/>-<input type="text" name="phoneSecond" value="${phone[1]}" maxlength="4"/>-<input type="text" name="phoneThird"value="${phone[2]}" maxlength="4"/></div></div>
+                <div class="row"><div class="text">이름: </div><div class="edit_box"><input type="text" name="name" value="${loginUser.name}"maxlength="10"/></div></div>
+                <div class="row"><div class="text">닉네임: </div><div class="edit_box"><input type="text" name="nickname" value="${loginUser.nickname}" maxlength="10"/></div></div>
+                <div class="row"><div class="text">프로필사진: </div><div class="edit_box"><input type="file" name="profileImage" accept="image/*"/></div></div>
+                <div class="row"><div class="text"></div><input class="submit" type="submit" value="회원정보 수정"/></div>
                 <br>
             </form>
+            </div>
             ${failUserEditMessage}
         </section>
 
