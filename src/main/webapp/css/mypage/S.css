@@ -18,11 +18,12 @@ p {
     width: 200px;
     height: 280px;
     display: inline-block;
-    background-color: #202020;
-    border: solid 3px #daa520;
+    background: seashell;
+
     border-radius: 15px 50px;
     margin-left: 30px;
     margin-top: 30px;
+    margin-bottom: 50px;
     /* box-shadow: 1px 1px 5px rgba(220, 175, 255, 0.6); */
 }
 .main_item_image {
@@ -42,12 +43,12 @@ p {
 }
 .music_name{        /* ------ */
     text-align: center;
-    color: #daa520;
+    color: #000000;
     margin-top: 10px;
 }
 .video_name{
     text-align: center;
-    color: #daa520;
+    color: #000000;
     margin-top: 10px;
 }                   /* ------- */
 

@@ -121,27 +121,41 @@ section {
 section {
     display: none;
     padding: 20px 0 0;
-    border-top: 1px solid #ddd;
+    border-top: 5px solid #daa520;
 }
 
 label {
+    position: relative;
+    top: 10px;
     display: inline-block;
-    margin: 0 0 -1px;
-    padding: 15px 25px;
+
+    margin: 0;
+    padding: 15px 25px 10px 25px;
     font-weight: 600;
     text-align: center;
 
-    border: 1px solid transparent;}
+    color: #daa520;
+    border: 5px solid #daa520;
+    border-bottom: 1px;
+    border-radius: 10px 10px 0 0;
+    background-color: #000000;
 
+    /* transition: all .2s; */
+}
 label:hover {
-    color: #2e9cdf;
-    cursor: pointer;}
-
+    color: #000000;
+    background-color: #daa520;
+    cursor: pointer;
+}
 input:checked + label {
-    color: yellow;
+    top: 0;
+    padding-bottom: 20px;
+    color: black;
+    background-color: #daa520;
+/* color: #000000;
     border: 1px solid #ddd;
     border-top: 2px solid #2e9cdf;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff; */
 }
 
 .tab-value {

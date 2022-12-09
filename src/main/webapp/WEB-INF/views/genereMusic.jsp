@@ -149,6 +149,14 @@
         position: static;
         margin-bottom: 10px;
     }
+    .musicBox img {
+        width: 75px;
+        height: 75px;
+        padding-right: 15px;
+    }
+    .musicBox img:hover {
+        opacity: 0.5;
+    }
     .music_image{
         position: relative;
         padding-right: 90px;

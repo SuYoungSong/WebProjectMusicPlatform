@@ -1,0 +1,20 @@
+.radio {
+    display: none;
+}
+label {
+    height: 40px;
+
+    font-weight: bold;
+    border: solid 3px #daa520;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: black;
+
+}
+label:hover {
+    background-color: #34210e;
+}
+input:checked + label {
+    color: black;
+    background-color: #daa520;
+}

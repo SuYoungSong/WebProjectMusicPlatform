@@ -133,6 +133,14 @@
         position: static;
         margin-bottom: 10px;
     }
+    .videoBox img {
+        width: 75px;
+        height: 75px;
+        padding-right: 15px;
+    }
+    .videoBox img:hover {
+        opacity: 0.5;
+    }
     .video_image{
         position: relative;
         padding-right: 90px;
