@@ -111,7 +111,8 @@ searchZone{
 section {
     display: none;
     padding: 20px 0 0;
-    border-top: 1px solid #ddd;}
+    border-top: 1px solid #ddd;
+}
 
 .radio_none{
     display: none;

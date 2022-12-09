@@ -4,6 +4,7 @@
 #userExit:checked ~ #userExit-content
 {
     display: flex;
+    flex-wrap: wrap;
 }
 .tab-value {
     padding-top: 30px;
@@ -17,39 +18,67 @@ p {
     width: 200px;
     height: 280px;
     display: inline-block;
-    background: cornsilk;
+    background-color: #202020;
+    border: solid 3px #daa520;
     border-radius: 15px 50px;
     margin-left: 30px;
     margin-top: 30px;
     /* box-shadow: 1px 1px 5px rgba(220, 175, 255, 0.6); */
 }
+.main_item_image {
+    display: flex;
+    justify-content: center;
+}
 .main_item_image img{
     width: 160px;
     height: 160px;
-    padding-left: 10%;
+
+    -webkit-mask-image: url("/resources/images/defaultMusicImage.png");  /* 크롬에서만 작동 */
+    -webkit-mask-repeat: no-repeat;         /* 크롬에서만 작동 */
+    -webkit-mask-size: 100% 100%;           /* 크롬에서만 작동 */
+    mask-image: url("/resources/images/defaultMusicImage.png");
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
 }
+.music_name{        /* ------ */
+    text-align: center;
+    color: #daa520;
+    margin-top: 10px;
+}
+.video_name{
+    text-align: center;
+    color: #daa520;
+    margin-top: 10px;
+}                   /* ------- */
+
 .sub_item_image{
+    width: 100%;
+    height: 100px;
     display:flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 .sub_item_image button{
     cursor: pointer;
-    background-color: transparent;
-    width: 30px;
-    height: 30px;
-    border: none;
-    margin-top: 15px;
-    margin-left: 45px;
+
+    width: 60px;
+    height: 60px;
+    border: solid 6px #daa520;
+    border-radius: 50%;
+    background-color: #daa520;
+}
+
+.sub_item_image button:hover {
+    border-color: #c08f06;
+    background-color: #c08f06;
+}
+.sub_item_image button:active {
+    border-color: #c08f06;
+    background-color: #34210e;
 }
 .sub_item_image img{
     width: 30px;
     height: 30px;
 
 }
-.music_name{
-    margin-top: 10px;
-    text-align: center;
-}
-.video_name{
-    margin-top: 10px;
-    text-align: center;
-}
+

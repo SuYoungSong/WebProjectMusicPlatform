@@ -27,6 +27,7 @@
 .post_img img{ /* jsp 에서 수정해야 제대로 완성됨 */
     width: 100%;
     height: auto;
+    border: solid 1px #daa520;
     margin-top: 10px;
     border-radius: 12px;
 }
@@ -39,15 +40,41 @@
     padding-top: 10px;
     padding-bottom: 20px;
 }
-.comment_write{
+.comment_write{     /* 댓글 창 */
     margin-top: 30px;
+    display: flex;
+
 }
 .comment_write textarea{
     width:90%;
     height: 65px;
     resize: none;
+
+    color: #cccccc;
+    border: solid 3px #daa520;
+    border-radius: 8px;
+    background-color: #000000;
 }
-.comment_write input{
+.comment_write input{   /* 댓글 작성 버튼 */
+    width: auto;
     height: 65px;
-    vertical-align: top;
+
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+
+    border: solid 3px #daa520;
+    border-radius: 8px;
+    background-color: goldenrod;
+
+    transition: all .2s;
+}
+.comment_write input:hover {
+    color: #daa520;
+    background-color: #34210e;
+}
+
+.comment_write input:active {
+    color: #000000;
+    background-color: goldenrod;
 }
