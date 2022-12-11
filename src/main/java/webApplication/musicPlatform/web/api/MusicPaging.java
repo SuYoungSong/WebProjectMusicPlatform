@@ -13,6 +13,7 @@ import webApplication.musicPlatform.web.Repository.music.MusicImageFileRepositor
 import webApplication.musicPlatform.web.Repository.music.MusicRepository;
 import webApplication.musicPlatform.web.domain.*;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -74,7 +75,7 @@ public class MusicPaging {
         return image;
     }
 
-    // 음악 파일명 가져오기
+    // 음악 파일 가져오기
     @RequestMapping(value = { "/api/music/file/{musicNum}"})
     public MusicFile callMusicFile(@PathVariable  int musicNum) {
         MusicFile file = null;
@@ -110,7 +111,7 @@ public class MusicPaging {
 
         Resource resource = new FileSystemResource(path);
 
-        long chunkSize = 1024 * 1024;
+        long chunkSize = 2500 * 2500;
         long contentLength = resource.contentLength();
 
         ResourceRegion region;
@@ -123,14 +124,15 @@ public class MusicPaging {
 
             log.info("start === {} , end == {}", start, end);
 
-            region = new ResourceRegion(resource, start, rangeLength);
+            region = new ResourceRegion(resource, start, end);
+//            region = new ResourceRegion(resource, start, rangeLength);
         } catch (Exception e) {
             long rangeLength = Long.min(chunkSize, contentLength);
             region = new ResourceRegion(resource, 0, rangeLength);
         }
 
         return ResponseEntity.status(HttpStatus.PARTIAL_CONTENT)
-                .cacheControl(CacheControl.maxAge(10, TimeUnit.MINUTES))
+                .cacheControl(CacheControl.maxAge(1000, TimeUnit.MINUTES))
                 .contentType(MediaTypeFactory.getMediaType(resource).orElse(MediaType.APPLICATION_OCTET_STREAM))
                 .header("Accept-Ranges", "bytes")
                 .eTag(path)
