@@ -61,76 +61,7 @@
         }
     </script>
     <link rel="stylesheet" href="/css/bodycss.css">
-    <style>
-        .writeBox{
-            width:600px;
-            height:150px;
-            margin:20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            display: flex;
-        }
-        .writeBox textarea{
-            width: 85%;
-            height: 100%;
-            resize: none;
-            margin-right: 5px;
-        }
-        .writeButton{
-            width: 15%;
-            height: 100%;
-        }
-        .comment_write textarea{
-            width:520px;
-            height: 65px;
-            resize: none;
-        }
-        .comment_write input{
-            height: 65px;
-            vertical-align: top;
-
-        }
-        .music_image:hover .music_play_button{
-            cursor: pointer;
-            display: block;
-            opacity: 100%;
-        }
-        .music_image:hover .musicImagIcon{
-            opacity: 0.5;
-        }
-        .music_image{
-            position: relative;
-            padding-right: 90px;
-            padding-bottom: 75px;
-        }
-        .musicImagIcon{
-            position: absolute;
-            width:300px;
-            height:300px;
-            object-fit:cover;
-        }
-        .music_play_button img{
-            position: absolute;
-            top:65%;
-            left:85%;
-            width:200px;
-            height:200px;
-        }
-        .music_play_button{
-            position: absolute;
-            background-color: transparent;
-            border: 0px;
-            left:2px;
-            top:3px;
-            width: 70px;
-            height: 70px;
-            display:none;
-        }
-        .music{
-            display: block;
-            height: 330px;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/deail/det_music.css">
 
 </head>
 <body>
@@ -149,19 +80,23 @@
             <img src="/resources/images/defaultPlayImage.png"/>
         </button>
     </div>
+    <div class="music_text">
+        <div class="name">${detailMusicInfo.musicName}</div>
+        <br>
+        <div class="user">${detailMusicInfo.uploadUser}</div>
+    </div>
 </div>
-<div>
-<br>
-음악 제목: ${detailMusicInfo.musicName}<br>
-음악 업로더: ${detailMusicInfo.uploadUser}<br>
-음악 설명: ${detailMusicInfo.musicDescription}<br>
-음악 장르: ${detailMusicInfo.genre}<br>
-음악 가사: ${detailMusicInfo.lyrics}<br>
-음악 작곡가: ${detailMusicInfo.songwriter}<br>
-음악 작사가: ${detailMusicInfo.lyricwriter}<br>
-음악 편곡가: ${detailMusicInfo.musicArranger}<br>
-음악 가수: ${detailMusicInfo.singer}<br>
-음악 발매일: ${detailMusicInfo.releaseDate}<br>
+<div class="box">
+    <div class="break"><div class="name">음악 제목 </div><div class="text">${detailMusicInfo.musicName}</div></div>
+    <div class="break"><div class="name">음악 업로더 </div><div class="text">${detailMusicInfo.uploadUser}</div></div>
+    <div class="break"><div class="name">음악 설명 </div><div class="text">${detailMusicInfo.musicDescription}</div></div>
+    <div class="break"><div class="name">음악 장르 </div><div class="text">${detailMusicInfo.genre}</div></div>
+    <div class="break"><div class="name">음악 작곡가 </div><div class="text">${detailMusicInfo.songwriter}</div></div>
+    <div class="break"><div class="name">음악 작사가 </div><div class="text">${detailMusicInfo.lyricwriter}</div></div>
+    <div class="break"><div class="name">음악 편곡가 </div><div class="text">${detailMusicInfo.musicArranger}</div></div>
+    <div class="break"><div class="name">음악 가수 </div><div class="text">${detailMusicInfo.singer}</div></div>
+    <div class="break"><div class="name">음악 발매일 </div><div class="text">${detailMusicInfo.releaseDate}</div></div>
+    <div class="break"><div class="name">음악 가사 </div><div class="text">${detailMusicInfo.lyrics}</div></div>
 </div>
 
 <%--로그인 한 경우 댓글 작성 가능하게--%>

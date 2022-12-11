@@ -27,3 +27,7 @@
 .navBarOut a:hover {
     background-color: yellow;
 }
+
+.navBarOut a:active {
+    background-color: #c08f06;
+}

@@ -61,36 +61,7 @@
         }
     </script>
     <link rel="stylesheet" href="/css/bodycss.css">
-    <style>
-        .writeBox{
-            width:600px;
-            height:150px;
-            margin:20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            display: flex;
-        }
-        .writeBox textarea{
-            width: 85%;
-            height: 100%;
-            resize: none;
-            margin-right: 5px;
-        }
-        .writeButton{
-            width: 15%;
-            height: 100%;
-        }
-        .comment_write textarea{
-            width:520px;
-            height: 65px;
-            resize: none;
-        }
-        .comment_write input{
-            height: 65px;
-            vertical-align: top;
-
-        }
-    </style>
+    <link rel="stylesheet" href="/css/deail/det_video.css">
 </head>
 <body>
 <!-- 네비게이션 -->
@@ -101,17 +72,25 @@
     <%@include file="sideController.jsp"%>
 </div>
 
-<video controls="controls" poster="/resources/images/${videoImage.serverFilePath}">
+<video class="video" controls="controls" poster="/resources/images/${videoImage.serverFilePath}">
 <%--    <source src="/resources/videos/${videoFile.serverFileName}" type="video/mp4" />--%>
     <source src="/api/video/show/${videoFile.serverFileName}" type="video/mp4" />
 </video><br>
+<!--
+<div class="box">
+    <div class="break"><div class="name">영상 제목: </div><div class="text">${videoInfo.videoName}</div></div>
+    <div class="break"><div class="name">영상 장르: </div><div class="text">${videoInfo.videoGenre}</div></div>
+    <div class="break"><div class="name">영상 설명: </div><div class="text">${videoInfo.videoDescription}</div></div>
+    <div class="break"><div class="name">업로더: </div><div class="text">${videoInfo.uploadUserId}</div></div>
+</div>
+-->
 
-영상 제목: ${videoInfo.videoName}<br>
-영상 장르: ${videoInfo.videoGenre}<br>
-영상 설명: ${videoInfo.videoDescription}<br>
-업로더: ${videoInfo.uploadUserId}<br>
+<div class="headbox">
+    <div class="name">영상 제목: ${videoInfo.videoName}</div>
+    <div class="uesr">업로더: ${videoInfo.uploadUserId}</div>
 
-
+    <div class="text">영상설명 <br><br>${videoInfo.videoDescription}</div>
+</div>
 <%--로그인 한 경우 댓글 작성 가능하게--%>
 <c:if test="${not empty sessionScope.loginUser}">
     <legend>

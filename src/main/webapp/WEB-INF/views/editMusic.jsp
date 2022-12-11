@@ -6,6 +6,7 @@
     <title>Title</title>
   <link rel="stylesheet" href="/css/bodycss.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <link rel="stylesheet" href="/css/edit/music.css">
 </head>
 <body>
 <div id="nav">
@@ -14,12 +15,12 @@
 <div>
   <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
-<div id="music">
+<div id="music" class="edit">
   <form action="/front/music/editProcess" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="musicNumber" value="${musicNumber}"/>
-    음악 제목: <input type="text" name="musicName" value="${editMusic.musicName}"/><br>
-    음악 설명: <textarea name="musicDescription">${editMusic.musicDescription}</textarea><br>
-    음악 장르: <select name="genre" >
+    <div class="edit_box"><div class="text">음악 제목: </div><div class="qv"><input type="text" name="musicName" value="${editMusic.musicName}"/></div></div>
+    <div class="edit_box"><div class="text">음악 설명: </div><div class="qv"><textarea name="musicDescription">${editMusic.musicDescription}</textarea></div></div>
+      <div class="edit_box"><div class="text">음악 장르: </div><div class="qv"><select name="genre" >
     <option value="발라드" <c:if test="${editMusic.genre eq '발라드'}">selected</c:if> >발라드</option>
     <option value="댄스" <c:if test="${editMusic.genre eq '댄스'}">selected</c:if> >댄스</option>
     <option value="힙합" <c:if test="${editMusic.genre eq '힙합'}">selected</c:if> >힙합</option>
@@ -31,16 +32,16 @@
     <option value="EDM" <c:if test="${editMusic.genre eq 'EDM'}">selected</c:if> >EDM</option>
     <option value="OST" <c:if test="${editMusic.genre eq 'OST'}">selected</c:if> >OST</option>
     <option value="인디" <c:if test="${editMusic.genre eq '인디'}">selected</c:if> >인디</option>
-  </select><br>
-    음악 가사: <textarea name="lyrics">${editMusic.lyrics}</textarea><br>
-    음악 가수: <input type="text" name="singer" value="${editMusic.singer}"/><br>
-    음악 작곡가: <input type="text" name="songwriter" value="${editMusic.songwriter}"/><br>
-    음악 작사가: <input type="text" name="lyricwriter" value="${editMusic.lyricwriter}"/><br>
-    음악 편곡가: <input type="text" name="musicArranger" value="${editMusic.musicArranger}"/><br>
+      </select></div></div>
+    <div class="edit_box"><div class="text">음악 가사: </div><div class="qv"><textarea name="lyrics">${editMusic.lyrics}</textarea></div></div>
+    <div class="edit_box"><div class="text">음악 가수: </div><div class="qv"><input type="text" name="singer" value="${editMusic.singer}"/></div></div>
+    <div class="edit_box"><div class="text">음악 작곡가: </div><div class="qv"><input type="text" name="songwriter" value="${editMusic.songwriter}"/></div></div>
+    <div class="edit_box"><div class="text">음악 작사가: </div><div class="qv"><input type="text" name="lyricwriter" value="${editMusic.lyricwriter}"/></div></div>
+    <div class="edit_box"><div class="text">음악 편곡가: </div><div class="qv"><input type="text" name="musicArranger" value="${editMusic.musicArranger}"/></div></div>
     <c:set var="releaseDate" value="${fn:split(editMusic.releaseDate, ' ')}" />
-    음악 발매일: <input type="date" name="releaseDate" value="${releaseDate[0]}"/><br>
-    음악 사진:<input type="file" name="imageFile" accept="image/*"/><br>
-    <input type="submit" value="음악 수정"/>
+    <div class="edit_box"><div class="text">음악 발매일: </div><div class="qv"><input type="date" name="releaseDate" value="${releaseDate[0]}"/></div></div>
+    <div class="edit_box"><div class="text">음악 사진: </div><div class="qv"><input type="file" name="imageFile" accept="image/*"/></div></div>
+    <input class="edit_sub" type="submit" value="음악 수정"/>
   </form>
 </div>
 

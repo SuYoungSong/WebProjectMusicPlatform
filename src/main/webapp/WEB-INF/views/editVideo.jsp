@@ -5,6 +5,7 @@
     <title>Title</title>
   <link rel="stylesheet" href="/css/bodycss.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <link rel="stylesheet" href="/css/edit/video.css">
 </head>
 <body>
 <div id="nav">
@@ -13,12 +14,12 @@
 <div>
   <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
-<div id="video">
+<div id="video" class="edit">
   <form action="/front/video/editProcess" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="videoNumber" value="${videoNumber}"/>
-    영상 제목: <input type="text" name="videoName" value="${editVideo.videoName}"/><br>
-    영상 설명: <textarea name="videoDescription">${editVideo.videoDescription}</textarea><br>
-    영상 장르: <select name="genere">
+    <div class="edit_box"><div class="text">영상 제목: </div><div class="qv"><input type="text" name="videoName" value="${editVideo.videoName}"/></div></div>
+    <div class="edit_box"><div class="text">영상 설명: </div><div class="qv"><textarea name="videoDescription">${editVideo.videoDescription}</textarea></div></div>
+      <div class="edit_box"><div class="text">영상 장르: </div><div class="qv"><select name="genere">
     <option value="발라드" <c:if test="${editVideo.videoGenre eq '발라드'}">selected</c:if> >발라드</option>
     <option value="댄스" <c:if test="${editVideo.videoGenre eq '댄스'}">selected</c:if> >댄스</option>
     <option value="힙합" <c:if test="${editVideo.videoGenre eq '힙합'}">selected</c:if> >힙합</option>
@@ -30,9 +31,9 @@
     <option value="EDM" <c:if test="${editVideo.videoGenre eq 'EDM'}">selected</c:if> >EDM</option>
     <option value="OST" <c:if test="${editVideo.videoGenre eq 'OST'}">selected</c:if> >OST</option>
     <option value="인디" <c:if test="${editVideo.videoGenre eq '인디'}">selected</c:if> >인디</option>
-  </select><br>
-    영상 사진:<input type="file" name="imageFile" accept="image/*"/><br>
-    <input type="submit" value="영상 수정"/>
+      </select></div></div>
+    <div class="edit_box"><div class="text">영상 사진: </div><div class="qv"><input type="file" name="imageFile" accept="image/*"/></div></div>
+    <input class="edit_sub" type="submit" value="영상 수정"/>
   </form>
 </div>
 </body>
