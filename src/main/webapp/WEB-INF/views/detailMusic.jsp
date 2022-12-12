@@ -97,7 +97,8 @@
     <div class="break"><div class="name">음악 편곡가 </div><div class="text">${detailMusicInfo.musicArranger}</div></div>
     <div class="break"><div class="name">음악 가수 </div><div class="text">${detailMusicInfo.singer}</div></div>
     <div class="break"><div class="name">음악 발매일 </div><div class="text">${detailMusicInfo.releaseDate}</div></div>
-    <div class="break"><div class="name">음악 가사 </div><div class="text">${detailMusicInfo.lyrics}</div></div>
+    <div class="break"><div class="name">음악 가사 </div><div class="music_lyrics"><div class="text">${detailMusicInfo.lyrics}</div></div></div>
+
 </div>
 
 <%--로그인 한 경우 댓글 작성 가능하게--%>

@@ -18,7 +18,7 @@
     height: 250px;
     resize: none;
     color: white;
-
+    white-space: pre-wrap;
     border: solid 3px #daa520;
     border-radius: 12px;
 

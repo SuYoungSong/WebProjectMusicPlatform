@@ -49,6 +49,7 @@
     width:90%;
     height: 65px;
     resize: none;
+    white-space: pre-wrap;
 
     color: #cccccc;
     border: solid 3px #daa520;

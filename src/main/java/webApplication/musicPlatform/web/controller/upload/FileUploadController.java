@@ -107,10 +107,12 @@ public class FileUploadController implements ControllerInter {
         switch (fileType){
             case "videos":
                 // 영상 정보를 DB에 등록
+                String videoescription = parameter.get("videoDescription");
+                videoescription = videoescription.replace("\r\n", "<br/>");
                 Video video = new Video(
                         userId,
                         parameter.get("videoName"),
-                        parameter.get("videoDescription"),
+                        videoescription,
                         parameter.get("genere")
                 );
 
@@ -139,13 +141,15 @@ public class FileUploadController implements ControllerInter {
                 videoImageFileRepository.upload(videoImage);
                 break;
             case "musics":
+                String lyrics = parameter.get("lyrics");
+                lyrics = lyrics.replace("\r\n", "<br/>");
                 // 음악 정보를 DB에 등록
                 Music music = new Music(
                         parameter.get("musicName"),
                         userId,
                         parameter.get("musicDescription"),
                         parameter.get("genre"),
-                        parameter.get("lyrics"),
+                        lyrics,
                         parameter.get("songwriter"),
                         parameter.get("lyricwriter"),
                         parameter.get("musicArranger"),

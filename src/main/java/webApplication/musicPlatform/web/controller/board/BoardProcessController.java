@@ -103,6 +103,7 @@ public class BoardProcessController implements ControllerInter {
         User user = (User) request.getSession().getAttribute("loginUser");
         String title = parameter.get("title");
         String content = parameter.get("content");
+        content = content.replace("\r\n", "<br/>");
         String category = "free";
         int boardNumber;
                 Board board = new Board(
@@ -111,7 +112,6 @@ public class BoardProcessController implements ControllerInter {
                 content,
                 category
         );
-
         try {
             BoardRepository boardRepository = new BoardRepository();
             boardNumber = boardRepository.write(board);
