@@ -18,7 +18,7 @@
                     dataType: "json"
                 }).done(function (result) {
                     var count = 0   // 더이상 음악 없으면 DB호출 막는 용도
-                    Object.keys(result).map(function (key) {
+                    Object.keys(result).sort().reverse().map(function (key) {
                         inputItem(result[key], key);
                         count++;
                     });
@@ -37,7 +37,7 @@
             dataType: "json"
         }).done(function (result) {
             var count = 0   // 음악이 하나도 없는경우 문구 출력용
-            Object.keys(result).map(function (key) {
+            Object.keys(result).sort().reverse().map(function (key) {
                 inputItem(result[key], key);
                 count++;
             });

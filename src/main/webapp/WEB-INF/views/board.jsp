@@ -53,7 +53,8 @@
         dataType: "json"
     }).done(function (result) {
         var count = 0   // 게시글이 하나도 없는경우 문구 출력용
-        Object.keys(result).map(function (key) {
+
+        Object.keys(result).sort().reverse().map(function (key) {
             inputItem(result[key], key);
             count++;
         });
@@ -63,6 +64,8 @@
     }).fail(function (error) {
         $("body").append("게시글을 불러오는데 실패했습니다.");
     })
+
+
 </script>
 
 <%-- 무한스크롤시 게시글 불러오기--%>
@@ -80,7 +83,7 @@
                     dataType: "json"
                 }).done(function (result) {
                     var count = 0   // 더이상 게시글이 없으면 DB호출 막는 용도
-                    Object.keys(result).map(function (key) {
+                    Object.keys(result).sort().reverse().map(function (key) {
                         inputItem(result[key], key);
                         count++;
                     });
