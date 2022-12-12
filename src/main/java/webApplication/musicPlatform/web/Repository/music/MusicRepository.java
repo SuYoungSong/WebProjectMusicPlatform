@@ -8,8 +8,7 @@ import webApplication.musicPlatform.web.domain.Music;
 import webApplication.musicPlatform.web.domain.User;
 
 import java.sql.*;
-import java.util.LinkedHashMap;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Slf4j
 public class MusicRepository extends ParentRepository {
@@ -84,7 +83,7 @@ public class MusicRepository extends ParentRepository {
 
                 musics.put(musicNumber, music);
             }
-            return musics;
+            return reverseMap(musics);
         } catch(SQLException e){
             log.error("db error", e);
             throw e;
@@ -127,7 +126,7 @@ public class MusicRepository extends ParentRepository {
 
                 musics.put(musicNumber, music);
             }
-            return musics;
+            return reverseMap(musics);
         } catch(SQLException e){
             log.error("db error", e);
             throw e;
@@ -171,7 +170,7 @@ public class MusicRepository extends ParentRepository {
 
                 musics.put(musicNumber, music);
             }
-            return musics;
+            return reverseMap(musics);
         } catch(SQLException e){
             log.error("db error", e);
             throw e;
@@ -251,7 +250,7 @@ public class MusicRepository extends ParentRepository {
 
                 musics.put(musicNumber, music);
             }
-            return musics;
+            return reverseMap(musics);
         } catch (SQLException e) {
             log.error("db error", e);
             throw e;
@@ -292,7 +291,7 @@ public class MusicRepository extends ParentRepository {
 
                 musics.put(musicNumber, music);
             }
-            return musics;
+            return reverseMap(musics);
         } catch (SQLException e) {
             log.error("db error", e);
             throw e;
@@ -332,7 +331,7 @@ public class MusicRepository extends ParentRepository {
 
                 musics.put(musicNumber, music);
             }
-            return musics;
+            return reverseMap(musics);
         } catch (SQLException e) {
             log.error("db error", e);
             throw e;
@@ -372,7 +371,7 @@ public class MusicRepository extends ParentRepository {
 
                 musics.put(musicNumber, music);
             }
-            return musics;
+            return reverseMap(musics);
         } catch(SQLException e){
             log.error("db error", e);
             throw e;
@@ -433,5 +432,16 @@ public class MusicRepository extends ParentRepository {
         }
     }
 
+    private LinkedHashMap<Integer, Music> reverseMap( LinkedHashMap<Integer, Music> musics ){
+//        LinkedHashMap<Integer, Music> reverseMusics = new LinkedHashMap<>();
+//        List<Integer> musicNumbers = new ArrayList<>(musics.keySet());
+//        Collections.reverse(musicNumbers);
+//        for (int musicNumber : musicNumbers) {
+//            System.out.println(musicNumber);
+//            reverseMusics.put(musicNumber, musics.get(musicNumber));
+//        }
+//        return reverseMusics;
+        return musics;
+    }
 
     }

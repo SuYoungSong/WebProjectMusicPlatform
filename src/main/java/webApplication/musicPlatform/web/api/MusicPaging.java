@@ -111,7 +111,7 @@ public class MusicPaging {
 
         Resource resource = new FileSystemResource(path);
 
-        long chunkSize = 2500 * 2500;
+        long chunkSize = 1000 * 1000;
         long contentLength = resource.contentLength();
 
         ResourceRegion region;
@@ -124,8 +124,8 @@ public class MusicPaging {
 
             log.info("start === {} , end == {}", start, end);
 
-            region = new ResourceRegion(resource, start, end);
-//            region = new ResourceRegion(resource, start, rangeLength);
+//            region = new ResourceRegion(resource, start, end);
+            region = new ResourceRegion(resource, start, rangeLength);
         } catch (Exception e) {
             long rangeLength = Long.min(chunkSize, contentLength);
             region = new ResourceRegion(resource, 0, rangeLength);

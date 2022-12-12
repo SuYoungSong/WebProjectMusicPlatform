@@ -90,22 +90,16 @@ public class VideoPagging {
     @RequestMapping(value = "/api/video/show/{video}", method = RequestMethod.GET)
     public ResponseEntity<ResourceRegion> videoRegion(@RequestHeader HttpHeaders headers, @PathVariable String video) throws Exception {
         String path = "src/main/webapp/resources/videos/" + video;
-
         Resource resource = new FileSystemResource(path);
-
         long chunkSize = 1024 * 1024;
         long contentLength = resource.contentLength();
-
         ResourceRegion region;
-
         try {
             HttpRange httpRange = headers.getRange().stream().findFirst().get();
             long start = httpRange.getRangeStart(contentLength);
             long end = httpRange.getRangeEnd(contentLength);
             long rangeLength = Long.min(chunkSize, end -start + 1);
-
             log.info("start === {} , end == {}", start, end);
-
             region = new ResourceRegion(resource, start, rangeLength);
         } catch (Exception e) {
             long rangeLength = Long.min(chunkSize, contentLength);
@@ -118,6 +112,5 @@ public class VideoPagging {
                 .header("Accept-Ranges", "bytes")
                 .eTag(path)
                 .body(region);
-
     }
 }

@@ -4,34 +4,35 @@
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script>
-        var page = 1;
-        var isNext = true;
-        $(window).scroll(function() {
-            // 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성
-            if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 80)
-            {
-                if(isNext){
-                    $.ajax({
-                        type: "get",
-                        url: "/api/detailVideo/callComment/${detailVideoNumber}/" + (++page),
-                        dataType: "json"
-                    }).done(function (result) {
-                        var count = 0   // 더이상 음악 없으면 DB호출 막는 용도
-                        for (var cmt of result) {
-                            inputItem(cmt);
-                            count++;
-                        }
-                        if (count < 1) {
-                            $("comment_zone").append("등록된 댓글이 없습니다.");
-                        }
-                        if( count<5 ){
-                            isNext = false;
-                        }
-                    }).fail(function (error) {
-                    })
-                }
-            }
-        });
+        <%--var page = 1;--%>
+        <%--var isNext = true;--%>
+        <%--$(window).scroll(function() {--%>
+        <%--    // 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성--%>
+        <%--    if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 80)--%>
+        <%--    {--%>
+        <%--        if(isNext){--%>
+        <%--            $.ajax({--%>
+        <%--                type: "get",--%>
+        <%--                url: "/api/detailVideo/callComment/${detailVideoNumber}/" + (++page),--%>
+        <%--                dataType: "json"--%>
+        <%--            }).done(function (result) {--%>
+        <%--                var count = 0   // 더이상 음악 없으면 DB호출 막는 용도--%>
+        <%--                for (var cmt of result) {--%>
+        <%--                    inputItem(cmt);--%>
+        <%--                    count++;--%>
+        <%--                }--%>
+        <%--                if (count < 1) {--%>
+        <%--                    $("comment_zone").append("등록된 댓글이 없습니다.");--%>
+        <%--                    isNext = false;--%>
+        <%--                }--%>
+        <%--                if( count<5 ){--%>
+        <%--                    isNext = false;--%>
+        <%--                }--%>
+        <%--            }).fail(function (error) {--%>
+        <%--            })--%>
+        <%--        }--%>
+        <%--    }--%>
+        <%--});--%>
         function callVideoComment(page){
             $.ajax({
                 type: "get",

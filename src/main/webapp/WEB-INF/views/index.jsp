@@ -183,26 +183,6 @@
     callRecentlyMusic5(3,"rightPane");
 </script>
 
-<%-- 임시 임시 임시 이동용 --%>
-<%--<a href="/front/temp?nextPage=board">게시판</a><br>--%>
-<%--<a href="/front/temp?nextPage=fileUpload-result">파일업로드 결과 페이지</a><br>--%>
-<%--<a href="/front/temp?nextPage=genereMusic">장르 음악</a><br>--%>
-<%--<a href="/front/temp?nextPage=genereVideo">장르 비디오</a><br>--%>
-<%--<a href="/front/temp?nextPage=login">로그인</a><br>--%>
-<%--<a href="/front/temp?nextPage=musicVideoFileUpload">음악비디오파일업로드</a><br>--%>
-<%--<a href="/front/temp?nextPage=recentlyMusic">최신 음악</a><br>--%>
-<%--<a href="/front/temp?nextPage=recentlyVideo">최신 영상</a><br>--%>
-<%--<a href="/front/temp?nextPage=register">회원가입</a><br>--%>
-<%--<a href="/front/temp?nextPage=register-result">회원가입 결과창</a><br>--%>
-<%--<a href="/front/temp?nextPage=userFind">회원 찾기</a><br>--%>
-<%--<a href="/front/temp?nextPage=userFind-changePassword">비밀번호 변경 페이지</a><br>--%>
-<%--<a href="/front/temp?nextPage=userFind-result">유저찾기 결과 페이지</a><br>--%>
-<%--<a href="/front/temp?nextPage=video">비디오</a><br>--%>
-<%--<a href="/front/detailMusic?no=1">음악 상세페이지</a><br>--%>
-<%--<a href="/front/detailVideo?no=1">비디오 상세페이지</a><br>--%>
-<%--<a href="/front/myPage">마이페이지</a><br>--%>
-<%--&lt;%&ndash; 임시 임시 임시 이동용 &ndash;%&gt;--%>
-
 <div class="inLatest">
     <%--    최신음악 들어있는 공간  --%>
     <h1><a href="/front/temp?nextPage=recentlyMusic">최신 음악</a><br></h1><br>

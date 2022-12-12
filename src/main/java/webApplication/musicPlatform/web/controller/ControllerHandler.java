@@ -41,6 +41,7 @@ public class ControllerHandler {
         controllerMappingMap.put("/front/board/write", new BoardProcessController());
         controllerMappingMap.put("/front/board/comment/save", new BoardCommentController());
         controllerMappingMap.put("/front/detailVideo/writeComment", new DetailVideoCommentController());
+        controllerMappingMap.put("/front/detailMusic/writeComment", new DetailMusicCommentController());
         controllerMappingMap.put("/front/music/editProcess", new EditMusicProcessController());
         controllerMappingMap.put("/front/video/editProcess", new EditVideoProcessController());
         controllerMappingMap.put("/front/music/delete", new DeleteMusicController());

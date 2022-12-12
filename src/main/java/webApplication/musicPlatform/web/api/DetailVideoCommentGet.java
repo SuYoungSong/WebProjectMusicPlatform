@@ -16,10 +16,10 @@ public class DetailVideoCommentGet {
     DetailVideoCommentRepository detailVideoCommentRepository = new DetailVideoCommentRepository();
     ArrayList<DetailVideoComment> commentList;
 
-    @RequestMapping(value = { "/api/detailVideo/callComment/{videoNmber}/{page}"})
-    public ArrayList<DetailVideoComment> findByNumber(@PathVariable int videoNmber, @PathVariable int page) {
+    @RequestMapping(value = { "/api/detailVideo/callComment/{videoNumber}/{page}"})
+    public ArrayList<DetailVideoComment> findByNumber(@PathVariable int videoNumber, @PathVariable int page) {
         try {
-            commentList = detailVideoCommentRepository.findByNumber(videoNmber);
+            commentList = detailVideoCommentRepository.findByNumber(videoNumber);
         } catch (Exception e) {
             // 코멘트 호출 실패
             commentList = new ArrayList<>();
