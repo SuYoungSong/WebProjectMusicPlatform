@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>index</title>
+    <title>Dream</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script>
         function callRecentlyMusic5(page, tag){

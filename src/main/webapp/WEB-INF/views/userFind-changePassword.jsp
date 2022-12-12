@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>userFind-changePassword</title>
+    <title>Dream</title>
     <link rel="stylesheet" href="/css/bodycss.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
-    <title>Title</title>
+  <title>Dream</title>
   <link rel="stylesheet" href="/css/bodycss.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <link rel="stylesheet" href="/css/edit/music.css">

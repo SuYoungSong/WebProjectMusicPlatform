@@ -2,7 +2,7 @@
 <%@ page isErrorPage="true"%>
 <html>
 <head>
-    <title>Title</title>
+    <title>Dream</title>
 </head>
 <link rel="stylesheet" href="/css/bodycss.css">
 <body>

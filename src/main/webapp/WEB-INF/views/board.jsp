@@ -4,7 +4,7 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <title>Title</title>
+    <title>Dream</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <link rel="stylesheet" href="/css/bodycss.css">
     <link rel="stylesheet" href="/css/board/boaBox.css">

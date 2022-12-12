@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>register</title>
+  <title>Dream</title>
   <link rel="stylesheet" href="/css/bodycss.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <link rel="stylesheet" href="/css/register/register.css">

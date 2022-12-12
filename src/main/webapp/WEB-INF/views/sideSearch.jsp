@@ -1,14 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Samsung
-  Date: 2022-12-07
-  Time: 오후 2:34
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+  <title>Dream</title>
   <link rel="stylesheet" href="/css/search_form.css">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
