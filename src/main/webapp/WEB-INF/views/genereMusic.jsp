@@ -56,12 +56,12 @@
         // 게시글(이미지 제외) 뜨는 html 수정하려면 여기 수정하면 됌
         var string =
             "<div class=\"musicBox\">"+
-            callMusicImage(key) +
+            callingMusicImage(key) +
             "<a class=\"music_a_tag\" href=/front/detailMusic?no="+ key +">" +
             "<div class=\"music_name\">" + result.musicName + "</div>"+
             "<div class=\"music_singer\">" + result.singer + "</div>"+
-            "</div>"+
-            "</a>" ;
+            "</a>"+
+            "</div>" ;
         $("recently_music_zone").append(string);
     }
     function inputNoneItem() {
@@ -79,7 +79,7 @@
         $('recently_music_zone').append(string);
     }
 
-    function callMusicImage(key){
+    function callingMusicImage(key){
         // 이미지 뜨는 html 수정하려면 여기 수정하면 됌
         var string = ""
         $.ajax({

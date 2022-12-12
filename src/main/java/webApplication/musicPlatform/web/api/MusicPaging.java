@@ -111,7 +111,7 @@ public class MusicPaging {
 
         Resource resource = new FileSystemResource(path);
 
-        long chunkSize = 1000 * 1000;
+        long chunkSize = 1300 * 1300;
         long contentLength = resource.contentLength();
 
         ResourceRegion region;
