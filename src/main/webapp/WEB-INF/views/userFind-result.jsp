@@ -14,6 +14,7 @@
 <div>
     <jsp:include page = "sideController.jsp"></jsp:include>
 </div>
+
 ${successMessage}<br>
 
 <c:if test="${not empty requestScope.findId}">

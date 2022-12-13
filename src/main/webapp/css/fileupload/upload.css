@@ -1,0 +1,20 @@
+.box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box .result {
+    min-width: 600px;
+    max-width: 1200px;
+    min-height: 50px;
+    border: solid 5px #daa520;
+    border-radius: 12px;
+    padding: 12px;
+
+    color: gold;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
