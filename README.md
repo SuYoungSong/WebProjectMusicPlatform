@@ -5,16 +5,16 @@
 - 소프트웨어학과 3학년 송수영(Java)
 - 소프트웨어학과 3학년 홍경석(CSS, 디자인)
 
-## 프로젝트 사진(image 크게)
+## 설계
 
-### 1. 프로그램 작동 구조도<br>
+### 프로그램 작동 구조도<br>
 ![작동순서](https://user-images.githubusercontent.com/80526924/227163516-43fc8b85-98d9-460f-b272-2beb43cd611e.png)<br><br>
 
-### 2. ERD 설계 <br>
+### ERD 설계 <br>
 ![ERD](https://user-images.githubusercontent.com/80526924/227163647-5c6c3c04-3196-4a90-a99d-3890c29ca943.png)
 
 <br><br>
-### 3. 프로그램 구동 
+## 실행 화면
 << 회원가입 >>
 ![회원가입](https://user-images.githubusercontent.com/80526924/227163900-e7ac8e45-856a-4af2-a726-9f394af5ff8d.gif)
 <br><br>
@@ -26,9 +26,6 @@
 <br><br>
 << 노래 재생 >>
 ![노래재생](https://user-images.githubusercontent.com/80526924/227164042-439b88f7-6dd4-42e0-b37b-49bb197cffdf.gif)
-<br><br>
-<< 영상 재생 >>
-<img src="https://i.postimg.cc/8c6883qd/image.gif"/>
 <br><br>
 << 검색 >>
 ![검색](https://user-images.githubusercontent.com/80526924/227164079-889b7ef6-63c3-4d94-a29f-3f1b4b0da7f1.gif)
